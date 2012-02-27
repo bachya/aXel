@@ -1,0 +1,3216 @@
+<?xml version="1.0"?>
+<RBProject version="2011r4.2" FormatVersion="2" MinIDEVersion="20070100">
+<block type="Project" ID="0">
+ <ProjectSavedInVers>2011.042</ProjectSavedInVers>
+ <ProjMgrUser></ProjMgrUser>
+ <ProjMgrServer></ProjMgrServer>
+ <MajorVersion>1</MajorVersion>
+ <MinorVersion>0</MinorVersion>
+ <SubVersion>0</SubVersion>
+ <Release>0</Release>
+ <NonRelease>0</NonRelease>
+ <Region></Region>
+ <ShortVersion></ShortVersion>
+ <LongVersion></LongVersion>
+ <InfoVersion></InfoVersion>
+ <AutoIncVersion>0</AutoIncVersion>
+ <DefaultViewID>531424011</DefaultViewID>
+ <ProjectType>0</ProjectType>
+ <DefaultLanguage>0</DefaultLanguage>
+ <CurrentLanguage>0</CurrentLanguage>
+ <DefaultEncoding>0</DefaultEncoding>
+ <BuildFlags>16400</BuildFlags>
+ <UseBuildsFolder>1</UseBuildsFolder>
+ <WebApp>0</WebApp>
+ <Icon>
+ </Icon>
+ <MacCreator></MacCreator>
+ <BuildCarbonName>My Application</BuildCarbonName>
+ <BuildCarbonMachOName>My Application</BuildCarbonMachOName>
+ <BundleIdentifier></BundleIdentifier>
+ <BuildSize>4194304</BuildSize>
+ <BuildMinSize>2097152</BuildMinSize>
+ <BuildSizeAsString>4096</BuildSizeAsString>
+ <BuildMinSizeAsString>2048</BuildMinSizeAsString>
+ <WinMDICaption></WinMDICaption>
+ <BuildWinName>My Application.exe</BuildWinName>
+ <BuildWinMDI>0</BuildWinMDI>
+ <BuildWinCompanyName></BuildWinCompanyName>
+ <BuildWinProductName></BuildWinProductName>
+ <BuildWinInternalName></BuildWinInternalName>
+ <UseGDIPlus>0</UseGDIPlus>
+ <BuildLinuxX86Name>MyApplication</BuildLinuxX86Name>
+ <DebuggerCommandLine></DebuggerCommandLine>
+ <WebPort>0</WebPort>
+ <WebProtocol>0</WebProtocol>
+ <WebDebugPort>8080</WebDebugPort>
+ <WebUseIntegratedBrowser>0</WebUseIntegratedBrowser>
+ <WebLaunchString>Launching...</WebLaunchString>
+ <WebHTMLHeader></WebHTMLHeader>
+ <WebDisconnectString>The application has gone off-line. Please try again later.</WebDisconnectString>
+</block>
+<block type="Module" ID="1045599458">
+ <ObjName>App</ObjName>
+ <ObjContainerID>0</ObjContainerID>
+ <IsClass>1</IsClass>
+ <Superclass>Application</Superclass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <IsApplicationObject>1</IsApplicationObject>
+ <Compatibility></Compatibility>
+ <PropertyVal Name="MenuBar">258881810</PropertyVal>
+ <ViewBehavior>
+ </ViewBehavior>
+ <Constant>
+  <ItemName>kFileQuitShortcut</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemName>kFileQuitShortcut</ItemName>
+  <ItemType>0</ItemType>
+  <ItemDef></ItemDef>
+  <ItemFlags>0</ItemFlags>
+  <ConstantInstance>
+   <ItemPlatform>1</ItemPlatform>
+   <ItemLanguage>0</ItemLanguage>
+   <ItemDef>Cmd+Q</ItemDef>
+  </ConstantInstance>
+  <ConstantInstance>
+   <ItemPlatform>5</ItemPlatform>
+   <ItemLanguage>0</ItemLanguage>
+   <ItemDef>Ctrl+Q</ItemDef>
+  </ConstantInstance>
+ </Constant>
+ <Constant>
+  <ItemName>kFileQuit</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemName>kFileQuit</ItemName>
+  <ItemType>0</ItemType>
+  <ItemDef>&amp;Quit</ItemDef>
+  <ItemFlags>0</ItemFlags>
+  <ConstantInstance>
+   <ItemPlatform>2</ItemPlatform>
+   <ItemLanguage>0</ItemLanguage>
+   <ItemDef>E&amp;xit</ItemDef>
+  </ConstantInstance>
+ </Constant>
+ <Constant>
+  <ItemName>kEditClear</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemName>kEditClear</ItemName>
+  <ItemType>0</ItemType>
+  <ItemDef>&amp;Delete</ItemDef>
+  <ItemFlags>0</ItemFlags>
+  <ConstantInstance>
+   <ItemPlatform>2</ItemPlatform>
+   <ItemLanguage>0</ItemLanguage>
+   <ItemDef>&amp;Delete</ItemDef>
+  </ConstantInstance>
+  <ConstantInstance>
+   <ItemPlatform>5</ItemPlatform>
+   <ItemLanguage>0</ItemLanguage>
+   <ItemDef>&amp;Delete</ItemDef>
+  </ConstantInstance>
+ </Constant>
+</block>
+<block type="Window" ID="531424011">
+ <ObjName>Window1</ObjName>
+ <ObjContainerID>0</ObjContainerID>
+ <IsClass>1</IsClass>
+ <Superclass>Window</Superclass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <MenuHandler>
+  <ItemName>FileTransform</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function FileTransform() As Boolean</SourceLine>
+   <SourceLine>// Create a new XML document, load the sourced XML into it,</SourceLine>
+   <SourceLine>// and run the provided XSLT against it</SourceLine>
+   <SourceLine>dim xmlDoc As XmlDocument = New XmlDocument</SourceLine>
+   <SourceLine>xmlDoc.LoadXml(Container_InputXmlXsl.Container_XmlInput.TextArea_Input.Text)</SourceLine>
+   <SourceLine>Container_InputXmlXsl.TextArea_Output.Text = xmlDoc.Transform(Container_InputXmlXsl.Container_XslInput.TextArea_Input.Text)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return True</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+ </MenuHandler>
+ <MenuHandler>
+  <ItemName>ToolsTidyXML</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function ToolsTidyXML() As Boolean</SourceLine>
+   <SourceLine>dim textAreaToTidy As TextArea = Container_InputXmlXsl.Container_XmlInput.TextArea_Input</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>textAreaToTidy.Text = Module_GlobalFunctions.TidyXml(textAreaToTidy.Text)</SourceLine>
+   <SourceLine>Return True</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+ </MenuHandler>
+ <MenuHandler>
+  <ItemName>ToolsTidyXSL</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function ToolsTidyXSL() As Boolean</SourceLine>
+   <SourceLine>dim textAreaToTidy As TextArea = Container_InputXmlXsl.Container_XslInput.TextArea_Input</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>textAreaToTidy.Text = Module_GlobalFunctions.TidyXml(textAreaToTidy.Text)</SourceLine>
+   <SourceLine>Return True</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+ </MenuHandler>
+ <MenuHandler>
+  <ItemName>FileOpenXML</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function FileOpenXML() As Boolean</SourceLine>
+   <SourceLine>dim input As TextArea = Container_InputXmlXsl.Container_XmlInput.TextArea_Input</SourceLine>
+   <SourceLine>dim labelValue As Label = Container_InputXmlXsl.Container_XmlInput.Label_Value</SourceLine>
+   <SourceLine>dim xmlFiletypes As FileType = FileTypes_XmlFiletypes.TextXml</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Module_GlobalFunctions.OpenFileViaDialog(input, labelValue, xmlFiletypes)</SourceLine>
+   <SourceLine>Return True</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+ </MenuHandler>
+ <MenuHandler>
+  <ItemName>FileOpenXSLT</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function FileOpenXSLT() As Boolean</SourceLine>
+   <SourceLine>dim input As TextArea = Container_InputXmlXsl.Container_XslInput.TextArea_Input</SourceLine>
+   <SourceLine>dim labelValue As Label = Container_InputXmlXsl.Container_XslInput.Label_Value</SourceLine>
+   <SourceLine>dim xmlFiletypes As FileType = FileTypes_XmlFiletypes.TextXml</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Module_GlobalFunctions.OpenFileViaDialog(input, labelValue, xmlFiletypes)</SourceLine>
+   <SourceLine>Return True</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+ </MenuHandler>
+ <MenuHandler>
+  <ItemName>ToolsTidyOutput</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function ToolsTidyOutput() As Boolean</SourceLine>
+   <SourceLine>dim textAreaToTidy As TextArea = Container_InputXmlXsl.TextArea_Output</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>textAreaToTidy.Text = Module_GlobalFunctions.TidyXml(textAreaToTidy.Text)</SourceLine>
+   <SourceLine>Return True</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+ </MenuHandler>
+ <MenuHandler>
+  <ItemName>FileSaveXML</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function FileSaveXML() As Boolean</SourceLine>
+   <SourceLine>Module_GlobalFunctions.SaveFileViaDialog(Container_InputXmlXsl.Container_XmlInput.TextArea_Input.Text, "output.xml")</SourceLine>
+   <SourceLine>Return True</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+ </MenuHandler>
+ <PropertyVal Name="ImplicitInstance">True</PropertyVal>
+ <PropertyVal Name="MenuBar">258881810</PropertyVal>
+ <PropertyVal Name="MacProcID">0</PropertyVal>
+ <PropertyVal Name="MinimizeButton">True</PropertyVal>
+ <PropertyVal Name="MaximizeButton">True</PropertyVal>
+ <PropertyVal Name="LiveResize">True</PropertyVal>
+ <PropertyVal Name="Resizeable">True</PropertyVal>
+ <PropertyVal Name="CloseButton">True</PropertyVal>
+ <PropertyVal Name="MenuBarVisible">True</PropertyVal>
+ <PropertyVal Name="FullScreen">False</PropertyVal>
+ <PropertyVal Name="Visible">True</PropertyVal>
+ <PropertyVal Name="Title">Untitled</PropertyVal>
+ <PropertyVal Name="Backdrop"></PropertyVal>
+ <PropertyVal Name="BackColor">16777215</PropertyVal>
+ <PropertyVal Name="HasBackColor">False</PropertyVal>
+ <PropertyVal Name="Composite">False</PropertyVal>
+ <PropertyVal Name="Frame">0</PropertyVal>
+ <PropertyVal Name="MaxHeight">32000</PropertyVal>
+ <PropertyVal Name="MaxWidth">32000</PropertyVal>
+ <PropertyVal Name="MinHeight">64</PropertyVal>
+ <PropertyVal Name="MinWidth">64</PropertyVal>
+ <PropertyVal Name="Height">669</PropertyVal>
+ <PropertyVal Name="Width">922</PropertyVal>
+ <PropertyVal Name="Placement">0</PropertyVal>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Interfaces</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Placement</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <EditorType>Enum</EditorType>
+   <InheritsFrom>Window</InheritsFrom>
+   <Enumeration>
+    <ItemDef>0 - Default</ItemDef>
+    <ItemDef>1 - Parent Window</ItemDef>
+    <ItemDef>2 - Main Screen</ItemDef>
+    <ItemDef>3 - Parent Window Screen</ItemDef>
+    <ItemDef>4 - Stagger</ItemDef>
+   </Enumeration>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Width</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>600</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Height</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>400</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>MinWidth</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>64</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>MinHeight</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>64</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>MaxWidth</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>32000</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>MaxHeight</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>32000</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Frame</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <EditorType>Enum</EditorType>
+   <InheritsFrom>Window</InheritsFrom>
+   <Enumeration>
+    <ItemDef>0 - Document</ItemDef>
+    <ItemDef>1 - Movable Modal</ItemDef>
+    <ItemDef>2 - Modal Dialog</ItemDef>
+    <ItemDef>3 - Floating Window</ItemDef>
+    <ItemDef>4 - Plain Box</ItemDef>
+    <ItemDef>5 - Shadowed Box</ItemDef>
+    <ItemDef>6 - Rounded Window</ItemDef>
+    <ItemDef>7 - Global Floating Window</ItemDef>
+    <ItemDef>8 - Sheet Window</ItemDef>
+    <ItemDef>9 - Metal Window</ItemDef>
+    <ItemDef>10 - Drawer Window</ItemDef>
+    <ItemDef>11 - Modeless Dialog</ItemDef>
+   </Enumeration>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Composite</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>False</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>HasBackColor</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>False</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>BackColor</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>&amp;hFFFFFF</PropertyValue>
+   <ItemType>Color</ItemType>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Backdrop</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <ItemType>Picture</ItemType>
+   <EditorType>Picture</EditorType>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Title</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>Untitled</PropertyValue>
+   <ItemType>String</ItemType>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Visible</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>FullScreen</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>False</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>MenuBarVisible</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>CloseButton</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Resizeable</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>LiveResize</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>MaximizeButton</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>False</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>MinimizeButton</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>MacProcID</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>MenuBar</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <ItemType>MenuBar</ItemType>
+   <EditorType>MenuBar</EditorType>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>ImplicitInstance</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <EditorType>Boolean</EditorType>
+   <InheritsFrom>Window</InheritsFrom>
+  </ViewProperty>
+ </ViewBehavior>
+ <ControlBehavior>
+  <Superclass>Container_XmlXslInput</Superclass>
+ </ControlBehavior>
+ <Control>
+  <ControlClass>Container_XmlXslInput</ControlClass>
+  <ItemName>Container_XmlXslInput</ItemName>
+  <PropertyVal Name="EraseBackground">True</PropertyVal>
+  <PropertyVal Name="AcceptTabs">True</PropertyVal>
+  <PropertyVal Name="AcceptFocus"></PropertyVal>
+  <PropertyVal Name="Backdrop"></PropertyVal>
+  <PropertyVal Name="BackColor">16777215</PropertyVal>
+  <PropertyVal Name="HasBackColor">False</PropertyVal>
+  <PropertyVal Name="UseFocusRing"></PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="TabIndex">7</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom">True</PropertyVal>
+  <PropertyVal Name="LockRight">True</PropertyVal>
+  <PropertyVal Name="LockTop">True</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">632</PropertyVal>
+  <PropertyVal Name="Width">882</PropertyVal>
+  <PropertyVal Name="Top">20</PropertyVal>
+  <PropertyVal Name="Left">20</PropertyVal>
+  <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
+  <PropertyVal Name="Super">Container_XmlXslInput</PropertyVal>
+  <PropertyVal Name="Name">Container_InputXmlXsl</PropertyVal>
+  <ControlIndex>0</ControlIndex>
+  <Locked>0</Locked>
+ </Control>
+</block>
+<block type="Menu" ID="258881810">
+ <ObjName>MenuBar1</ObjName>
+ <ObjContainerID>0</ObjContainerID>
+ <MenuItem>
+  <ItemSpecialMenu>0</ItemSpecialMenu>
+  <ItemName>FileMenu</ItemName>
+  <ItemText>&amp;File</ItemText>
+  <ItemIndex>-2147483648</ItemIndex>
+  <ItemShortcut></ItemShortcut>
+  <MenuAutoEnable>1</MenuAutoEnable>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemFlags>0</ItemFlags>
+  <Superclass>MenuItem</Superclass>
+  <MenuItem>
+   <ItemSpecialMenu>0</ItemSpecialMenu>
+   <ItemName>FileOpenXML</ItemName>
+   <ItemText>Open XML...</ItemText>
+   <ItemIndex>-2147483648</ItemIndex>
+   <ItemShortcut></ItemShortcut>
+   <MenuAutoEnable>1</MenuAutoEnable>
+   <TextEncoding>134217984</TextEncoding>
+   <ItemFlags>0</ItemFlags>
+   <Superclass>MenuItem</Superclass>
+  </MenuItem>
+  <MenuItem>
+   <ItemSpecialMenu>0</ItemSpecialMenu>
+   <ItemName>FileOpenXSLT</ItemName>
+   <ItemText>Open XSLT...</ItemText>
+   <ItemIndex>-2147483648</ItemIndex>
+   <ItemShortcut></ItemShortcut>
+   <MenuAutoEnable>1</MenuAutoEnable>
+   <TextEncoding>134217984</TextEncoding>
+   <ItemFlags>0</ItemFlags>
+   <Superclass>MenuItem</Superclass>
+  </MenuItem>
+  <MenuItem>
+   <ItemSpecialMenu>0</ItemSpecialMenu>
+   <ItemName>UntitledSeparator</ItemName>
+   <ItemText>-</ItemText>
+   <ItemIndex>-2147483648</ItemIndex>
+   <ItemShortcut></ItemShortcut>
+   <MenuAutoEnable>1</MenuAutoEnable>
+   <TextEncoding>134217984</TextEncoding>
+   <ItemFlags>0</ItemFlags>
+   <Superclass>MenuItem</Superclass>
+  </MenuItem>
+  <MenuItem>
+   <ItemSpecialMenu>0</ItemSpecialMenu>
+   <ItemName>FileSaveXML</ItemName>
+   <ItemText>Save XML...</ItemText>
+   <ItemIndex>-2147483648</ItemIndex>
+   <ItemShortcut></ItemShortcut>
+   <MenuAutoEnable>0</MenuAutoEnable>
+   <TextEncoding>134217984</TextEncoding>
+   <ItemFlags>0</ItemFlags>
+   <Superclass>MenuItem</Superclass>
+  </MenuItem>
+  <MenuItem>
+   <ItemSpecialMenu>0</ItemSpecialMenu>
+   <ItemName>FileSaveXSLT</ItemName>
+   <ItemText>Save XSLT...</ItemText>
+   <ItemIndex>-2147483648</ItemIndex>
+   <ItemShortcut></ItemShortcut>
+   <MenuAutoEnable>0</MenuAutoEnable>
+   <TextEncoding>134217984</TextEncoding>
+   <ItemFlags>0</ItemFlags>
+   <Superclass>MenuItem</Superclass>
+  </MenuItem>
+  <MenuItem>
+   <ItemSpecialMenu>0</ItemSpecialMenu>
+   <ItemName>FileSaveOutput</ItemName>
+   <ItemText>Save Output...</ItemText>
+   <ItemIndex>-2147483648</ItemIndex>
+   <ItemShortcut></ItemShortcut>
+   <MenuAutoEnable>0</MenuAutoEnable>
+   <TextEncoding>134217984</TextEncoding>
+   <ItemFlags>0</ItemFlags>
+   <Superclass>MenuItem</Superclass>
+  </MenuItem>
+  <MenuItem>
+   <ItemSpecialMenu>0</ItemSpecialMenu>
+   <ItemName>UntitledSeparator0</ItemName>
+   <ItemText>-</ItemText>
+   <ItemIndex>-2147483648</ItemIndex>
+   <ItemShortcut></ItemShortcut>
+   <MenuAutoEnable>1</MenuAutoEnable>
+   <TextEncoding>134217984</TextEncoding>
+   <ItemFlags>0</ItemFlags>
+   <Superclass>MenuItem</Superclass>
+  </MenuItem>
+  <MenuItem>
+   <ItemSpecialMenu>0</ItemSpecialMenu>
+   <ItemName>FileTransform</ItemName>
+   <ItemText>Transform</ItemText>
+   <ItemIndex>-2147483648</ItemIndex>
+   <ItemShortcut>F9</ItemShortcut>
+   <MenuShortcut>F9</MenuShortcut>
+   <MenuAutoEnable>0</MenuAutoEnable>
+   <TextEncoding>134217984</TextEncoding>
+   <ItemFlags>0</ItemFlags>
+   <Superclass>MenuItem</Superclass>
+  </MenuItem>
+  <MenuItem>
+   <ItemSpecialMenu>0</ItemSpecialMenu>
+   <ItemName>UntitledSeparator1</ItemName>
+   <ItemText>-</ItemText>
+   <ItemIndex>-2147483648</ItemIndex>
+   <ItemShortcut></ItemShortcut>
+   <MenuAutoEnable>1</MenuAutoEnable>
+   <TextEncoding>134217984</TextEncoding>
+   <ItemFlags>0</ItemFlags>
+   <Superclass>MenuItem</Superclass>
+  </MenuItem>
+  <MenuItem>
+   <ItemSpecialMenu>0</ItemSpecialMenu>
+   <ItemName>FileQuit</ItemName>
+   <ItemText>#App.kFileQuit</ItemText>
+   <ItemIndex>-2147483648</ItemIndex>
+   <ItemShortcut>#App.kFileQuitShortcut</ItemShortcut>
+   <MenuShortcut>#App.kFileQuitShortcut</MenuShortcut>
+   <MenuAutoEnable>1</MenuAutoEnable>
+   <TextEncoding>134217984</TextEncoding>
+   <ItemFlags>0</ItemFlags>
+   <Superclass>QuitMenuItem</Superclass>
+  </MenuItem>
+ </MenuItem>
+ <MenuItem>
+  <ItemSpecialMenu>0</ItemSpecialMenu>
+  <ItemName>EditMenu</ItemName>
+  <ItemText>&amp;Edit</ItemText>
+  <ItemIndex>-2147483648</ItemIndex>
+  <ItemShortcut></ItemShortcut>
+  <MenuAutoEnable>1</MenuAutoEnable>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemFlags>0</ItemFlags>
+  <Superclass>MenuItem</Superclass>
+  <MenuItem>
+   <ItemSpecialMenu>0</ItemSpecialMenu>
+   <ItemName>EditUndo</ItemName>
+   <ItemText>&amp;Undo</ItemText>
+   <ItemIndex>-2147483648</ItemIndex>
+   <ItemShortcut>Cmd+Z</ItemShortcut>
+   <MenuShortcut>Z</MenuShortcut>
+   <MenuShortcutModifier>1</MenuShortcutModifier>
+   <MenuAutoEnable>1</MenuAutoEnable>
+   <TextEncoding>134217984</TextEncoding>
+   <ItemFlags>0</ItemFlags>
+   <Superclass>MenuItem</Superclass>
+  </MenuItem>
+  <MenuItem>
+   <ItemSpecialMenu>0</ItemSpecialMenu>
+   <ItemName>UntitledMenu1</ItemName>
+   <ItemText>-</ItemText>
+   <ItemIndex>-2147483648</ItemIndex>
+   <ItemShortcut></ItemShortcut>
+   <MenuAutoEnable>1</MenuAutoEnable>
+   <TextEncoding>134217984</TextEncoding>
+   <ItemFlags>0</ItemFlags>
+   <Superclass>MenuItem</Superclass>
+  </MenuItem>
+  <MenuItem>
+   <ItemSpecialMenu>0</ItemSpecialMenu>
+   <ItemName>EditCut</ItemName>
+   <ItemText>Cu&amp;t</ItemText>
+   <ItemIndex>-2147483648</ItemIndex>
+   <ItemShortcut>Cmd+X</ItemShortcut>
+   <MenuShortcut>X</MenuShortcut>
+   <MenuShortcutModifier>1</MenuShortcutModifier>
+   <MenuAutoEnable>1</MenuAutoEnable>
+   <TextEncoding>134217984</TextEncoding>
+   <ItemFlags>0</ItemFlags>
+   <Superclass>MenuItem</Superclass>
+  </MenuItem>
+  <MenuItem>
+   <ItemSpecialMenu>0</ItemSpecialMenu>
+   <ItemName>EditCopy</ItemName>
+   <ItemText>&amp;Copy</ItemText>
+   <ItemIndex>-2147483648</ItemIndex>
+   <ItemShortcut>Cmd+C</ItemShortcut>
+   <MenuShortcut>C</MenuShortcut>
+   <MenuShortcutModifier>1</MenuShortcutModifier>
+   <MenuAutoEnable>1</MenuAutoEnable>
+   <TextEncoding>134217984</TextEncoding>
+   <ItemFlags>0</ItemFlags>
+   <Superclass>MenuItem</Superclass>
+  </MenuItem>
+  <MenuItem>
+   <ItemSpecialMenu>0</ItemSpecialMenu>
+   <ItemName>EditPaste</ItemName>
+   <ItemText>&amp;Paste</ItemText>
+   <ItemIndex>-2147483648</ItemIndex>
+   <ItemShortcut>Cmd+V</ItemShortcut>
+   <MenuShortcut>V</MenuShortcut>
+   <MenuShortcutModifier>1</MenuShortcutModifier>
+   <MenuAutoEnable>1</MenuAutoEnable>
+   <TextEncoding>134217984</TextEncoding>
+   <ItemFlags>0</ItemFlags>
+   <Superclass>MenuItem</Superclass>
+  </MenuItem>
+  <MenuItem>
+   <ItemSpecialMenu>0</ItemSpecialMenu>
+   <ItemName>EditClear</ItemName>
+   <ItemText>#App.kEditClear</ItemText>
+   <ItemIndex>-2147483648</ItemIndex>
+   <ItemShortcut></ItemShortcut>
+   <MenuAutoEnable>1</MenuAutoEnable>
+   <TextEncoding>134217984</TextEncoding>
+   <ItemFlags>0</ItemFlags>
+   <Superclass>MenuItem</Superclass>
+  </MenuItem>
+  <MenuItem>
+   <ItemSpecialMenu>0</ItemSpecialMenu>
+   <ItemName>UntitledMenu0</ItemName>
+   <ItemText>-</ItemText>
+   <ItemIndex>-2147483648</ItemIndex>
+   <ItemShortcut></ItemShortcut>
+   <MenuAutoEnable>1</MenuAutoEnable>
+   <TextEncoding>134217984</TextEncoding>
+   <ItemFlags>0</ItemFlags>
+   <Superclass>MenuItem</Superclass>
+  </MenuItem>
+  <MenuItem>
+   <ItemSpecialMenu>0</ItemSpecialMenu>
+   <ItemName>EditSelectAll</ItemName>
+   <ItemText>Select &amp;All</ItemText>
+   <ItemIndex>-2147483648</ItemIndex>
+   <ItemShortcut>Cmd+A</ItemShortcut>
+   <MenuShortcut>A</MenuShortcut>
+   <MenuShortcutModifier>1</MenuShortcutModifier>
+   <MenuAutoEnable>1</MenuAutoEnable>
+   <TextEncoding>134217984</TextEncoding>
+   <ItemFlags>0</ItemFlags>
+   <Superclass>MenuItem</Superclass>
+  </MenuItem>
+ </MenuItem>
+ <MenuItem>
+  <ItemSpecialMenu>0</ItemSpecialMenu>
+  <ItemName>ToolsMenu</ItemName>
+  <ItemText>Tools</ItemText>
+  <ItemIndex>-2147483648</ItemIndex>
+  <ItemShortcut></ItemShortcut>
+  <MenuAutoEnable>1</MenuAutoEnable>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemFlags>0</ItemFlags>
+  <Superclass>MenuItem</Superclass>
+  <MenuItem>
+   <ItemSpecialMenu>0</ItemSpecialMenu>
+   <ItemName>ToolsTidyXML</ItemName>
+   <ItemText>Tidy XML</ItemText>
+   <ItemIndex>-2147483648</ItemIndex>
+   <ItemShortcut></ItemShortcut>
+   <MenuAutoEnable>0</MenuAutoEnable>
+   <TextEncoding>134217984</TextEncoding>
+   <ItemFlags>0</ItemFlags>
+   <Superclass>MenuItem</Superclass>
+  </MenuItem>
+  <MenuItem>
+   <ItemSpecialMenu>0</ItemSpecialMenu>
+   <ItemName>ToolsTidyXSL</ItemName>
+   <ItemText>Tidy XSL</ItemText>
+   <ItemIndex>-2147483648</ItemIndex>
+   <ItemShortcut></ItemShortcut>
+   <MenuAutoEnable>0</MenuAutoEnable>
+   <TextEncoding>134217984</TextEncoding>
+   <ItemFlags>0</ItemFlags>
+   <Superclass>MenuItem</Superclass>
+  </MenuItem>
+  <MenuItem>
+   <ItemSpecialMenu>0</ItemSpecialMenu>
+   <ItemName>ToolsTidyOutput</ItemName>
+   <ItemText>Tidy Output</ItemText>
+   <ItemIndex>-2147483648</ItemIndex>
+   <ItemShortcut></ItemShortcut>
+   <MenuAutoEnable>0</MenuAutoEnable>
+   <TextEncoding>134217984</TextEncoding>
+   <ItemFlags>0</ItemFlags>
+   <Superclass>MenuItem</Superclass>
+  </MenuItem>
+ </MenuItem>
+</block>
+<block type="BuildAutomation" ID="224728654">
+ <ObjName>Build Automation</ObjName>
+ <ObjContainerID>0</ObjContainerID>
+</block>
+<block type="BuildStepsList" ID="1738253158">
+ <ObjName>Linux</ObjName>
+ <ObjContainerID>224728654</ObjContainerID>
+</block>
+<block type="BuildProjectStep" ID="453309524">
+ <ObjName>Build</ObjName>
+ <ObjContainerID>1738253158</ObjContainerID>
+</block>
+<block type="BuildStepsList" ID="1648690765">
+ <ObjName>Mac OS X</ObjName>
+ <ObjContainerID>224728654</ObjContainerID>
+</block>
+<block type="BuildProjectStep" ID="564206920">
+ <ObjName>Build</ObjName>
+ <ObjContainerID>1648690765</ObjContainerID>
+</block>
+<block type="BuildStepsList" ID="1485419741">
+ <ObjName>Windows</ObjName>
+ <ObjContainerID>224728654</ObjContainerID>
+</block>
+<block type="BuildProjectStep" ID="952207418">
+ <ObjName>Build</ObjName>
+ <ObjContainerID>1485419741</ObjContainerID>
+</block>
+<block type="FileTypes" ID="970735771">
+ <ObjName>FileTypes_XmlFiletypes</ObjName>
+ <ObjContainerID>0</ObjContainerID>
+ <FileType>
+  <ItemName>text/xml</ItemName>
+  <MacCreator>????</MacCreator>
+  <ItemType>TEXT</ItemType>
+  <ItemDef>.xml;.xsl</ItemDef>
+  <ItemFlags>0</ItemFlags>
+  <UTIType>public.text</UTIType>
+  <ObjName>TextXml</ObjName>
+ </FileType>
+</block>
+<block type="Module" ID="1419286293">
+ <ObjName>Module_GlobalFunctions</ObjName>
+ <ObjContainerID>0</ObjContainerID>
+ <IsClass>0</IsClass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <Method>
+  <ItemName>OpenFileViaDialog</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub OpenFileViaDialog(outputList As TextArea, outputLabel As Label, validFileTypes As FileType)</SourceLine>
+   <SourceLine>dim xmlRawFile As FolderItem</SourceLine>
+   <SourceLine>dim xmlInputStream as TextInputStream</SourceLine>
+   <SourceLine>dim xmlCode as String</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>xmlRawFile = GetOpenFolderItem(validFileTypes)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If xmlRawFile &lt;&gt; Nil Then</SourceLine>
+   <SourceLine>// Open an input stream to the XML file and read its contents</SourceLine>
+   <SourceLine>xmlInputStream = xmlRawFile.OpenAsTextFile</SourceLine>
+   <SourceLine>xmlCode = xmlInputStream.ReadAll</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// Populate the correct TextArea with the read XML, update the</SourceLine>
+   <SourceLine>// labeling and close the input stream</SourceLine>
+   <SourceLine>outputList.Text = xmlCode</SourceLine>
+   <SourceLine>outputLabel.Text = xmlRawFile.Name</SourceLine>
+   <SourceLine>xmlInputStream.Close</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>outputList As TextArea, outputLabel As Label, validFileTypes As FileType</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>TidyXml</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function TidyXml(xml As String) As String</SourceLine>
+   <SourceLine>// Create a new XML document, load it with the passed XML string, and</SourceLine>
+   <SourceLine>// run the Identity Template against it (with indenting enabled)</SourceLine>
+   <SourceLine>dim xmlDoc As XmlDocument = New XmlDocument</SourceLine>
+   <SourceLine>xmlDoc.LoadXml(xml)</SourceLine>
+   <SourceLine>return xmlDoc.Transform(TIDY_XSLT)</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>xml As String</ItemParams>
+  <ItemResult>String</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>SaveFileViaDialog</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub SaveFileViaDialog(textToSave As String, defaultFilename As String)</SourceLine>
+   <SourceLine>dim folder as FolderItem</SourceLine>
+   <SourceLine>dim xmlDocument as XmlDocument</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>folder = GetSaveFolderItem(FileTypes_XmlFiletypes.TextXml, defaultFilename)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If folder &lt;&gt; Nil Then</SourceLine>
+   <SourceLine>xmlDocument = New XmlDocument</SourceLine>
+   <SourceLine>xmlDocument.LoadXml(textToSave)</SourceLine>
+   <SourceLine>xmlDocument.SaveXml(folder)</SourceLine>
+   <SourceLine>End If </SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>textToSave As String, defaultFilename As String</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <InheritsFrom>Object</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <PropertyValue>-2147483648</PropertyValue>
+   <InheritsFrom>Object</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <InheritsFrom>Object</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <InheritsFrom>Object</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <InheritsFrom>Object</InheritsFrom>
+  </ViewProperty>
+ </ViewBehavior>
+ <Constant>
+  <ItemName>TIDY_XSLT</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemName>TIDY_XSLT</ItemName>
+  <ItemType>0</ItemType>
+  <ItemDef>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;xsl:transform version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;&lt;xsl:output omit-xml-declaration="no" indent="yes"/&gt;&lt;xsl:strip-space elements="*"/&gt;&lt;xsl:template match="node()|@*"&gt;&lt;xsl:copy&gt;&lt;xsl:apply-templates select="node()|@*" /&gt;&lt;/xsl:copy&gt;&lt;/xsl:template&gt;&lt;/xsl:transform&gt;</ItemDef>
+  <ItemFlags>0</ItemFlags>
+ </Constant>
+</block>
+<block type="Module" ID="1257559616">
+ <ObjName>TTsUITools</ObjName>
+ <ObjContainerID>0</ObjContainerID>
+ <IsClass>0</IsClass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <Method>
+  <ItemName>CtrlBottom</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function CtrlBottom(extends ctrl as Object) As Integer</SourceLine>
+   <SourceLine>return ctrl.CtrlTop + ctrl.CtrlHeight</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>extends ctrl as Object</ItemParams>
+  <ItemResult>Integer</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Resize</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Resize(extends container as ContainerControl, width as Integer, height as Integer)</SourceLine>
+   <SourceLine>dim dW, dH as Integer</SourceLine>
+   <SourceLine>dW = width - container.Width</SourceLine>
+   <SourceLine>dH = height - container.Height</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>if container isA PagePanel then</SourceLine>
+   <SourceLine>// resizes the children automatically</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>for i as Integer = 0 to container.Window.ControlCount-1</SourceLine>
+   <SourceLine>dim ctrl0 as Control = container.Window.Control(i)</SourceLine>
+   <SourceLine>dim s as String = ctrl0.Name</SourceLine>
+   <SourceLine>if ctrl0 isA RectControl then</SourceLine>
+   <SourceLine>dim ctrl as RectControl = RectControl(ctrl0)</SourceLine>
+   <SourceLine>if ctrl.Parent = container then</SourceLine>
+   <SourceLine>dim dW2, dH2, newT, newL as Integer</SourceLine>
+   <SourceLine>newT = ctrl.Top</SourceLine>
+   <SourceLine>newL = ctrl.Left</SourceLine>
+   <SourceLine>if ctrl.LockRight then</SourceLine>
+   <SourceLine>if ctrl.LockLeft then</SourceLine>
+   <SourceLine>dW2 = dW</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>newL = ctrl.Left + dW</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>if ctrl.LockBottom then</SourceLine>
+   <SourceLine>if ctrl.LockTop then</SourceLine>
+   <SourceLine>dH2 = dH</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>newT = ctrl.Top + dH</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>if dW2 &lt;&gt; 0 or dH2 &lt;&gt; 0 then</SourceLine>
+   <SourceLine>ctrl.Resize ctrl.Width + dW2, ctrl.Height + dH2</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>ctrl.Top = newT</SourceLine>
+   <SourceLine>ctrl.Left = newL</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>next</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>container.Width = width</SourceLine>
+   <SourceLine>container.Height = height</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>extends container as ContainerControl, width as Integer, height as Integer</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>CtrlLeft</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function CtrlLeft(extends ctrl as Object) As Integer</SourceLine>
+   <SourceLine>if ctrl isA RectControl then</SourceLine>
+   <SourceLine>return RectControl(ctrl).Left</SourceLine>
+   <SourceLine>elseif ctrl isA Window then</SourceLine>
+   <SourceLine>return Window(ctrl).Left</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>extends ctrl as Object</ItemParams>
+  <ItemResult>Integer</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>CtrlWidth</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function CtrlWidth(extends ctrl as Object) As Integer</SourceLine>
+   <SourceLine>if ctrl isA RectControl then</SourceLine>
+   <SourceLine>return RectControl(ctrl).Width</SourceLine>
+   <SourceLine>elseif ctrl isA Window then</SourceLine>
+   <SourceLine>return Window(ctrl).Width</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>extends ctrl as Object</ItemParams>
+  <ItemResult>Integer</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>CtrlHeight</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function CtrlHeight(extends ctrl as Object) As Integer</SourceLine>
+   <SourceLine>if ctrl isA RectControl then</SourceLine>
+   <SourceLine>return RectControl(ctrl).Height</SourceLine>
+   <SourceLine>elseif ctrl isA Window then</SourceLine>
+   <SourceLine>return Window(ctrl).Height</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>extends ctrl as Object</ItemParams>
+  <ItemResult>Integer</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>CtrlTop</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function CtrlTop(extends ctrl as Object) As Integer</SourceLine>
+   <SourceLine>if ctrl isA RectControl then</SourceLine>
+   <SourceLine>return RectControl(ctrl).Top</SourceLine>
+   <SourceLine>elseif ctrl isA Window then</SourceLine>
+   <SourceLine>return Window(ctrl).Top</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>extends ctrl as Object</ItemParams>
+  <ItemResult>Integer</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>CtrlRight</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function CtrlRight(extends ctrl as Object) As Integer</SourceLine>
+   <SourceLine>return ctrl.CtrlLeft + ctrl.CtrlWidth</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>extends ctrl as Object</ItemParams>
+  <ItemResult>Integer</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Resize</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Resize(extends container as RectControl, width as Integer, height as Integer)</SourceLine>
+   <SourceLine>dim dW, dH as Integer</SourceLine>
+   <SourceLine>dW = width - container.Width</SourceLine>
+   <SourceLine>dH = height - container.Height</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>if container isA PagePanel then</SourceLine>
+   <SourceLine>// resizes the children automatically</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>for i as Integer = 0 to container.Window.ControlCount-1</SourceLine>
+   <SourceLine>dim ctrl0 as Control = container.Window.Control(i)</SourceLine>
+   <SourceLine>dim s as String = ctrl0.Name</SourceLine>
+   <SourceLine>if ctrl0 isA RectControl then</SourceLine>
+   <SourceLine>dim ctrl as RectControl = RectControl(ctrl0)</SourceLine>
+   <SourceLine>if ctrl.Parent = container then</SourceLine>
+   <SourceLine>dim dW2, dH2, newT, newL as Integer</SourceLine>
+   <SourceLine>newT = ctrl.Top</SourceLine>
+   <SourceLine>newL = ctrl.Left</SourceLine>
+   <SourceLine>if ctrl.LockRight then</SourceLine>
+   <SourceLine>if ctrl.LockLeft then</SourceLine>
+   <SourceLine>dW2 = dW</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>newL = ctrl.Left + dW</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>if ctrl.LockBottom then</SourceLine>
+   <SourceLine>if ctrl.LockTop then</SourceLine>
+   <SourceLine>dH2 = dH</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>newT = ctrl.Top + dH</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>if dW2 &lt;&gt; 0 or dH2 &lt;&gt; 0 then</SourceLine>
+   <SourceLine>ctrl.Resize ctrl.Width + dW2, ctrl.Height + dH2</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>ctrl.Top = newT</SourceLine>
+   <SourceLine>ctrl.Left = newL</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>next</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>container.Width = width</SourceLine>
+   <SourceLine>container.Height = height</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>extends container as RectControl, width as Integer, height as Integer</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>CtrlParent</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function CtrlParent(extends ctrl as Object) As Object</SourceLine>
+   <SourceLine>if ctrl isA RectControl then</SourceLine>
+   <SourceLine>return RectControl(ctrl).Parent</SourceLine>
+   <SourceLine>elseif ctrl isA ContainerControl then</SourceLine>
+   <SourceLine>return ContainerControl(ctrl).Parent</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>extends ctrl as Object</ItemParams>
+  <ItemResult>Object</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>CtrlSetLeft</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub CtrlSetLeft(extends ctrl as Object, v as Integer)</SourceLine>
+   <SourceLine>if ctrl isA RectControl then</SourceLine>
+   <SourceLine>RectControl(ctrl).Left = v</SourceLine>
+   <SourceLine>elseif ctrl isA Window then</SourceLine>
+   <SourceLine>Window(ctrl).Left = v</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>extends ctrl as Object, v as Integer</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>CtrlSetTop</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub CtrlSetTop(extends ctrl as Object, v as Integer)</SourceLine>
+   <SourceLine>if ctrl isA RectControl then</SourceLine>
+   <SourceLine>RectControl(ctrl).Top = v</SourceLine>
+   <SourceLine>elseif ctrl isA Window then</SourceLine>
+   <SourceLine>Window(ctrl).Top = v</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>extends ctrl as Object, v as Integer</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>HasFocus</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function HasFocus(c as ContainerControl) As Boolean</SourceLine>
+   <SourceLine>// finds out if any of the directly owned controls has the focus</SourceLine>
+   <SourceLine>// unfortunately, I can't make it search embedded containers as well - those have to be checked explicitly</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>for idx as Integer = 0 to c.ControlCount-1</SourceLine>
+   <SourceLine>dim ctrl as Object = c.Control(idx)</SourceLine>
+   <SourceLine>if c.Focus = ctrl then</SourceLine>
+   <SourceLine>return true</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>next</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>c as ContainerControl</ItemParams>
+  <ItemResult>Boolean</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>CtrlLockTop</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function CtrlLockTop(extends ctrl as Object) As Boolean</SourceLine>
+   <SourceLine>if ctrl isA RectControl then</SourceLine>
+   <SourceLine>return RectControl(ctrl).LockTop</SourceLine>
+   <SourceLine>elseif ctrl isA ContainerControl then</SourceLine>
+   <SourceLine>return ContainerControl(ctrl).LockTop</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>extends ctrl as Object</ItemParams>
+  <ItemResult>Boolean</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>CtrlLockBottom</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function CtrlLockBottom(extends ctrl as Object) As Boolean</SourceLine>
+   <SourceLine>if ctrl isA RectControl then</SourceLine>
+   <SourceLine>return RectControl(ctrl).LockBottom</SourceLine>
+   <SourceLine>elseif ctrl isA ContainerControl then</SourceLine>
+   <SourceLine>return ContainerControl(ctrl).LockBottom</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>extends ctrl as Object</ItemParams>
+  <ItemResult>Boolean</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>ShowMessageDialog</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function ShowMessageDialog(w as Window, icon as String, actionTxt as String, cancelTxt as String, altTxt as String, msg as String, explanation as String) As Integer</SourceLine>
+   <SourceLine>System.DebugLog "UITools.ShowMessageDialog "+msg+" -- "+explanation</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>dim d as new MessageDialog</SourceLine>
+   <SourceLine>dim b as MessageDialogButton</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>if icon = "ask" then</SourceLine>
+   <SourceLine>d.Icon = MessageDialog.GraphicQuestion</SourceLine>
+   <SourceLine>elseif icon = "note" then</SourceLine>
+   <SourceLine>d.Icon = MessageDialog.GraphicNote</SourceLine>
+   <SourceLine>elseif icon = "stop" then</SourceLine>
+   <SourceLine>d.Icon = MessageDialog.GraphicStop</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>if Len(actionTxt) &gt; 1 then</SourceLine>
+   <SourceLine>d.ActionButton.Caption = actionTxt</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>d.CancelButton.Visible = cancelTxt &lt;&gt; ""</SourceLine>
+   <SourceLine>if Len(cancelTxt) &gt; 1 then</SourceLine>
+   <SourceLine>d.CancelButton.Caption = cancelTxt</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>d.AlternateActionButton.Visible = altTxt &lt;&gt; ""</SourceLine>
+   <SourceLine>if Len(altTxt) &gt; 1 then</SourceLine>
+   <SourceLine>d.AlternateActionButton.Caption = altTxt</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>d.Message = msg</SourceLine>
+   <SourceLine>d.Explanation = explanation</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>if w &lt;&gt; nil then</SourceLine>
+   <SourceLine>w.Show // bring parent to front</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>if TargetMacOS and w &lt;&gt; nil then</SourceLine>
+   <SourceLine>b = d.ShowModalWithin (w)</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>b = d.ShowModal () // Windows has problems with the Within() function when the win is not frontmost</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>select case b</SourceLine>
+   <SourceLine>case d.ActionButton</SourceLine>
+   <SourceLine>return 1</SourceLine>
+   <SourceLine>case d.CancelButton</SourceLine>
+   <SourceLine>return 2</SourceLine>
+   <SourceLine>case d.AlternateActionButton</SourceLine>
+   <SourceLine>return 3</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>1</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>w as Window, icon as String, actionTxt as String, cancelTxt as String, altTxt as String, msg as String, explanation as String</ItemParams>
+  <ItemResult>Integer</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>ShowMsg</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub ShowMsg(w as Window, msg as String, more as String = "")</SourceLine>
+   <SourceLine>call ShowMessageDialog (w, "note", "*", "", "", msg, more)</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>1</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>w as Window, msg as String, more as String = ""</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>StringWidth</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function StringWidth(txt as String, fontName as String, fontSize as Integer) As Double</SourceLine>
+   <SourceLine>dim p as Picture</SourceLine>
+   <SourceLine>p = NewPicture (32, 32, 32)</SourceLine>
+   <SourceLine>if fontName &lt;&gt; "" then p.Graphics.TextFont = fontName</SourceLine>
+   <SourceLine>if fontSize &gt; 0 then p.Graphics.TextSize = fontSize</SourceLine>
+   <SourceLine>return p.Graphics.StringWidth (txt)</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>1</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>txt as String, fontName as String, fontSize as Integer</ItemParams>
+  <ItemResult>Double</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>EnsureSheetIsResizable</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub EnsureSheetIsResizable(extends w as Window)</SourceLine>
+   <SourceLine>#if TargetMacOS</SourceLine>
+   <SourceLine>soft declare function ChangeWindowAttributes lib "Carbon" (window as WindowPtr, setTheseAttributes as Uint32, clearTheseAttributes as Uint32) as Integer</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>const kWindowResizableAttribute = &amp;h10 // (1L &lt;&lt; 4)</SourceLine>
+   <SourceLine>const kWindowLiveResizeAttribute = &amp;h10000000 // (1L &lt;&lt; 28),</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>if System.IsFunctionAvailable("ChangeWindowAttributes", "Carbon") then</SourceLine>
+   <SourceLine>dim attrs as Uint32</SourceLine>
+   <SourceLine>if w.Resizeable then attrs = attrs + kWindowResizableAttribute</SourceLine>
+   <SourceLine>if w.LiveResize then attrs = attrs + kWindowLiveResizeAttribute</SourceLine>
+   <SourceLine>if attrs &lt;&gt; 0 then</SourceLine>
+   <SourceLine>dim result as integer = ChangeWindowAttributes(w, attrs, 0)</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine>#endif</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>extends w as Window</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Note>
+  <ItemName>About</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <NoteLine>About</NoteLine>
+   <NoteLine>Written mostly by Thomas Tempelmann, for the public domain</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine></NoteLine>
+  </ItemSource>
+  <ItemFlags>0</ItemFlags>
+ </Note>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <InheritsFrom>Object</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <PropertyValue>2147483648</PropertyValue>
+   <InheritsFrom>Object</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <InheritsFrom>Object</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <InheritsFrom>Object</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <InheritsFrom>Object</InheritsFrom>
+  </ViewProperty>
+ </ViewBehavior>
+</block>
+<block type="Module" ID="292225366">
+ <ObjName>MarsSplitter</ObjName>
+ <ObjContainerID>0</ObjContainerID>
+ <IsClass>1</IsClass>
+ <Superclass>Canvas</Superclass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <HookInstance>
+  <ItemName>MouseEnter</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub MouseEnter()</SourceLine>
+   <SourceLine>PickCursor</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+ </HookInstance>
+ <HookInstance>
+  <ItemName>MouseDown</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function MouseDown(X As Integer, Y As Integer) As Boolean</SourceLine>
+   <SourceLine>if me.Enabled and me.Visible then</SourceLine>
+   <SourceLine>mXAnchor = X</SourceLine>
+   <SourceLine>mYAnchor = Y</SourceLine>
+   <SourceLine>Return True</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+ </HookInstance>
+ <HookInstance>
+  <ItemName>Open</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Open()</SourceLine>
+   <SourceLine>me.dockingSide = new Dictionary</SourceLine>
+   <SourceLine>PickCursor</SourceLine>
+   <SourceLine>Open()</SourceLine>
+   <SourceLine>Moved(0)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+ </HookInstance>
+ <HookInstance>
+  <ItemName>Paint</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Paint(g As Graphics)</SourceLine>
+   <SourceLine>' Draw a little handle at the middle of the splitter region.</SourceLine>
+   <SourceLine>Dim x,y As Integer</SourceLine>
+   <SourceLine>If Me.Active And Me.Enabled and me.Visible Then</SourceLine>
+   <SourceLine>x = Me.Width / 2</SourceLine>
+   <SourceLine>y = Me.Height / 2</SourceLine>
+   <SourceLine>DrawHandlePoint(g,x,y)</SourceLine>
+   <SourceLine>const drawLines = false</SourceLine>
+   <SourceLine>const margin = 32</SourceLine>
+   <SourceLine>If IsVertical Then</SourceLine>
+   <SourceLine>#if drawLines</SourceLine>
+   <SourceLine>g.ForeColor = &amp;ce0e0e0</SourceLine>
+   <SourceLine>g.DrawLine x, margin, x, y - margin</SourceLine>
+   <SourceLine>g.DrawLine x, y + margin, x, me.Height - margin</SourceLine>
+   <SourceLine>#endif</SourceLine>
+   <SourceLine>DrawHandlePoint(g,x,y-4)</SourceLine>
+   <SourceLine>DrawHandlePoint(g,x,y-8)</SourceLine>
+   <SourceLine>DrawHandlePoint(g,x,y+4)</SourceLine>
+   <SourceLine>DrawHandlePoint(g,x,y+8)</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>#if drawLines</SourceLine>
+   <SourceLine>g.ForeColor = &amp;ce0e0e0</SourceLine>
+   <SourceLine>g.DrawLine margin, y, x - margin, y</SourceLine>
+   <SourceLine>g.DrawLine x + margin, y, me.Width - margin, y</SourceLine>
+   <SourceLine>#endif</SourceLine>
+   <SourceLine>DrawHandlePoint(g,x+4,y)</SourceLine>
+   <SourceLine>DrawHandlePoint(g,x+8,y)</SourceLine>
+   <SourceLine>DrawHandlePoint(g,x-4,y)</SourceLine>
+   <SourceLine>DrawHandlePoint(g,x-8,y)</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+ </HookInstance>
+ <HookInstance>
+  <ItemName>MouseDrag</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub MouseDrag(X As Integer, Y As Integer)</SourceLine>
+   <SourceLine>If IsVertical Then</SourceLine>
+   <SourceLine>drag x - mXAnchor</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>drag y - mYAnchor</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+ </HookInstance>
+ <Method>
+  <ItemName>IsVertical</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function IsVertical() As Boolean</SourceLine>
+   <SourceLine>Return Height &gt; Width</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>1</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams></ItemParams>
+  <ItemResult>Boolean</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>PickCursor</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub PickCursor()</SourceLine>
+   <SourceLine>if me.Enabled and me.Visible then</SourceLine>
+   <SourceLine>If IsVertical Then</SourceLine>
+   <SourceLine>Me.MouseCursor = System.Cursors.SplitterEastWest</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>Me.MouseCursor = System.Cursors.SplitterNorthSouth</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>Me.MouseCursor = nil</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>1</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams></ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>VerticalSplit</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub VerticalSplit(distance As Integer)</SourceLine>
+   <SourceLine>' Find all the controls to either side of the splitter.</SourceLine>
+   <SourceLine>' Adjust their dimensions to match the specified distance.</SourceLine>
+   <SourceLine>Dim ctr As Integer</SourceLine>
+   <SourceLine>Dim item As Object</SourceLine>
+   <SourceLine>Dim okToMove As Boolean</SourceLine>
+   <SourceLine>For ctr = 0 To Me.Window.ControlCount-1</SourceLine>
+   <SourceLine>item = Me.Window.Control( ctr )</SourceLine>
+   <SourceLine>If item IsA RectControl or item IsA ContainerControl Then</SourceLine>
+   <SourceLine>' is this within the splitter's area of influence?</SourceLine>
+   <SourceLine>okToMove = Not(item Is Me)</SourceLine>
+   <SourceLine>if mAttached.Ubound &gt;= 0 then</SourceLine>
+   <SourceLine>okToMove = okToMove and mAttached.IndexOf(item) &gt;= 0</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>okToMove = okToMove And item.CtrlTop &gt;= Me.Top</SourceLine>
+   <SourceLine>okToMove = okToMove And  (item.CtrlTop + item.CtrlHeight) &lt;= (Me.Top + Me.Height)</SourceLine>
+   <SourceLine>okToMove = okToMove And item.CtrlParent = Me.Parent</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If okToMove Then</SourceLine>
+   <SourceLine>' is this to the left of the splitter or the right?</SourceLine>
+   <SourceLine>dim itemAfterSplitter as Boolean</SourceLine>
+   <SourceLine>if dockingSide.HasKey(item) then</SourceLine>
+   <SourceLine>itemAfterSplitter = dockingSide.Value(item)</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>dim pos, c as Integer</SourceLine>
+   <SourceLine>pos = me.Left + me.Width \ 2</SourceLine>
+   <SourceLine>c = item.CtrlLeft + item.CtrlWidth \ 2</SourceLine>
+   <SourceLine>itemAfterSplitter = c &gt;= pos</SourceLine>
+   <SourceLine>dockingSide.Value(item) = itemAfterSplitter</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>if mCtrlsToMove.IndexOf(item) &lt; 0 then</SourceLine>
+   <SourceLine>// resize the control</SourceLine>
+   <SourceLine>dim w as Integer</SourceLine>
+   <SourceLine>if itemAfterSplitter then</SourceLine>
+   <SourceLine>w = item.CtrlWidth - distance</SourceLine>
+   <SourceLine>item.CtrlSetLeft item.CtrlLeft + distance</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>w = item.CtrlWidth + distance</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>If item IsA RectControl then</SourceLine>
+   <SourceLine>RectControl(item).Resize w, item.CtrlHeight</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>ContainerControl(item).Resize w, item.CtrlHeight</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>// move the control</SourceLine>
+   <SourceLine>dim ofs as Integer</SourceLine>
+   <SourceLine>if itemAfterSplitter then</SourceLine>
+   <SourceLine>ofs = distance</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>ofs = -distance</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>If item IsA RectControl then</SourceLine>
+   <SourceLine>RectControl(item).Left = RectControl(item).Left + ofs</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>ContainerControl(item).Left = ContainerControl(item).Left + ofs</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>Next</SourceLine>
+   <SourceLine>Me.Left = Me.Left + distance</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>1</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>distance As Integer</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>HorizontalSplit</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub HorizontalSplit(distance As Integer)</SourceLine>
+   <SourceLine>' Find all the controls to either side of the splitter.</SourceLine>
+   <SourceLine>' Adjust their dimensions to match the specified distance.</SourceLine>
+   <SourceLine>Dim ctr As Integer</SourceLine>
+   <SourceLine>Dim item As Object</SourceLine>
+   <SourceLine>Dim okToMove As Boolean</SourceLine>
+   <SourceLine>for ctr = 0 To Me.Window.ControlCount-1</SourceLine>
+   <SourceLine>item = Me.Window.Control( ctr )</SourceLine>
+   <SourceLine>If item IsA RectControl or item IsA ContainerControl Then</SourceLine>
+   <SourceLine>' is this within the splitter's area of influence?</SourceLine>
+   <SourceLine>okToMove = Not(item Is Me)</SourceLine>
+   <SourceLine>if mAttached.Ubound &gt;= 0 then</SourceLine>
+   <SourceLine>okToMove = okToMove and mAttached.IndexOf(item) &gt;= 0</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>okToMove = okToMove And item.CtrlLeft &gt;= Me.Left</SourceLine>
+   <SourceLine>okToMove = okToMove And (item.CtrlLeft + item.CtrlWidth) &lt;= (Me.Left + Me.Width)</SourceLine>
+   <SourceLine>okToMove = okToMove And item.CtrlParent = me.Parent</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If okToMove Then</SourceLine>
+   <SourceLine>' is this item above the splitter or below?</SourceLine>
+   <SourceLine>dim itemAfterSplitter as Boolean</SourceLine>
+   <SourceLine>if dockingSide.HasKey(item) then</SourceLine>
+   <SourceLine>itemAfterSplitter = dockingSide.Value(item)</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>dim pos, c as Integer</SourceLine>
+   <SourceLine>pos = me.Top + me.Height \ 2</SourceLine>
+   <SourceLine>c = item.CtrlTop + item.CtrlHeight \ 2</SourceLine>
+   <SourceLine>itemAfterSplitter = c &gt;= pos</SourceLine>
+   <SourceLine>dockingSide.Value(item) = itemAfterSplitter</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>if mCtrlsToMove.IndexOf(item) &lt; 0 then</SourceLine>
+   <SourceLine>// resize the control</SourceLine>
+   <SourceLine>dim h as Integer</SourceLine>
+   <SourceLine>if itemAfterSplitter then</SourceLine>
+   <SourceLine>h = item.CtrlHeight - distance</SourceLine>
+   <SourceLine>item.CtrlSetTop item.CtrlTop + distance</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>h = item.CtrlHeight + distance</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>If item IsA RectControl then</SourceLine>
+   <SourceLine>RectControl(item).Resize item.CtrlWidth, h</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>ContainerControl(item).Resize item.CtrlWidth, h</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>// move the control</SourceLine>
+   <SourceLine>dim ofs as Integer</SourceLine>
+   <SourceLine>if itemAfterSplitter then</SourceLine>
+   <SourceLine>ofs = distance</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>ofs = -distance</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>If item IsA RectControl then</SourceLine>
+   <SourceLine>RectControl(item).Top = RectControl(item).Top + ofs</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>ContainerControl(item).Top = ContainerControl(item).Top + ofs</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>Next</SourceLine>
+   <SourceLine>Me.Top = Me.Top + distance</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>1</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>distance As Integer</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>DrawHandlePoint</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub DrawHandlePoint(g As Graphics, x As Integer, y As Integer)</SourceLine>
+   <SourceLine>g.Pixel(x,y) = &amp;c333333</SourceLine>
+   <SourceLine>g.Pixel(x+1,y+1) = &amp;cFFFFFF</SourceLine>
+   <SourceLine>Exception OutOfBoundsException</SourceLine>
+   <SourceLine>// ignore</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>1</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>g As Graphics, x As Integer, y As Integer</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Reposition</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Reposition(topOrLeft as Integer)</SourceLine>
+   <SourceLine>if me.Enabled then</SourceLine>
+   <SourceLine>if IsVertical then</SourceLine>
+   <SourceLine>drag topOrLeft - me.Left</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>drag topOrLeft - me.Top</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>topOrLeft as Integer</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>drag</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub drag(distance As Integer)</SourceLine>
+   <SourceLine>' Find out how many pixels the splitter must move until the mouse</SourceLine>
+   <SourceLine>' is once again centered over the origin point.</SourceLine>
+   <SourceLine>' Resize all the split-controls by this amount.</SourceLine>
+   <SourceLine>' Move the splitter itself so it sits underneath the mouse.</SourceLine>
+   <SourceLine>if me.Enabled then</SourceLine>
+   <SourceLine>If IsVertical Then</SourceLine>
+   <SourceLine>If Me.Left + distance &lt; MinTopLeft Then</SourceLine>
+   <SourceLine>distance = MinTopLeft - Me.Left</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>If Me.Left + Me.Width + distance &gt; Me.Window.Width - MinBottomRight Then</SourceLine>
+   <SourceLine>distance = Me.Window.Width - MinBottomRight - Me.Left - Me.Width</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>if distance &lt;&gt; 0 then</SourceLine>
+   <SourceLine>VerticalSplit distance</SourceLine>
+   <SourceLine>Moved(distance)</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>If Me.Top + distance &lt; MinTopLeft Then</SourceLine>
+   <SourceLine>distance = MinTopLeft - Me.Top</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>If Me.Top + Me.Height + distance &gt; Me.Window.Height - MinBottomRight Then</SourceLine>
+   <SourceLine>distance = Me.Window.Height - MinBottomRight - Me.Top - Me.Height</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>if distance &lt;&gt; 0 then</SourceLine>
+   <SourceLine>HorizontalSplit distance</SourceLine>
+   <SourceLine>Moved(distance)</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>distance As Integer</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>ResetDocks</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub ResetDocks()</SourceLine>
+   <SourceLine>me.dockingSide.Clear</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams></ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Attach</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Attach(ctrl as RectControl, moveOnly as Boolean = false)</SourceLine>
+   <SourceLine>mAttached.Append ctrl</SourceLine>
+   <SourceLine>if moveOnly then</SourceLine>
+   <SourceLine>mCtrlsToMove.Append ctrl</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>ctrl as RectControl, moveOnly as Boolean = false</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Attach</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Attach(ctrl as ContainerControl, moveOnly as Boolean = false)</SourceLine>
+   <SourceLine>mAttached.Append ctrl._Control // this undocumented "_Control" access is necessary to make it work (as of RB 2008r1)</SourceLine>
+   <SourceLine>if moveOnly then</SourceLine>
+   <SourceLine>mCtrlsToMove.Append ctrl</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>ctrl as ContainerControl, moveOnly as Boolean = false</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Position</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function Position() As Integer</SourceLine>
+   <SourceLine>if IsVertical then</SourceLine>
+   <SourceLine>return me.Left</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>return me.Top</SourceLine>
+   <SourceLine>end</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams></ItemParams>
+  <ItemResult>Integer</ItemResult>
+ </Method>
+ <Hook>
+  <ItemName>Open</ItemName>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemFlags>33</ItemFlags>
+  <SystemFlags>0</SystemFlags>
+  <ItemParams></ItemParams>
+  <ItemResult></ItemResult>
+ </Hook>
+ <Hook>
+  <ItemName>Moved</ItemName>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemFlags>33</ItemFlags>
+  <SystemFlags>0</SystemFlags>
+  <ItemParams>distance as Integer</ItemParams>
+  <ItemResult></ItemResult>
+ </Hook>
+ <Note>
+  <ItemName>About</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <NoteLine>About</NoteLine>
+   <NoteLine>Original version by Mars Saxman: http://www.redplanetsw.com/realbasic/#splitter</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Changes by Thomas Tempelmann on 24 Nov 05:</NoteLine>
+   <NoteLine>- added some checks to HorizontalSplit and VerticalSplit so that it does only affect directly neighboring controls</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Changes by Thomas Tempelmann on 20 Jan 08:</NoteLine>
+   <NoteLine>- added Reposition() to move the splitter, e.g. within an Resizing event</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Changes by Thomas Tempelmann on 20 Feb 08:</NoteLine>
+   <NoteLine>- added .Visible checks so that an enabled by invisible splitter still works but does not reveal itself in the GUI</NoteLine>
+   <NoteLine>- deals better with negative heights caused by overflowing the splitter over a control.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Changes by Thomas Tempelmann on 10 Mar 08:</NoteLine>
+   <NoteLine>- added Attach() to explicitly attach controls that are moved by the splitter</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Changes by Thomas Tempelmann on 12 Mar 08:</NoteLine>
+   <NoteLine>- can now move ContainerControls as well (they're not subclasses of RectControl, sadly)</NoteLine>
+  </ItemSource>
+  <ItemFlags>0</ItemFlags>
+ </Note>
+ <Note>
+  <ItemName>Features</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <NoteLine>Features</NoteLine>
+   <NoteLine>By default, this splitter moves &amp; resizes all items it finds next to itself,</NoteLine>
+   <NoteLine>including ContainerControls</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>You can override this by calling the Attach method to tell the splitter</NoteLine>
+   <NoteLine>not only which items are to be considered but also whether these items</NoteLine>
+   <NoteLine>shall be resized or not.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>The splitter also pays attention to Locks, so make sure you check those</NoteLine>
+   <NoteLine>if things don't seem to work as you expect.</NoteLine>
+   <NoteLine></NoteLine>
+  </ItemSource>
+  <ItemFlags>0</ItemFlags>
+ </Note>
+ <Property>
+  <ItemName>MinTopLeft</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>MinTopLeft As Integer</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>MinTopLeft As Integer</ItemDeclaration>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>MinBottomRight</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>MinBottomRight As Integer</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>MinBottomRight As Integer</ItemDeclaration>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>mXAnchor</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>mXAnchor As Integer</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>mXAnchor As Integer</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>mYAnchor</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>mYAnchor As Integer</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>mYAnchor As Integer</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>dockingSide</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>dockingSide As Dictionary</SourceLine>
+   <SourceLine>key: control</SourceLine>
+   <SourceLine>value: boolean (true: top/left, false: bottom/right)</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>dockingSide As Dictionary</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>mAttached()</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>mAttached() As Object</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>mAttached() As Object</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>mCtrlsToMove()</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>mCtrlsToMove() As Object</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>mCtrlsToMove() As Object</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>DoubleBuffer</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <PropertyValue>False</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>TabStop</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Width</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>100</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Height</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>100</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>LockLeft</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>LockTop</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>LockRight</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>LockBottom</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>TabPanelIndex</ObjName>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>TabIndex</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Visible</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>HelpTag</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <ItemType>String</ItemType>
+   <EditorType>MultiLineEditor</EditorType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>AutoDeactivate</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Enabled</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>UseFocusRing</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Backdrop</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <ItemType>Picture</ItemType>
+   <EditorType>Picture</EditorType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>AcceptFocus</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>AcceptTabs</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>EraseBackground</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>InitialParent</ObjName>
+   <InheritsFrom>Canvas</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>MinTopLeft</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>MinBottomRight</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+ </ViewBehavior>
+</block>
+<block type="Window" ID="1240101391">
+ <ObjName>Container_XmlXslInput</ObjName>
+ <ObjContainerID>0</ObjContainerID>
+ <IsClass>1</IsClass>
+ <Superclass>ContainerControl</Superclass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <PropertyVal Name="EraseBackground">True</PropertyVal>
+ <PropertyVal Name="AcceptTabs">True</PropertyVal>
+ <PropertyVal Name="AcceptFocus"></PropertyVal>
+ <PropertyVal Name="Backdrop"></PropertyVal>
+ <PropertyVal Name="BackColor">16777215</PropertyVal>
+ <PropertyVal Name="HasBackColor">False</PropertyVal>
+ <PropertyVal Name="UseFocusRing"></PropertyVal>
+ <PropertyVal Name="HelpTag"></PropertyVal>
+ <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+ <PropertyVal Name="Enabled">True</PropertyVal>
+ <PropertyVal Name="Visible">True</PropertyVal>
+ <PropertyVal Name="TabStop">True</PropertyVal>
+ <PropertyVal Name="TabIndex">0</PropertyVal>
+ <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+ <PropertyVal Name="LockBottom">True</PropertyVal>
+ <PropertyVal Name="LockRight">True</PropertyVal>
+ <PropertyVal Name="LockTop">True</PropertyVal>
+ <PropertyVal Name="LockLeft">True</PropertyVal>
+ <PropertyVal Name="Height">632</PropertyVal>
+ <PropertyVal Name="Width">882</PropertyVal>
+ <PropertyVal Name="Top">0</PropertyVal>
+ <PropertyVal Name="Left">0</PropertyVal>
+ <PropertyVal Name="InitialParent"></PropertyVal>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>InitialParent</ObjName>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>String</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Width</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>300</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Height</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>300</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>LockLeft</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>LockTop</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>LockRight</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>LockBottom</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>TabPanelIndex</ObjName>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>TabIndex</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>TabStop</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Visible</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Enabled</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>AutoDeactivate</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>HelpTag</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <ItemType>String</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>UseFocusRing</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>HasBackColor</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>False</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>BackColor</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>&amp;hFFFFFF</PropertyValue>
+   <ItemType>Color</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Backdrop</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <ItemType>Picture</ItemType>
+   <EditorType>Picture</EditorType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>AcceptFocus</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>AcceptTabs</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>EraseBackground</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+ </ViewBehavior>
+ <Constant>
+  <ItemName>XML_INPUT_LABEL</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemName>XML_INPUT_LABEL</ItemName>
+  <ItemType>0</ItemType>
+  <ItemDef>Source XML:</ItemDef>
+  <ItemFlags>1</ItemFlags>
+ </Constant>
+ <Constant>
+  <ItemName>XSL_INPUT_LABEL</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemName>XSL_INPUT_LABEL</ItemName>
+  <ItemType>0</ItemType>
+  <ItemDef>Source XSL:</ItemDef>
+  <ItemFlags>1</ItemFlags>
+ </Constant>
+ <ControlBehavior>
+  <Superclass>TextArea</Superclass>
+ </ControlBehavior>
+ <ControlBehavior>
+  <Superclass>MarsSplitter</Superclass>
+ </ControlBehavior>
+ <ControlBehavior>
+  <Superclass>MarsSplitter</Superclass>
+ </ControlBehavior>
+ <ControlBehavior>
+  <Superclass>Container_TextAreaAndLabel</Superclass>
+  <HookInstance>
+   <ItemName>Open</ItemName>
+   <Compatibility></Compatibility>
+   <Visible>1</Visible>
+   <ItemSource>
+    <TextEncoding>134217984</TextEncoding>
+    <SourceLine>Sub Open()</SourceLine>
+    <SourceLine>Me.Label_Label.Text = XML_INPUT_LABEL</SourceLine>
+    <SourceLine>End Sub</SourceLine>
+   </ItemSource>
+  </HookInstance>
+ </ControlBehavior>
+ <ControlBehavior>
+  <Superclass>Container_TextAreaAndLabel</Superclass>
+  <HookInstance>
+   <ItemName>Open</ItemName>
+   <Compatibility></Compatibility>
+   <Visible>1</Visible>
+   <ItemSource>
+    <TextEncoding>134217984</TextEncoding>
+    <SourceLine>Sub Open()</SourceLine>
+    <SourceLine>Me.Label_Label.Text = XSL_INPUT_LABEL</SourceLine>
+    <SourceLine>End Sub</SourceLine>
+   </ItemSource>
+  </HookInstance>
+ </ControlBehavior>
+ <Control>
+  <ControlClass>TextArea</ControlClass>
+  <ItemName>TextArea</ItemName>
+  <PropertyVal Name="DataField"></PropertyVal>
+  <PropertyVal Name="DataSource"></PropertyVal>
+  <PropertyVal Name="AutomaticallyCheckSpelling">True</PropertyVal>
+  <PropertyVal Name="Alignment">0</PropertyVal>
+  <PropertyVal Name="AcceptTabs"></PropertyVal>
+  <PropertyVal Name="LimitText">0</PropertyVal>
+  <PropertyVal Name="ReadOnly">True</PropertyVal>
+  <PropertyVal Name="Mask"></PropertyVal>
+  <PropertyVal Name="Text"></PropertyVal>
+  <PropertyVal Name="Underline"></PropertyVal>
+  <PropertyVal Name="Italic"></PropertyVal>
+  <PropertyVal Name="Bold"></PropertyVal>
+  <PropertyVal Name="TextUnit">0</PropertyVal>
+  <PropertyVal Name="TextSize">0</PropertyVal>
+  <PropertyVal Name="TextFont">Courier</PropertyVal>
+  <PropertyVal Name="HideSelection">True</PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="Format"></PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="BackColor">16777215</PropertyVal>
+  <PropertyVal Name="TextColor">0</PropertyVal>
+  <PropertyVal Name="UseFocusRing">False</PropertyVal>
+  <PropertyVal Name="Styled">True</PropertyVal>
+  <PropertyVal Name="ScrollbarVertical">True</PropertyVal>
+  <PropertyVal Name="ScrollbarHorizontal">True</PropertyVal>
+  <PropertyVal Name="Multiline">True</PropertyVal>
+  <PropertyVal Name="Border">True</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="TabIndex">0</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom">True</PropertyVal>
+  <PropertyVal Name="LockRight">True</PropertyVal>
+  <PropertyVal Name="LockTop">False</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">231</PropertyVal>
+  <PropertyVal Name="Width">882</PropertyVal>
+  <PropertyVal Name="Top">401</PropertyVal>
+  <PropertyVal Name="Left">0</PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
+  <PropertyVal Name="Super">TextArea</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="Name">TextArea_Output</PropertyVal>
+  <ControlIndex>0</ControlIndex>
+  <Locked>0</Locked>
+ </Control>
+ <Control>
+  <ControlClass>MarsSplitter</ControlClass>
+  <ItemName>MarsSplitter</ItemName>
+  <PropertyVal Name="MinBottomRight">0</PropertyVal>
+  <PropertyVal Name="MinTopLeft">0</PropertyVal>
+  <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="EraseBackground">True</PropertyVal>
+  <PropertyVal Name="AcceptTabs"></PropertyVal>
+  <PropertyVal Name="AcceptFocus"></PropertyVal>
+  <PropertyVal Name="Backdrop"></PropertyVal>
+  <PropertyVal Name="UseFocusRing">True</PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="TabIndex">1</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom">True</PropertyVal>
+  <PropertyVal Name="LockRight">True</PropertyVal>
+  <PropertyVal Name="LockTop">False</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">12</PropertyVal>
+  <PropertyVal Name="Width">882</PropertyVal>
+  <PropertyVal Name="Top">389</PropertyVal>
+  <PropertyVal Name="Left">0</PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
+  <PropertyVal Name="Super">MarsSplitter</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="Name">MarsSplitter1</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="DoubleBuffer">False</PropertyVal>
+  <ControlIndex>1</ControlIndex>
+  <Locked>0</Locked>
+ </Control>
+ <Control>
+  <ControlClass>MarsSplitter</ControlClass>
+  <ItemName>MarsSplitter</ItemName>
+  <PropertyVal Name="MinBottomRight">0</PropertyVal>
+  <PropertyVal Name="MinTopLeft">0</PropertyVal>
+  <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="EraseBackground">True</PropertyVal>
+  <PropertyVal Name="AcceptTabs"></PropertyVal>
+  <PropertyVal Name="AcceptFocus"></PropertyVal>
+  <PropertyVal Name="Backdrop"></PropertyVal>
+  <PropertyVal Name="UseFocusRing">True</PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="TabIndex">3</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom">True</PropertyVal>
+  <PropertyVal Name="LockRight">False</PropertyVal>
+  <PropertyVal Name="LockTop">True</PropertyVal>
+  <PropertyVal Name="LockLeft">False</PropertyVal>
+  <PropertyVal Name="Height">389</PropertyVal>
+  <PropertyVal Name="Width">12</PropertyVal>
+  <PropertyVal Name="Top">0</PropertyVal>
+  <PropertyVal Name="Left">435</PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
+  <PropertyVal Name="Super">MarsSplitter</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="Name">XmlXslSplitter</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="DoubleBuffer">False</PropertyVal>
+  <ControlIndex>2</ControlIndex>
+  <Locked>0</Locked>
+ </Control>
+ <Control>
+  <ControlClass>Container_TextAreaAndLabel</ControlClass>
+  <ItemName>Container_TextAreaAndLabel</ItemName>
+  <PropertyVal Name="EraseBackground">True</PropertyVal>
+  <PropertyVal Name="AcceptTabs">True</PropertyVal>
+  <PropertyVal Name="AcceptFocus"></PropertyVal>
+  <PropertyVal Name="Backdrop"></PropertyVal>
+  <PropertyVal Name="BackColor">16777215</PropertyVal>
+  <PropertyVal Name="HasBackColor">False</PropertyVal>
+  <PropertyVal Name="UseFocusRing"></PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="TabIndex">4</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom">True</PropertyVal>
+  <PropertyVal Name="LockRight">False</PropertyVal>
+  <PropertyVal Name="LockTop">True</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">389</PropertyVal>
+  <PropertyVal Name="Width">435</PropertyVal>
+  <PropertyVal Name="Top">0</PropertyVal>
+  <PropertyVal Name="Left">0</PropertyVal>
+  <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
+  <PropertyVal Name="Super">Container_TextAreaAndLabel</PropertyVal>
+  <PropertyVal Name="Name">Container_XmlInput</PropertyVal>
+  <ControlIndex>3</ControlIndex>
+  <Locked>0</Locked>
+ </Control>
+ <Control>
+  <ControlClass>Container_TextAreaAndLabel</ControlClass>
+  <ItemName>Container_TextAreaAndLabel</ItemName>
+  <PropertyVal Name="EraseBackground">True</PropertyVal>
+  <PropertyVal Name="AcceptTabs">True</PropertyVal>
+  <PropertyVal Name="AcceptFocus"></PropertyVal>
+  <PropertyVal Name="Backdrop"></PropertyVal>
+  <PropertyVal Name="BackColor">16777215</PropertyVal>
+  <PropertyVal Name="HasBackColor">False</PropertyVal>
+  <PropertyVal Name="UseFocusRing"></PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="TabIndex">5</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom">True</PropertyVal>
+  <PropertyVal Name="LockRight">True</PropertyVal>
+  <PropertyVal Name="LockTop">True</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">389</PropertyVal>
+  <PropertyVal Name="Width">435</PropertyVal>
+  <PropertyVal Name="Top">0</PropertyVal>
+  <PropertyVal Name="Left">447</PropertyVal>
+  <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
+  <PropertyVal Name="Super">Container_TextAreaAndLabel</PropertyVal>
+  <PropertyVal Name="Name">Container_XslInput</PropertyVal>
+  <ControlIndex>4</ControlIndex>
+  <Locked>0</Locked>
+ </Control>
+</block>
+<block type="Window" ID="436737850">
+ <ObjName>Container_TextAreaAndLabel</ObjName>
+ <ObjContainerID>0</ObjContainerID>
+ <IsClass>1</IsClass>
+ <Superclass>ContainerControl</Superclass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <PropertyVal Name="EraseBackground">True</PropertyVal>
+ <PropertyVal Name="AcceptTabs">True</PropertyVal>
+ <PropertyVal Name="AcceptFocus"></PropertyVal>
+ <PropertyVal Name="Backdrop"></PropertyVal>
+ <PropertyVal Name="BackColor">16777215</PropertyVal>
+ <PropertyVal Name="HasBackColor">False</PropertyVal>
+ <PropertyVal Name="UseFocusRing"></PropertyVal>
+ <PropertyVal Name="HelpTag"></PropertyVal>
+ <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+ <PropertyVal Name="Enabled">True</PropertyVal>
+ <PropertyVal Name="Visible">True</PropertyVal>
+ <PropertyVal Name="TabStop">True</PropertyVal>
+ <PropertyVal Name="TabIndex">0</PropertyVal>
+ <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+ <PropertyVal Name="LockBottom"></PropertyVal>
+ <PropertyVal Name="LockRight"></PropertyVal>
+ <PropertyVal Name="LockTop"></PropertyVal>
+ <PropertyVal Name="LockLeft"></PropertyVal>
+ <PropertyVal Name="Height">389</PropertyVal>
+ <PropertyVal Name="Width">435</PropertyVal>
+ <PropertyVal Name="Top">0</PropertyVal>
+ <PropertyVal Name="Left">0</PropertyVal>
+ <PropertyVal Name="InitialParent"></PropertyVal>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>InitialParent</ObjName>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>String</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Width</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>300</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Height</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>300</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>LockLeft</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>LockTop</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>LockRight</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>LockBottom</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>TabPanelIndex</ObjName>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>TabIndex</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>TabStop</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Visible</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Enabled</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>AutoDeactivate</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>HelpTag</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <ItemType>String</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>UseFocusRing</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>HasBackColor</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>False</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>BackColor</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>&amp;hFFFFFF</PropertyValue>
+   <ItemType>Color</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Backdrop</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <ItemType>Picture</ItemType>
+   <EditorType>Picture</EditorType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>AcceptFocus</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>AcceptTabs</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>EraseBackground</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>ContainerControl</InheritsFrom>
+  </ViewProperty>
+ </ViewBehavior>
+ <ControlBehavior>
+  <Superclass>TextArea</Superclass>
+ </ControlBehavior>
+ <ControlBehavior>
+  <Superclass>Label</Superclass>
+ </ControlBehavior>
+ <ControlBehavior>
+  <Superclass>Label</Superclass>
+ </ControlBehavior>
+ <Control>
+  <ControlClass>TextArea</ControlClass>
+  <ItemName>TextArea</ItemName>
+  <PropertyVal Name="DataField"></PropertyVal>
+  <PropertyVal Name="DataSource"></PropertyVal>
+  <PropertyVal Name="AutomaticallyCheckSpelling">True</PropertyVal>
+  <PropertyVal Name="Alignment">0</PropertyVal>
+  <PropertyVal Name="AcceptTabs">True</PropertyVal>
+  <PropertyVal Name="LimitText">0</PropertyVal>
+  <PropertyVal Name="ReadOnly"></PropertyVal>
+  <PropertyVal Name="Mask"></PropertyVal>
+  <PropertyVal Name="Text"></PropertyVal>
+  <PropertyVal Name="Underline"></PropertyVal>
+  <PropertyVal Name="Italic"></PropertyVal>
+  <PropertyVal Name="Bold"></PropertyVal>
+  <PropertyVal Name="TextUnit">0</PropertyVal>
+  <PropertyVal Name="TextSize">0</PropertyVal>
+  <PropertyVal Name="TextFont">Courier</PropertyVal>
+  <PropertyVal Name="HideSelection">True</PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="Format"></PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="BackColor">16777215</PropertyVal>
+  <PropertyVal Name="TextColor">0</PropertyVal>
+  <PropertyVal Name="UseFocusRing">False</PropertyVal>
+  <PropertyVal Name="Styled">True</PropertyVal>
+  <PropertyVal Name="ScrollbarVertical">True</PropertyVal>
+  <PropertyVal Name="ScrollbarHorizontal">True</PropertyVal>
+  <PropertyVal Name="Multiline">True</PropertyVal>
+  <PropertyVal Name="Border">True</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="TabIndex">0</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom">True</PropertyVal>
+  <PropertyVal Name="LockRight">True</PropertyVal>
+  <PropertyVal Name="LockTop">True</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">369</PropertyVal>
+  <PropertyVal Name="Width">435</PropertyVal>
+  <PropertyVal Name="Top">20</PropertyVal>
+  <PropertyVal Name="Left">0</PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
+  <PropertyVal Name="Super">TextArea</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="Name">TextArea_Input</PropertyVal>
+  <ControlIndex>0</ControlIndex>
+  <Locked>0</Locked>
+ </Control>
+ <Control>
+  <ControlClass>Label</ControlClass>
+  <ItemName>Label</ItemName>
+  <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="DataField"></PropertyVal>
+  <PropertyVal Name="DataSource"></PropertyVal>
+  <PropertyVal Name="Underline"></PropertyVal>
+  <PropertyVal Name="Italic"></PropertyVal>
+  <PropertyVal Name="Bold">False</PropertyVal>
+  <PropertyVal Name="TextUnit">0</PropertyVal>
+  <PropertyVal Name="TextSize">0</PropertyVal>
+  <PropertyVal Name="TextFont">System</PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="Transparent">False</PropertyVal>
+  <PropertyVal Name="Selectable">False</PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="Multiline"></PropertyVal>
+  <PropertyVal Name="TextColor">0</PropertyVal>
+  <PropertyVal Name="TextAlign">0</PropertyVal>
+  <PropertyVal Name="Text"></PropertyVal>
+  <PropertyVal Name="TabIndex">1</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom"></PropertyVal>
+  <PropertyVal Name="LockRight"></PropertyVal>
+  <PropertyVal Name="LockTop">True</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">20</PropertyVal>
+  <PropertyVal Name="Width">353</PropertyVal>
+  <PropertyVal Name="Top">0</PropertyVal>
+  <PropertyVal Name="Left">84</PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
+  <PropertyVal Name="Super">Label</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="Name">Label_Value</PropertyVal>
+  <ControlIndex>1</ControlIndex>
+  <Locked>0</Locked>
+ </Control>
+ <Control>
+  <ControlClass>Label</ControlClass>
+  <ItemName>Label</ItemName>
+  <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="DataField"></PropertyVal>
+  <PropertyVal Name="DataSource"></PropertyVal>
+  <PropertyVal Name="Underline"></PropertyVal>
+  <PropertyVal Name="Italic"></PropertyVal>
+  <PropertyVal Name="Bold">True</PropertyVal>
+  <PropertyVal Name="TextUnit">0</PropertyVal>
+  <PropertyVal Name="TextSize">0</PropertyVal>
+  <PropertyVal Name="TextFont">System</PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="Transparent">False</PropertyVal>
+  <PropertyVal Name="Selectable">False</PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="Multiline"></PropertyVal>
+  <PropertyVal Name="TextColor">0</PropertyVal>
+  <PropertyVal Name="TextAlign">0</PropertyVal>
+  <PropertyVal Name="Text"></PropertyVal>
+  <PropertyVal Name="TabIndex">2</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom"></PropertyVal>
+  <PropertyVal Name="LockRight"></PropertyVal>
+  <PropertyVal Name="LockTop">False</PropertyVal>
+  <PropertyVal Name="LockLeft">False</PropertyVal>
+  <PropertyVal Name="Height">20</PropertyVal>
+  <PropertyVal Name="Width">86</PropertyVal>
+  <PropertyVal Name="Top">0</PropertyVal>
+  <PropertyVal Name="Left">0</PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
+  <PropertyVal Name="Super">Label</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="Name">Label_Label</PropertyVal>
+  <ControlIndex>2</ControlIndex>
+  <Locked>0</Locked>
+ </Control>
+</block>
+<block type="UIState" ID="0">
+ <WindowState>
+  <OpenTab>
+   <ObjContainerID>0</ObjContainerID>
+   <EditSplit>200</EditSplit>
+   <ProjectListSortColumn>3</ProjectListSortColumn>
+   <ProjectListColumnSortDirection>1</ProjectListColumnSortDirection>
+  </OpenTab>
+  <OpenTab>
+   <ObjContainerID>531424011</ObjContainerID>
+   <LeftSplitter>138</LeftSplitter>
+   <RightSplitter>172</RightSplitter>
+   <ScrollX>0</ScrollX>
+   <ScrollY>31</ScrollY>
+   <LastPositionH>64</LastPositionH>
+   <LastPositionV>64</LastPositionV>
+  </OpenTab>
+  <OpenTab>
+   <ObjContainerID>1419286293</ObjContainerID>
+   <AlternateEditorID>1</AlternateEditorID>
+   <LeftSplitter>160</LeftSplitter>
+   <EmptyEventState>0</EmptyEventState>
+   <CodeItemID>0</CodeItemID>
+  </OpenTab>
+  <OpenTab>
+   <ObjContainerID>531424011</ObjContainerID>
+   <AlternateEditorID>1</AlternateEditorID>
+   <LeftSplitter>160</LeftSplitter>
+   <EmptyEventState>0</EmptyEventState>
+   <CodeItemID>0</CodeItemID>
+  </OpenTab>
+  <OpenTab>
+   <ObjContainerID>258881810</ObjContainerID>
+   <RightSplitter>215</RightSplitter>
+  </OpenTab>
+  <LastLocation></LastLocation>
+  <EditBounds><Rect left="0" top="44" width="1280" height="752"/></EditBounds>
+ </WindowState>
+</block>
+</RBProject>
