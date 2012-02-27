@@ -26,20 +26,20 @@
  </Icon>
  <MacCreator></MacCreator>
  <BuildCarbonName>My Application</BuildCarbonName>
- <BuildCarbonMachOName>My Application</BuildCarbonMachOName>
+ <BuildCarbonMachOName>aXel</BuildCarbonMachOName>
  <BundleIdentifier></BundleIdentifier>
  <BuildSize>4194304</BuildSize>
  <BuildMinSize>2097152</BuildMinSize>
  <BuildSizeAsString>4096</BuildSizeAsString>
  <BuildMinSizeAsString>2048</BuildMinSizeAsString>
  <WinMDICaption></WinMDICaption>
- <BuildWinName>My Application.exe</BuildWinName>
+ <BuildWinName>aXel.exe</BuildWinName>
  <BuildWinMDI>0</BuildWinMDI>
  <BuildWinCompanyName></BuildWinCompanyName>
  <BuildWinProductName></BuildWinProductName>
  <BuildWinInternalName></BuildWinInternalName>
  <UseGDIPlus>0</UseGDIPlus>
- <BuildLinuxX86Name>MyApplication</BuildLinuxX86Name>
+ <BuildLinuxX86Name>aXel</BuildLinuxX86Name>
  <DebuggerCommandLine></DebuggerCommandLine>
  <WebPort>0</WebPort>
  <WebProtocol>0</WebProtocol>
@@ -223,7 +223,45 @@
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Function FileSaveXML() As Boolean</SourceLine>
-   <SourceLine>Module_GlobalFunctions.SaveFileViaDialog(Container_InputXmlXsl.Container_XmlInput.TextArea_Input.Text, "output.xml")</SourceLine>
+   <SourceLine>Module_GlobalFunctions.SaveFileViaDialog(Container_InputXmlXsl.Container_XmlInput.TextArea_Input.Text, "Source XML.xml")</SourceLine>
+   <SourceLine>Return True</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+ </MenuHandler>
+ <MenuHandler>
+  <ItemName>FileSaveXSLT</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function FileSaveXSLT() As Boolean</SourceLine>
+   <SourceLine>Module_GlobalFunctions.SaveFileViaDialog(Container_InputXmlXsl.Container_XslInput.TextArea_Input.Text, "Source XSTL.xsl")</SourceLine>
+   <SourceLine>Return True</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+ </MenuHandler>
+ <MenuHandler>
+  <ItemName>FileSaveOutput</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function FileSaveOutput() As Boolean</SourceLine>
+   <SourceLine>Module_GlobalFunctions.SaveFileViaDialog(Container_InputXmlXsl.TextArea_Output.Text, "Output.xml")</SourceLine>
+   <SourceLine>Return True</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+ </MenuHandler>
+ <MenuHandler>
+  <ItemName>FileQuit</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function FileQuit() As Boolean</SourceLine>
+   <SourceLine>Quit</SourceLine>
    <SourceLine>Return True</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>End Function</SourceLine>
@@ -240,7 +278,7 @@
  <PropertyVal Name="MenuBarVisible">True</PropertyVal>
  <PropertyVal Name="FullScreen">False</PropertyVal>
  <PropertyVal Name="Visible">True</PropertyVal>
- <PropertyVal Name="Title">Untitled</PropertyVal>
+ <PropertyVal Name="Title">aXel - Aaron's XML Editor/Library</PropertyVal>
  <PropertyVal Name="Backdrop"></PropertyVal>
  <PropertyVal Name="BackColor">16777215</PropertyVal>
  <PropertyVal Name="HasBackColor">False</PropertyVal>
@@ -525,7 +563,7 @@
  </Control>
 </block>
 <block type="Menu" ID="258881810">
- <ObjName>MenuBar1</ObjName>
+ <ObjName>MainMenu</ObjName>
  <ObjContainerID>0</ObjContainerID>
  <MenuItem>
   <ItemSpecialMenu>0</ItemSpecialMenu>
@@ -762,7 +800,7 @@
  <MenuItem>
   <ItemSpecialMenu>0</ItemSpecialMenu>
   <ItemName>ToolsMenu</ItemName>
-  <ItemText>Tools</ItemText>
+  <ItemText>&amp;Tools</ItemText>
   <ItemIndex>-2147483648</ItemIndex>
   <ItemShortcut></ItemShortcut>
   <MenuAutoEnable>1</MenuAutoEnable>
@@ -2622,6 +2660,34 @@
     <SourceLine>End Sub</SourceLine>
    </ItemSource>
   </HookInstance>
+  <HookInstance>
+   <ItemName>EnableMenuItems</ItemName>
+   <Compatibility></Compatibility>
+   <Visible>1</Visible>
+   <ItemSource>
+    <TextEncoding>134217984</TextEncoding>
+    <SourceLine>Sub EnableMenuItems()</SourceLine>
+    <SourceLine>If Container_XmlInput.TextArea_Input.Text &lt;&gt; "" Then</SourceLine>
+    <SourceLine>if Container_XslInput.TextArea_Input.Text &lt;&gt; "" Then</SourceLine>
+    <SourceLine>FileSaveXSLT.Enable</SourceLine>
+    <SourceLine>ToolsTidyXSL.Enable</SourceLine>
+    <SourceLine>FileTransform.Enable</SourceLine>
+    <SourceLine>End If</SourceLine>
+    <SourceLine></SourceLine>
+    <SourceLine>FileSaveXML.Enable</SourceLine>
+    <SourceLine>ToolsTidyXML.Enable</SourceLine>
+    <SourceLine>ElseIf Container_XslInput.TextArea_Input.Text &lt;&gt; "" Then</SourceLine>
+    <SourceLine>FileSaveXSLT.Enable</SourceLine>
+    <SourceLine>ToolsTidyXSL.Enable</SourceLine>
+    <SourceLine>End If</SourceLine>
+    <SourceLine></SourceLine>
+    <SourceLine>If TextArea_Output.Text &lt;&gt; "" Then</SourceLine>
+    <SourceLine>FileSaveOutput.Enable</SourceLine>
+    <SourceLine>ToolsTidyOutput.Enable</SourceLine>
+    <SourceLine>End If</SourceLine>
+    <SourceLine>End Sub</SourceLine>
+   </ItemSource>
+  </HookInstance>
  </ControlBehavior>
  <ControlBehavior>
   <Superclass>Container_TextAreaAndLabel</Superclass>
@@ -3124,9 +3190,9 @@
   <PropertyVal Name="LockTop">True</PropertyVal>
   <PropertyVal Name="LockLeft">True</PropertyVal>
   <PropertyVal Name="Height">20</PropertyVal>
-  <PropertyVal Name="Width">353</PropertyVal>
+  <PropertyVal Name="Width">339</PropertyVal>
   <PropertyVal Name="Top">0</PropertyVal>
-  <PropertyVal Name="Left">84</PropertyVal>
+  <PropertyVal Name="Left">98</PropertyVal>
   <PropertyVal Name="Scope">0</PropertyVal>
   <PropertyVal Name="Super">Label</PropertyVal>
   <PropertyVal Name="Index">-2147483648</PropertyVal>
@@ -3178,39 +3244,12 @@
  <WindowState>
   <OpenTab>
    <ObjContainerID>0</ObjContainerID>
-   <EditSplit>200</EditSplit>
+   <EditSplit>199</EditSplit>
    <ProjectListSortColumn>3</ProjectListSortColumn>
    <ProjectListColumnSortDirection>1</ProjectListColumnSortDirection>
   </OpenTab>
-  <OpenTab>
-   <ObjContainerID>531424011</ObjContainerID>
-   <LeftSplitter>138</LeftSplitter>
-   <RightSplitter>172</RightSplitter>
-   <ScrollX>0</ScrollX>
-   <ScrollY>31</ScrollY>
-   <LastPositionH>64</LastPositionH>
-   <LastPositionV>64</LastPositionV>
-  </OpenTab>
-  <OpenTab>
-   <ObjContainerID>1419286293</ObjContainerID>
-   <AlternateEditorID>1</AlternateEditorID>
-   <LeftSplitter>160</LeftSplitter>
-   <EmptyEventState>0</EmptyEventState>
-   <CodeItemID>0</CodeItemID>
-  </OpenTab>
-  <OpenTab>
-   <ObjContainerID>531424011</ObjContainerID>
-   <AlternateEditorID>1</AlternateEditorID>
-   <LeftSplitter>160</LeftSplitter>
-   <EmptyEventState>0</EmptyEventState>
-   <CodeItemID>0</CodeItemID>
-  </OpenTab>
-  <OpenTab>
-   <ObjContainerID>258881810</ObjContainerID>
-   <RightSplitter>215</RightSplitter>
-  </OpenTab>
-  <LastLocation></LastLocation>
-  <EditBounds><Rect left="0" top="44" width="1280" height="752"/></EditBounds>
+  <LastLocation>(Home)</LastLocation>
+  <EditBounds><Rect left="1920" top="98" width="1280" height="942"/></EditBounds>
  </WindowState>
 </block>
 </RBProject>
