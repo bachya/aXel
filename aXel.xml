@@ -580,11 +580,13 @@
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Sub Open()</SourceLine>
+   <SourceLine>// ----- Step #1: Connect to local DB -----------------------------------</SourceLine>
    <SourceLine>// Our application is loading so the first thing that we want to do is</SourceLine>
    <SourceLine>// connect to the database.  We have a property on the App class that</SourceLine>
    <SourceLine>// will hold our database connection and can be accessed from anywhere</SourceLine>
    <SourceLine>// in the application.  We will only connect to the database once and then</SourceLine>
    <SourceLine>// we will continue to use that same connection throughout the entire project.</SourceLine>
+   <SourceLine>// -----------------------------------------------------------------</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>// Create Database Object</SourceLine>
    <SourceLine>MainDB = New REALSQLDatabase</SourceLine>
@@ -600,20 +602,34 @@
    <SourceLine>Quit</SourceLine>
    <SourceLine>return</SourceLine>
    <SourceLine>end if</SourceLine>
-   <SourceLine></SourceLine>
    <SourceLine>else</SourceLine>
    <SourceLine>// The database file does not exist so we want to create a new one.</SourceLine>
    <SourceLine>// The process of creating a database will establish a connection to it</SourceLine>
    <SourceLine>// so there isn't a need to call Database.Connect after we create it.</SourceLine>
    <SourceLine>CreateDatabaseFile</SourceLine>
-   <SourceLine></SourceLine>
    <SourceLine>end</SourceLine>
-   <SourceLine></SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>// Set the application to AutoQuit, so if all windows are closed then the application</SourceLine>
    <SourceLine>// will quit.</SourceLine>
    <SourceLine>app.autoQuit = true</SourceLine>
    <SourceLine></SourceLine>
+   <SourceLine>// ----- Step #2: Load XML syntax highlighting --------------------------</SourceLine>
+   <SourceLine>// Set up an instance of the HighlightDefinition class that contains info on</SourceLine>
+   <SourceLine>// syntactically highlighting XML.  We set it here so that it's available all through</SourceLine>
+   <SourceLine>// the app, no matter where we are.</SourceLine>
+   <SourceLine>// -----------------------------------------------------------------</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// Grab the definition file and create a new HighlightDefinition</SourceLine>
+   <SourceLine>dim languageDefinitionFile as FolderItem = GetFolderItem("").Child("Resources").Child("Language Definitions").Child("Xml2.xml")</SourceLine>
+   <SourceLine>dim xmlHighlightDefinition as HighlightDefinition = new HighlightDefinition</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// If the file exists and isn't empty, attempt to load it into the HightlightDefinition;</SourceLine>
+   <SourceLine>// if that's successful, store the HighlightDefinition in a global property</SourceLine>
+   <SourceLine>if languageDefinitionFile &lt;&gt; nil and languageDefinitionFile.Exists then</SourceLine>
+   <SourceLine>if xmlHighlightDefinition.loadFromXml(languageDefinitionFile) then</SourceLine>
+   <SourceLine>Me.XmlHighlightDefinition = xmlHighlightDefinition</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine>end if</SourceLine>
    <SourceLine>End Sub</SourceLine>
   </ItemSource>
  </HookInstance>
@@ -825,6 +841,20 @@
   </ItemSource>
   <TextEncoding>134217984</TextEncoding>
   <ItemDeclaration>MainDB As REALSQLDatabase</ItemDeclaration>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>XmlHighlightDefinition</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>XmlHighlightDefinition As HighlightDefinition</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>XmlHighlightDefinition As HighlightDefinition</ItemDeclaration>
   <ItemFlags>0</ItemFlags>
   <Shared>0</Shared>
  </Property>
@@ -2532,7 +2562,7 @@
   </ViewProperty>
  </ViewBehavior>
  <ControlBehavior>
-  <Superclass>TextArea</Superclass>
+  <Superclass>SyntaxHighlightEditField</Superclass>
  </ControlBehavior>
  <ControlBehavior>
   <Superclass>Label</Superclass>
@@ -2541,132 +2571,130 @@
   <Superclass>Label</Superclass>
  </ControlBehavior>
  <Control>
-  <ControlClass>TextArea</ControlClass>
-  <ItemName>TextArea</ItemName>
-  <PropertyVal Name="Name">TextArea_Input</PropertyVal>
-  <PropertyVal Name="Index">-2147483648</PropertyVal>
-  <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="Left">0</PropertyVal>
-  <PropertyVal Name="Top">20</PropertyVal>
-  <PropertyVal Name="Width">435</PropertyVal>
-  <PropertyVal Name="Height">369</PropertyVal>
-  <PropertyVal Name="LockLeft">True</PropertyVal>
-  <PropertyVal Name="LockTop">True</PropertyVal>
-  <PropertyVal Name="LockRight">True</PropertyVal>
-  <PropertyVal Name="LockBottom">True</PropertyVal>
-  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
-  <PropertyVal Name="TabIndex">0</PropertyVal>
-  <PropertyVal Name="TabStop">True</PropertyVal>
-  <PropertyVal Name="Border">True</PropertyVal>
-  <PropertyVal Name="Multiline">True</PropertyVal>
-  <PropertyVal Name="ScrollbarHorizontal">True</PropertyVal>
-  <PropertyVal Name="ScrollbarVertical">True</PropertyVal>
-  <PropertyVal Name="Styled">True</PropertyVal>
-  <PropertyVal Name="UseFocusRing">False</PropertyVal>
-  <PropertyVal Name="TextColor">0</PropertyVal>
-  <PropertyVal Name="BackColor">16777215</PropertyVal>
-  <PropertyVal Name="Enabled">True</PropertyVal>
-  <PropertyVal Name="Format"></PropertyVal>
-  <PropertyVal Name="Visible">True</PropertyVal>
-  <PropertyVal Name="HelpTag"></PropertyVal>
-  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
-  <PropertyVal Name="HideSelection">True</PropertyVal>
-  <PropertyVal Name="TextFont">Courier</PropertyVal>
-  <PropertyVal Name="TextSize">0</PropertyVal>
-  <PropertyVal Name="TextUnit">0</PropertyVal>
-  <PropertyVal Name="Bold"></PropertyVal>
-  <PropertyVal Name="Italic"></PropertyVal>
-  <PropertyVal Name="Underline"></PropertyVal>
-  <PropertyVal Name="Text"></PropertyVal>
-  <PropertyVal Name="Mask"></PropertyVal>
-  <PropertyVal Name="ReadOnly"></PropertyVal>
-  <PropertyVal Name="LimitText">0</PropertyVal>
-  <PropertyVal Name="AcceptTabs">True</PropertyVal>
-  <PropertyVal Name="Alignment">0</PropertyVal>
-  <PropertyVal Name="AutomaticallyCheckSpelling">True</PropertyVal>
-  <PropertyVal Name="DataSource"></PropertyVal>
+  <ControlClass>SyntaxHighlightEditField</ControlClass>
+  <ItemName>SyntaxHighlightEditField</ItemName>
   <PropertyVal Name="DataField"></PropertyVal>
-  <PropertyVal Name="Super">TextArea</PropertyVal>
+  <PropertyVal Name="DataSource"></PropertyVal>
+  <PropertyVal Name="Alignment">0</PropertyVal>
+  <PropertyVal Name="AcceptTabs">True</PropertyVal>
+  <PropertyVal Name="LimitText">0</PropertyVal>
+  <PropertyVal Name="ReadOnly"></PropertyVal>
+  <PropertyVal Name="Mask"></PropertyVal>
+  <PropertyVal Name="Text"></PropertyVal>
+  <PropertyVal Name="Underline"></PropertyVal>
+  <PropertyVal Name="Italic"></PropertyVal>
+  <PropertyVal Name="Bold"></PropertyVal>
+  <PropertyVal Name="TextUnit">0</PropertyVal>
+  <PropertyVal Name="TextSize">0</PropertyVal>
+  <PropertyVal Name="TextFont">Courier</PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="Format"></PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="BackColor">16777215</PropertyVal>
+  <PropertyVal Name="TextColor">0</PropertyVal>
+  <PropertyVal Name="UseFocusRing">False</PropertyVal>
+  <PropertyVal Name="Styled">True</PropertyVal>
+  <PropertyVal Name="ScrollbarVertical">True</PropertyVal>
+  <PropertyVal Name="ScrollbarHorizontal">True</PropertyVal>
+  <PropertyVal Name="Multiline">True</PropertyVal>
+  <PropertyVal Name="Border">True</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="TabIndex">0</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom">True</PropertyVal>
+  <PropertyVal Name="LockRight">True</PropertyVal>
+  <PropertyVal Name="LockTop">True</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">369</PropertyVal>
+  <PropertyVal Name="Width">435</PropertyVal>
+  <PropertyVal Name="Top">20</PropertyVal>
+  <PropertyVal Name="Left">0</PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
+  <PropertyVal Name="Super">SyntaxHighlightEditField</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="Name">TextArea_Input</PropertyVal>
+  <PropertyVal Name="AutomaticallyCheckSpelling">True</PropertyVal>
+  <PropertyVal Name="HideSelection">True</PropertyVal>
   <ControlIndex>0</ControlIndex>
   <Locked>0</Locked>
  </Control>
  <Control>
   <ControlClass>Label</ControlClass>
   <ItemName>Label</ItemName>
-  <PropertyVal Name="TabStop">True</PropertyVal>
-  <PropertyVal Name="Name">Label_Value</PropertyVal>
-  <PropertyVal Name="Index">-2147483648</PropertyVal>
-  <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="Left">98</PropertyVal>
-  <PropertyVal Name="Top">0</PropertyVal>
-  <PropertyVal Name="Width">339</PropertyVal>
-  <PropertyVal Name="Height">20</PropertyVal>
-  <PropertyVal Name="LockLeft">True</PropertyVal>
-  <PropertyVal Name="LockTop">True</PropertyVal>
-  <PropertyVal Name="LockRight"></PropertyVal>
-  <PropertyVal Name="LockBottom"></PropertyVal>
-  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
-  <PropertyVal Name="TabIndex">1</PropertyVal>
-  <PropertyVal Name="Text"></PropertyVal>
-  <PropertyVal Name="TextAlign">0</PropertyVal>
-  <PropertyVal Name="TextColor">0</PropertyVal>
-  <PropertyVal Name="Multiline"></PropertyVal>
-  <PropertyVal Name="Enabled">True</PropertyVal>
-  <PropertyVal Name="Visible">True</PropertyVal>
-  <PropertyVal Name="Selectable">False</PropertyVal>
-  <PropertyVal Name="Transparent">False</PropertyVal>
-  <PropertyVal Name="HelpTag"></PropertyVal>
-  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
-  <PropertyVal Name="TextFont">System</PropertyVal>
-  <PropertyVal Name="TextSize">0</PropertyVal>
-  <PropertyVal Name="TextUnit">0</PropertyVal>
-  <PropertyVal Name="Bold">False</PropertyVal>
-  <PropertyVal Name="Italic"></PropertyVal>
-  <PropertyVal Name="Underline"></PropertyVal>
-  <PropertyVal Name="DataSource"></PropertyVal>
-  <PropertyVal Name="DataField"></PropertyVal>
   <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="DataField"></PropertyVal>
+  <PropertyVal Name="DataSource"></PropertyVal>
+  <PropertyVal Name="Underline"></PropertyVal>
+  <PropertyVal Name="Italic"></PropertyVal>
+  <PropertyVal Name="Bold">False</PropertyVal>
+  <PropertyVal Name="TextUnit">0</PropertyVal>
+  <PropertyVal Name="TextSize">0</PropertyVal>
+  <PropertyVal Name="TextFont">System</PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="Transparent">False</PropertyVal>
+  <PropertyVal Name="Selectable">False</PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="Multiline"></PropertyVal>
+  <PropertyVal Name="TextColor">0</PropertyVal>
+  <PropertyVal Name="TextAlign">0</PropertyVal>
+  <PropertyVal Name="Text"></PropertyVal>
+  <PropertyVal Name="TabIndex">1</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom"></PropertyVal>
+  <PropertyVal Name="LockRight"></PropertyVal>
+  <PropertyVal Name="LockTop">True</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">20</PropertyVal>
+  <PropertyVal Name="Width">339</PropertyVal>
+  <PropertyVal Name="Top">0</PropertyVal>
+  <PropertyVal Name="Left">98</PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
   <PropertyVal Name="Super">Label</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="Name">Label_Value</PropertyVal>
   <ControlIndex>1</ControlIndex>
   <Locked>0</Locked>
  </Control>
  <Control>
   <ControlClass>Label</ControlClass>
   <ItemName>Label</ItemName>
-  <PropertyVal Name="TabStop">True</PropertyVal>
-  <PropertyVal Name="Name">Label_Label</PropertyVal>
-  <PropertyVal Name="Index">-2147483648</PropertyVal>
-  <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="Left">0</PropertyVal>
-  <PropertyVal Name="Top">0</PropertyVal>
-  <PropertyVal Name="Width">86</PropertyVal>
-  <PropertyVal Name="Height">20</PropertyVal>
-  <PropertyVal Name="LockLeft">False</PropertyVal>
-  <PropertyVal Name="LockTop">False</PropertyVal>
-  <PropertyVal Name="LockRight"></PropertyVal>
-  <PropertyVal Name="LockBottom"></PropertyVal>
-  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
-  <PropertyVal Name="TabIndex">2</PropertyVal>
-  <PropertyVal Name="Text"></PropertyVal>
-  <PropertyVal Name="TextAlign">0</PropertyVal>
-  <PropertyVal Name="TextColor">0</PropertyVal>
-  <PropertyVal Name="Multiline"></PropertyVal>
-  <PropertyVal Name="Enabled">True</PropertyVal>
-  <PropertyVal Name="Visible">True</PropertyVal>
-  <PropertyVal Name="Selectable">False</PropertyVal>
-  <PropertyVal Name="Transparent">False</PropertyVal>
-  <PropertyVal Name="HelpTag"></PropertyVal>
-  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
-  <PropertyVal Name="TextFont">System</PropertyVal>
-  <PropertyVal Name="TextSize">0</PropertyVal>
-  <PropertyVal Name="TextUnit">0</PropertyVal>
-  <PropertyVal Name="Bold">True</PropertyVal>
-  <PropertyVal Name="Italic"></PropertyVal>
-  <PropertyVal Name="Underline"></PropertyVal>
-  <PropertyVal Name="DataSource"></PropertyVal>
-  <PropertyVal Name="DataField"></PropertyVal>
   <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="DataField"></PropertyVal>
+  <PropertyVal Name="DataSource"></PropertyVal>
+  <PropertyVal Name="Underline"></PropertyVal>
+  <PropertyVal Name="Italic"></PropertyVal>
+  <PropertyVal Name="Bold">True</PropertyVal>
+  <PropertyVal Name="TextUnit">0</PropertyVal>
+  <PropertyVal Name="TextSize">0</PropertyVal>
+  <PropertyVal Name="TextFont">System</PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="Transparent">False</PropertyVal>
+  <PropertyVal Name="Selectable">False</PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="Multiline"></PropertyVal>
+  <PropertyVal Name="TextColor">0</PropertyVal>
+  <PropertyVal Name="TextAlign">0</PropertyVal>
+  <PropertyVal Name="Text"></PropertyVal>
+  <PropertyVal Name="TabIndex">2</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom"></PropertyVal>
+  <PropertyVal Name="LockRight"></PropertyVal>
+  <PropertyVal Name="LockTop">False</PropertyVal>
+  <PropertyVal Name="LockLeft">False</PropertyVal>
+  <PropertyVal Name="Height">20</PropertyVal>
+  <PropertyVal Name="Width">86</PropertyVal>
+  <PropertyVal Name="Top">0</PropertyVal>
+  <PropertyVal Name="Left">0</PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
   <PropertyVal Name="Super">Label</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="Name">Label_Label</PropertyVal>
   <ControlIndex>2</ControlIndex>
   <Locked>0</Locked>
  </Control>
@@ -2908,7 +2936,7 @@
   <ItemFlags>1</ItemFlags>
  </Constant>
  <ControlBehavior>
-  <Superclass>TextArea</Superclass>
+  <Superclass>SyntaxHighlightEditField</Superclass>
  </ControlBehavior>
  <ControlBehavior>
   <Superclass>MarsSplitter</Superclass>
@@ -2973,193 +3001,187 @@
   </HookInstance>
  </ControlBehavior>
  <Control>
-  <ControlClass>TextArea</ControlClass>
-  <ItemName>TextArea</ItemName>
-  <PropertyVal Name="Name">TextArea_Output</PropertyVal>
-  <PropertyVal Name="Index">-2147483648</PropertyVal>
-  <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="Left">0</PropertyVal>
-  <PropertyVal Name="Top">401</PropertyVal>
-  <PropertyVal Name="Width">882</PropertyVal>
-  <PropertyVal Name="Height">231</PropertyVal>
-  <PropertyVal Name="LockLeft">True</PropertyVal>
-  <PropertyVal Name="LockTop">False</PropertyVal>
-  <PropertyVal Name="LockRight">True</PropertyVal>
-  <PropertyVal Name="LockBottom">True</PropertyVal>
-  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
-  <PropertyVal Name="TabIndex">0</PropertyVal>
-  <PropertyVal Name="TabStop">True</PropertyVal>
-  <PropertyVal Name="Border">True</PropertyVal>
-  <PropertyVal Name="Multiline">True</PropertyVal>
-  <PropertyVal Name="ScrollbarHorizontal">True</PropertyVal>
-  <PropertyVal Name="ScrollbarVertical">True</PropertyVal>
-  <PropertyVal Name="Styled">True</PropertyVal>
-  <PropertyVal Name="UseFocusRing">False</PropertyVal>
-  <PropertyVal Name="TextColor">0</PropertyVal>
-  <PropertyVal Name="BackColor">16777215</PropertyVal>
-  <PropertyVal Name="Enabled">True</PropertyVal>
-  <PropertyVal Name="Format"></PropertyVal>
-  <PropertyVal Name="Visible">True</PropertyVal>
-  <PropertyVal Name="HelpTag"></PropertyVal>
-  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
-  <PropertyVal Name="HideSelection">True</PropertyVal>
-  <PropertyVal Name="TextFont">Courier</PropertyVal>
-  <PropertyVal Name="TextSize">0</PropertyVal>
-  <PropertyVal Name="TextUnit">0</PropertyVal>
-  <PropertyVal Name="Bold"></PropertyVal>
-  <PropertyVal Name="Italic"></PropertyVal>
-  <PropertyVal Name="Underline"></PropertyVal>
-  <PropertyVal Name="Text"></PropertyVal>
-  <PropertyVal Name="Mask"></PropertyVal>
-  <PropertyVal Name="ReadOnly">True</PropertyVal>
-  <PropertyVal Name="LimitText">0</PropertyVal>
-  <PropertyVal Name="AcceptTabs"></PropertyVal>
-  <PropertyVal Name="Alignment">0</PropertyVal>
-  <PropertyVal Name="AutomaticallyCheckSpelling">True</PropertyVal>
-  <PropertyVal Name="DataSource"></PropertyVal>
+  <ControlClass>SyntaxHighlightEditField</ControlClass>
+  <ItemName>SyntaxHighlightEditField</ItemName>
   <PropertyVal Name="DataField"></PropertyVal>
-  <PropertyVal Name="Super">TextArea</PropertyVal>
+  <PropertyVal Name="DataSource"></PropertyVal>
+  <PropertyVal Name="Alignment">0</PropertyVal>
+  <PropertyVal Name="AcceptTabs"></PropertyVal>
+  <PropertyVal Name="LimitText">0</PropertyVal>
+  <PropertyVal Name="ReadOnly">True</PropertyVal>
+  <PropertyVal Name="Mask"></PropertyVal>
+  <PropertyVal Name="Text"></PropertyVal>
+  <PropertyVal Name="Underline"></PropertyVal>
+  <PropertyVal Name="Italic"></PropertyVal>
+  <PropertyVal Name="Bold"></PropertyVal>
+  <PropertyVal Name="TextUnit">0</PropertyVal>
+  <PropertyVal Name="TextSize">0</PropertyVal>
+  <PropertyVal Name="TextFont">Courier</PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="Format"></PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="BackColor">16777215</PropertyVal>
+  <PropertyVal Name="TextColor">0</PropertyVal>
+  <PropertyVal Name="UseFocusRing">False</PropertyVal>
+  <PropertyVal Name="Styled">True</PropertyVal>
+  <PropertyVal Name="ScrollbarVertical">True</PropertyVal>
+  <PropertyVal Name="ScrollbarHorizontal">True</PropertyVal>
+  <PropertyVal Name="Multiline">True</PropertyVal>
+  <PropertyVal Name="Border">True</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="TabIndex">0</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom">True</PropertyVal>
+  <PropertyVal Name="LockRight">True</PropertyVal>
+  <PropertyVal Name="LockTop">False</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">231</PropertyVal>
+  <PropertyVal Name="Width">882</PropertyVal>
+  <PropertyVal Name="Top">401</PropertyVal>
+  <PropertyVal Name="Left">0</PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
+  <PropertyVal Name="Super">SyntaxHighlightEditField</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="Name">TextArea_Output</PropertyVal>
+  <PropertyVal Name="AutomaticallyCheckSpelling">True</PropertyVal>
+  <PropertyVal Name="HideSelection">True</PropertyVal>
   <ControlIndex>0</ControlIndex>
   <Locked>0</Locked>
  </Control>
  <Control>
   <ControlClass>MarsSplitter</ControlClass>
   <ItemName>MarsSplitter</ItemName>
-  <PropertyVal Name="DoubleBuffer">False</PropertyVal>
-  <PropertyVal Name="TabStop">True</PropertyVal>
-  <PropertyVal Name="Name">MarsSplitter1</PropertyVal>
-  <PropertyVal Name="Index">-2147483648</PropertyVal>
-  <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="Left">0</PropertyVal>
-  <PropertyVal Name="Top">389</PropertyVal>
-  <PropertyVal Name="Width">882</PropertyVal>
-  <PropertyVal Name="Height">12</PropertyVal>
-  <PropertyVal Name="LockLeft">True</PropertyVal>
-  <PropertyVal Name="LockTop">False</PropertyVal>
-  <PropertyVal Name="LockRight">True</PropertyVal>
-  <PropertyVal Name="LockBottom">True</PropertyVal>
-  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
-  <PropertyVal Name="TabIndex">1</PropertyVal>
-  <PropertyVal Name="Visible">True</PropertyVal>
-  <PropertyVal Name="HelpTag"></PropertyVal>
-  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
-  <PropertyVal Name="Enabled">True</PropertyVal>
-  <PropertyVal Name="UseFocusRing">True</PropertyVal>
-  <PropertyVal Name="Backdrop"></PropertyVal>
-  <PropertyVal Name="AcceptFocus"></PropertyVal>
-  <PropertyVal Name="AcceptTabs"></PropertyVal>
-  <PropertyVal Name="EraseBackground">True</PropertyVal>
-  <PropertyVal Name="InitialParent"></PropertyVal>
-  <PropertyVal Name="MinTopLeft">0</PropertyVal>
   <PropertyVal Name="MinBottomRight">0</PropertyVal>
+  <PropertyVal Name="MinTopLeft">0</PropertyVal>
+  <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="EraseBackground">True</PropertyVal>
+  <PropertyVal Name="AcceptTabs"></PropertyVal>
+  <PropertyVal Name="AcceptFocus"></PropertyVal>
+  <PropertyVal Name="Backdrop"></PropertyVal>
+  <PropertyVal Name="UseFocusRing">True</PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="TabIndex">1</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom">True</PropertyVal>
+  <PropertyVal Name="LockRight">True</PropertyVal>
+  <PropertyVal Name="LockTop">False</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">12</PropertyVal>
+  <PropertyVal Name="Width">882</PropertyVal>
+  <PropertyVal Name="Top">389</PropertyVal>
+  <PropertyVal Name="Left">0</PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
   <PropertyVal Name="Super">MarsSplitter</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="Name">MarsSplitter1</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="DoubleBuffer">False</PropertyVal>
   <ControlIndex>1</ControlIndex>
   <Locked>0</Locked>
  </Control>
  <Control>
   <ControlClass>MarsSplitter</ControlClass>
   <ItemName>MarsSplitter</ItemName>
-  <PropertyVal Name="DoubleBuffer">False</PropertyVal>
-  <PropertyVal Name="TabStop">True</PropertyVal>
-  <PropertyVal Name="Name">XmlXslSplitter</PropertyVal>
-  <PropertyVal Name="Index">-2147483648</PropertyVal>
-  <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="Left">435</PropertyVal>
-  <PropertyVal Name="Top">0</PropertyVal>
-  <PropertyVal Name="Width">12</PropertyVal>
-  <PropertyVal Name="Height">389</PropertyVal>
-  <PropertyVal Name="LockLeft">False</PropertyVal>
-  <PropertyVal Name="LockTop">True</PropertyVal>
-  <PropertyVal Name="LockRight">False</PropertyVal>
-  <PropertyVal Name="LockBottom">True</PropertyVal>
-  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
-  <PropertyVal Name="TabIndex">3</PropertyVal>
-  <PropertyVal Name="Visible">True</PropertyVal>
-  <PropertyVal Name="HelpTag"></PropertyVal>
-  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
-  <PropertyVal Name="Enabled">True</PropertyVal>
-  <PropertyVal Name="UseFocusRing">True</PropertyVal>
-  <PropertyVal Name="Backdrop"></PropertyVal>
-  <PropertyVal Name="AcceptFocus"></PropertyVal>
-  <PropertyVal Name="AcceptTabs"></PropertyVal>
-  <PropertyVal Name="EraseBackground">True</PropertyVal>
-  <PropertyVal Name="InitialParent"></PropertyVal>
-  <PropertyVal Name="MinTopLeft">0</PropertyVal>
   <PropertyVal Name="MinBottomRight">0</PropertyVal>
+  <PropertyVal Name="MinTopLeft">0</PropertyVal>
+  <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="EraseBackground">True</PropertyVal>
+  <PropertyVal Name="AcceptTabs"></PropertyVal>
+  <PropertyVal Name="AcceptFocus"></PropertyVal>
+  <PropertyVal Name="Backdrop"></PropertyVal>
+  <PropertyVal Name="UseFocusRing">True</PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="TabIndex">3</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom">True</PropertyVal>
+  <PropertyVal Name="LockRight">False</PropertyVal>
+  <PropertyVal Name="LockTop">True</PropertyVal>
+  <PropertyVal Name="LockLeft">False</PropertyVal>
+  <PropertyVal Name="Height">389</PropertyVal>
+  <PropertyVal Name="Width">12</PropertyVal>
+  <PropertyVal Name="Top">0</PropertyVal>
+  <PropertyVal Name="Left">435</PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
   <PropertyVal Name="Super">MarsSplitter</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="Name">XmlXslSplitter</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="DoubleBuffer">False</PropertyVal>
   <ControlIndex>2</ControlIndex>
   <Locked>0</Locked>
  </Control>
  <Control>
   <ControlClass>Container_TextAreaAndLabel</ControlClass>
   <ItemName>Container_TextAreaAndLabel</ItemName>
-  <PropertyVal Name="Name">Container_XmlInput</PropertyVal>
-  <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="InitialParent"></PropertyVal>
-  <PropertyVal Name="Left">0</PropertyVal>
-  <PropertyVal Name="Top">0</PropertyVal>
-  <PropertyVal Name="Width">435</PropertyVal>
-  <PropertyVal Name="Height">389</PropertyVal>
-  <PropertyVal Name="LockLeft">True</PropertyVal>
-  <PropertyVal Name="LockTop">True</PropertyVal>
-  <PropertyVal Name="LockRight">False</PropertyVal>
-  <PropertyVal Name="LockBottom">True</PropertyVal>
-  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
-  <PropertyVal Name="TabIndex">4</PropertyVal>
-  <PropertyVal Name="TabStop">True</PropertyVal>
-  <PropertyVal Name="Visible">True</PropertyVal>
-  <PropertyVal Name="Enabled">True</PropertyVal>
-  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
-  <PropertyVal Name="HelpTag"></PropertyVal>
-  <PropertyVal Name="UseFocusRing"></PropertyVal>
-  <PropertyVal Name="HasBackColor">False</PropertyVal>
-  <PropertyVal Name="BackColor">16777215</PropertyVal>
-  <PropertyVal Name="Backdrop"></PropertyVal>
-  <PropertyVal Name="AcceptFocus"></PropertyVal>
-  <PropertyVal Name="AcceptTabs">True</PropertyVal>
   <PropertyVal Name="EraseBackground">True</PropertyVal>
-  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="AcceptTabs">True</PropertyVal>
+  <PropertyVal Name="AcceptFocus"></PropertyVal>
+  <PropertyVal Name="Backdrop"></PropertyVal>
+  <PropertyVal Name="BackColor">16777215</PropertyVal>
+  <PropertyVal Name="HasBackColor">False</PropertyVal>
+  <PropertyVal Name="UseFocusRing"></PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="TabIndex">4</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom">True</PropertyVal>
+  <PropertyVal Name="LockRight">False</PropertyVal>
+  <PropertyVal Name="LockTop">True</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">389</PropertyVal>
+  <PropertyVal Name="Width">435</PropertyVal>
+  <PropertyVal Name="Top">0</PropertyVal>
+  <PropertyVal Name="Left">0</PropertyVal>
+  <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
   <PropertyVal Name="Super">Container_TextAreaAndLabel</PropertyVal>
+  <PropertyVal Name="Name">Container_XmlInput</PropertyVal>
   <ControlIndex>3</ControlIndex>
   <Locked>0</Locked>
  </Control>
  <Control>
   <ControlClass>Container_TextAreaAndLabel</ControlClass>
   <ItemName>Container_TextAreaAndLabel</ItemName>
-  <PropertyVal Name="Name">Container_XslInput</PropertyVal>
-  <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="InitialParent"></PropertyVal>
-  <PropertyVal Name="Left">447</PropertyVal>
-  <PropertyVal Name="Top">0</PropertyVal>
-  <PropertyVal Name="Width">435</PropertyVal>
-  <PropertyVal Name="Height">389</PropertyVal>
-  <PropertyVal Name="LockLeft">True</PropertyVal>
-  <PropertyVal Name="LockTop">True</PropertyVal>
-  <PropertyVal Name="LockRight">True</PropertyVal>
-  <PropertyVal Name="LockBottom">True</PropertyVal>
-  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
-  <PropertyVal Name="TabIndex">5</PropertyVal>
-  <PropertyVal Name="TabStop">True</PropertyVal>
-  <PropertyVal Name="Visible">True</PropertyVal>
-  <PropertyVal Name="Enabled">True</PropertyVal>
-  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
-  <PropertyVal Name="HelpTag"></PropertyVal>
-  <PropertyVal Name="UseFocusRing"></PropertyVal>
-  <PropertyVal Name="HasBackColor">False</PropertyVal>
-  <PropertyVal Name="BackColor">16777215</PropertyVal>
-  <PropertyVal Name="Backdrop"></PropertyVal>
-  <PropertyVal Name="AcceptFocus"></PropertyVal>
-  <PropertyVal Name="AcceptTabs">True</PropertyVal>
   <PropertyVal Name="EraseBackground">True</PropertyVal>
-  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="AcceptTabs">True</PropertyVal>
+  <PropertyVal Name="AcceptFocus"></PropertyVal>
+  <PropertyVal Name="Backdrop"></PropertyVal>
+  <PropertyVal Name="BackColor">16777215</PropertyVal>
+  <PropertyVal Name="HasBackColor">False</PropertyVal>
+  <PropertyVal Name="UseFocusRing"></PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="TabIndex">5</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom">True</PropertyVal>
+  <PropertyVal Name="LockRight">True</PropertyVal>
+  <PropertyVal Name="LockTop">True</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">389</PropertyVal>
+  <PropertyVal Name="Width">435</PropertyVal>
+  <PropertyVal Name="Top">0</PropertyVal>
+  <PropertyVal Name="Left">447</PropertyVal>
+  <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
   <PropertyVal Name="Super">Container_TextAreaAndLabel</PropertyVal>
+  <PropertyVal Name="Name">Container_XslInput</PropertyVal>
   <ControlIndex>4</ControlIndex>
   <Locked>0</Locked>
  </Control>
-</block>
-<block type="Folder" ID="948034986">
- <ObjName>Modules</ObjName>
- <ObjContainerID>0</ObjContainerID>
 </block>
 <block type="Folder" ID="584792787">
  <ObjName>Menus</ObjName>
@@ -4443,33 +4465,32 @@
  <Control>
   <ControlClass>Container_XmlXslInput</ControlClass>
   <ItemName>Container_XmlXslInput</ItemName>
-  <PropertyVal Name="Name">Container_InputXmlXsl</PropertyVal>
-  <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="InitialParent"></PropertyVal>
-  <PropertyVal Name="Left">20</PropertyVal>
-  <PropertyVal Name="Top">20</PropertyVal>
-  <PropertyVal Name="Width">882</PropertyVal>
-  <PropertyVal Name="Height">632</PropertyVal>
-  <PropertyVal Name="LockLeft">True</PropertyVal>
-  <PropertyVal Name="LockTop">True</PropertyVal>
-  <PropertyVal Name="LockRight">True</PropertyVal>
-  <PropertyVal Name="LockBottom">True</PropertyVal>
-  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
-  <PropertyVal Name="TabIndex">7</PropertyVal>
-  <PropertyVal Name="TabStop">True</PropertyVal>
-  <PropertyVal Name="Visible">True</PropertyVal>
-  <PropertyVal Name="Enabled">True</PropertyVal>
-  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
-  <PropertyVal Name="HelpTag"></PropertyVal>
-  <PropertyVal Name="UseFocusRing"></PropertyVal>
-  <PropertyVal Name="HasBackColor">False</PropertyVal>
-  <PropertyVal Name="BackColor">16777215</PropertyVal>
-  <PropertyVal Name="Backdrop"></PropertyVal>
-  <PropertyVal Name="AcceptFocus"></PropertyVal>
-  <PropertyVal Name="AcceptTabs">True</PropertyVal>
   <PropertyVal Name="EraseBackground">True</PropertyVal>
-  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="AcceptTabs">True</PropertyVal>
+  <PropertyVal Name="AcceptFocus"></PropertyVal>
+  <PropertyVal Name="Backdrop"></PropertyVal>
+  <PropertyVal Name="BackColor">16777215</PropertyVal>
+  <PropertyVal Name="HasBackColor">False</PropertyVal>
+  <PropertyVal Name="UseFocusRing"></PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="TabIndex">7</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom">True</PropertyVal>
+  <PropertyVal Name="LockRight">True</PropertyVal>
+  <PropertyVal Name="LockTop">True</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">632</PropertyVal>
+  <PropertyVal Name="Width">882</PropertyVal>
+  <PropertyVal Name="Top">20</PropertyVal>
+  <PropertyVal Name="Left">20</PropertyVal>
+  <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
   <PropertyVal Name="Super">Container_XmlXslInput</PropertyVal>
+  <PropertyVal Name="Name">Container_InputXmlXsl</PropertyVal>
   <ControlIndex>0</ControlIndex>
   <Locked>0</Locked>
  </Control>
@@ -4497,6 +4518,10 @@
 </block>
 <block type="Folder" ID="1658580157">
  <ObjName>Window Splitter</ObjName>
+ <ObjContainerID>593691927</ObjContainerID>
+</block>
+<block type="Folder" ID="78201623">
+ <ObjName>SyntaxHighlightEditField</ObjName>
  <ObjContainerID>593691927</ObjContainerID>
 </block>
 <block type="Folder" ID="491636048">
@@ -5239,6 +5264,2232 @@
   <Locked>0</Locked>
  </Control>
 </block>
+<block type="Module" ID="102461358">
+ <ObjName>SyntaxHighlightEditField</ObjName>
+ <ObjContainerID>78201623</ObjContainerID>
+ <IsClass>1</IsClass>
+ <Superclass>TextArea</Superclass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <HookInstance>
+  <ItemName>Close</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Close()</SourceLine>
+   <SourceLine>if Highlighter=nil then Return</SourceLine>
+   <SourceLine>Highlighter.owner=nil</SourceLine>
+   <SourceLine>Highlighter.Kill</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+ </HookInstance>
+ <HookInstance>
+  <ItemName>Open</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Open()</SourceLine>
+   <SourceLine>keyListener=new KeyDownTimer(self)</SourceLine>
+   <SourceLine>Highlighter=new HighlighterThread(self)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Me.Syntax = App.xmlHighlightDefinition</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+ </HookInstance>
+ <HookInstance>
+  <ItemName>TextChange</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub TextChange()</SourceLine>
+   <SourceLine>keyListener.Reset</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+ </HookInstance>
+ <HookInstance>
+  <ItemName>MouseWheel</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function MouseWheel(X As Integer, Y As Integer, deltaX as Integer, deltaY as Integer) As Boolean</SourceLine>
+   <SourceLine>//ScrollPosition=ScrollPosition+deltay</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+ </HookInstance>
+ <Method>
+  <ItemName>highlight</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub highlight()</SourceLine>
+   <SourceLine>if Syntax=nil then Return</SourceLine>
+   <SourceLine>dim start as Double=Microseconds</SourceLine>
+   <SourceLine>Syntax.highlight(me.Text, me.StyledText)</SourceLine>
+   <SourceLine>start=(Microseconds-start)/1000</SourceLine>
+   <SourceLine>HighlightingDone(start)</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams></ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>startThreadedHighlight</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub startThreadedHighlight()</SourceLine>
+   <SourceLine>if Highlighter.State=thread.Running then</SourceLine>
+   <SourceLine>Highlighter.Kill</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Highlighter.Run</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams></ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Hook>
+  <ItemName>Open</ItemName>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemFlags>33</ItemFlags>
+  <SystemFlags>0</SystemFlags>
+  <ItemParams></ItemParams>
+  <ItemResult></ItemResult>
+ </Hook>
+ <Hook>
+  <ItemName>HighlightingDone</ItemName>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemFlags>33</ItemFlags>
+  <SystemFlags>0</SystemFlags>
+  <ItemParams>milliseconds as integer</ItemParams>
+  <ItemResult></ItemResult>
+ </Hook>
+ <Note>
+  <ItemName>About</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <NoteLine>About</NoteLine>
+   <NoteLine>Info</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>SyntaxHighlightEditField 1.1</NoteLine>
+   <NoteLine>By Alex Restrepo</NoteLine>
+   <NoteLine>send comments, suggestions, fixes to alexrestrepo@mac.com</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>A little experiment on SyntaxHighlighting</NoteLine>
+   <NoteLine>To use just add an instance to your window and set the appropriate syntax. </NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Methods:</NoteLine>
+   <NoteLine>Highlight: starts Highlighting the contents of the editfield using the assigned syntax.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>startThreadedHighlight: highlights the contents using a thread.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Properties:</NoteLine>
+   <NoteLine>Syntax: gets or sets the syntax used to Highlight the contents of the EditField</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Open source under the creative commons license.</NoteLine>
+   <NoteLine>Use in whatever way you like... at your own risk :P</NoteLine>
+   <NoteLine>let me know if you find it useful.</NoteLine>
+   <NoteLine>If you decide to use it in your projects, please give me credit in your about window or documentation, thanks.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>version history</NoteLine>
+   <NoteLine>1.0 initial release</NoteLine>
+   <NoteLine>1.1 updated to support non-Standard characters</NoteLine>
+   <NoteLine></NoteLine>
+  </ItemSource>
+  <ItemFlags>0</ItemFlags>
+ </Note>
+ <Property>
+  <ItemName>_Syntax</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>_Syntax As HighlightDefinition</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>_Syntax As HighlightDefinition</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>Syntax</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Syntax As HighlightDefinition</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>Syntax As HighlightDefinition</ItemDeclaration>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <SetAccessor>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Set</SourceLine>
+   <SourceLine>if value=nil then Return</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>_Syntax=value</SourceLine>
+   <SourceLine>startThreadedHighlight</SourceLine>
+   <SourceLine>End Set</SourceLine>
+  </SetAccessor>
+  <GetAccessor>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Get</SourceLine>
+   <SourceLine>Return _Syntax</SourceLine>
+   <SourceLine>End Get</SourceLine>
+  </GetAccessor>
+ </Property>
+ <Property>
+  <ItemName>highlighter</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>highlighter As HighlighterThread</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>highlighter As HighlighterThread</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>keyListener</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>keyListener As KeyDownTimer</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>keyListener As KeyDownTimer</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>HideSelection</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>TextArea</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>AutomaticallyCheckSpelling</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>boolean</ItemType>
+   <InheritsFrom>TextArea</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Width</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>80</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Height</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>22</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>LockLeft</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>LockTop</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>LockRight</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>LockBottom</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>TabPanelIndex</ObjName>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>TabIndex</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>TabStop</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Border</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Multiline</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>ScrollbarHorizontal</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>ScrollbarVertical</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Styled</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>UseFocusRing</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>TextColor</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>&amp;h000000</PropertyValue>
+   <ItemType>Color</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>BackColor</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>&amp;hFFFFFF</PropertyValue>
+   <ItemType>Color</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Enabled</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Format</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <ItemType>String</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Visible</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>HelpTag</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <ItemType>String</ItemType>
+   <EditorType>MultiLineEditor</EditorType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>AutoDeactivate</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>TextFont</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Font</PropertyGroup>
+   <PropertyValue>System</PropertyValue>
+   <ItemType>String</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>TextSize</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Font</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Single</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>TextUnit</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Font</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <EditorType>Enum</EditorType>
+   <InheritsFrom>EditField</InheritsFrom>
+   <Enumeration>
+    <ItemDef>0 - Default</ItemDef>
+    <ItemDef>1 - Pixel</ItemDef>
+    <ItemDef>2 - Point</ItemDef>
+    <ItemDef>3 - Inch</ItemDef>
+    <ItemDef>4 - Millimeter</ItemDef>
+   </Enumeration>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Bold</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Font</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Italic</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Font</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Underline</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Font</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Text</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Initial State</PropertyGroup>
+   <ItemType>String</ItemType>
+   <EditorType>MultiLineEditor</EditorType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Mask</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <ItemType>String</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>ReadOnly</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>LimitText</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>AcceptTabs</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Alignment</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <EditorType>Enum</EditorType>
+   <InheritsFrom>EditField</InheritsFrom>
+   <Enumeration>
+    <ItemDef>0 - Default</ItemDef>
+    <ItemDef>1 - Left</ItemDef>
+    <ItemDef>2 - Center</ItemDef>
+    <ItemDef>3 - Right</ItemDef>
+   </Enumeration>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>DataSource</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Database Binding</PropertyGroup>
+   <ItemType>String</ItemType>
+   <EditorType>DataSource</EditorType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>DataField</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Database Binding</PropertyGroup>
+   <ItemType>String</ItemType>
+   <EditorType>DataField</EditorType>
+   <InheritsFrom>EditField</InheritsFrom>
+  </ViewProperty>
+ </ViewBehavior>
+</block>
+<block type="Module" ID="1695943156">
+ <ObjName>KeyDownTimer</ObjName>
+ <ObjContainerID>78201623</ObjContainerID>
+ <IsClass>1</IsClass>
+ <Superclass>timer</Superclass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <HookInstance>
+  <ItemName>Action</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Action()</SourceLine>
+   <SourceLine>owner.StartThreadedHighlight</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+ </HookInstance>
+ <Method>
+  <ItemName>Constructor</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Constructor(owner as syntaxHighlightEditField)</SourceLine>
+   <SourceLine>self.owner=owner</SourceLine>
+   <SourceLine>me.Period=200</SourceLine>
+   <SourceLine>me.Mode=Timer.ModeSingle</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>owner as syntaxHighlightEditField</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Reset</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Reset()</SourceLine>
+   <SourceLine>me.Mode=Timer.ModeSingle</SourceLine>
+   <SourceLine>super.Reset</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams></ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Property>
+  <ItemName>owner</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>owner As SyntaxHighlightEditField</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>owner As SyntaxHighlightEditField</ItemDeclaration>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <InheritsFrom>timer</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <InheritsFrom>timer</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <InheritsFrom>timer</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>timer</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>timer</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Mode</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <PropertyValue>2</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <EditorType>Enum</EditorType>
+   <InheritsFrom>timer</InheritsFrom>
+   <Enumeration>
+    <ItemDef>0 - Off</ItemDef>
+    <ItemDef>1 - Single</ItemDef>
+    <ItemDef>2 - Multiple</ItemDef>
+   </Enumeration>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Period</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <PropertyValue>1000</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>timer</InheritsFrom>
+  </ViewProperty>
+ </ViewBehavior>
+</block>
+<block type="Module" ID="1144615010">
+ <ObjName>HighlighterThread</ObjName>
+ <ObjContainerID>78201623</ObjContainerID>
+ <IsClass>1</IsClass>
+ <Superclass>Thread</Superclass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <HookInstance>
+  <ItemName>Run</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Run()</SourceLine>
+   <SourceLine>owner.Highlight</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+ </HookInstance>
+ <Method>
+  <ItemName>Constructor</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Constructor(owner as SyntaxHighlightEditField)</SourceLine>
+   <SourceLine>self.owner=owner</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>#if TargetWin32</SourceLine>
+   <SourceLine>me.Priority=1</SourceLine>
+   <SourceLine>#else</SourceLine>
+   <SourceLine>me.Priority=2</SourceLine>
+   <SourceLine>#endif</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>owner as SyntaxHighlightEditField</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Property>
+  <ItemName>owner</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>owner As SyntaxHighlightEditField</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>owner As SyntaxHighlightEditField</ItemDeclaration>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <InheritsFrom>Thread</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <InheritsFrom>Thread</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <InheritsFrom>Thread</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Thread</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Thread</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Priority</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <PropertyValue>5</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Thread</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>StackSize</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Thread</InheritsFrom>
+  </ViewProperty>
+ </ViewBehavior>
+</block>
+<block type="Module" ID="74422694">
+ <ObjName>HighlightDefinition</ObjName>
+ <ObjContainerID>78201623</ObjContainerID>
+ <IsClass>1</IsClass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <Method>
+  <ItemName>addContext</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub addContext(context as HighlightContext)</SourceLine>
+   <SourceLine>if Context=nil then Return</SourceLine>
+   <SourceLine>contexts.Append(Context)</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>context as HighlightContext</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>syntaxRegEx</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function syntaxRegEx() As string</SourceLine>
+   <SourceLine>dim tmp as String</SourceLine>
+   <SourceLine>dim current as HighlightContext</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//returns the regex pattern for all contexts</SourceLine>
+   <SourceLine>tmp="("</SourceLine>
+   <SourceLine>for Each current in contexts</SourceLine>
+   <SourceLine>tmp=tmp+current.contextRegEx+"|"</SourceLine>
+   <SourceLine>next</SourceLine>
+   <SourceLine>tmp=Left(tmp,tmp.Len-1)+")"</SourceLine>
+   <SourceLine>Return tmp</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams></ItemParams>
+  <ItemResult>string</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>highlight</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub highlight(text as string, style as styledText)</SourceLine>
+   <SourceLine>dim match as RegExMatch</SourceLine>
+   <SourceLine>dim subExpression as String</SourceLine>
+   <SourceLine>dim context as HighlightContext</SourceLine>
+   <SourceLine>dim startPos as Integer</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//init the regex pattern and perform the initial search</SourceLine>
+   <SourceLine>scanner.SearchPattern=syntaxRegEx</SourceLine>
+   <SourceLine>match=scanner.Search(Text)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>dim charPos as Integer</SourceLine>
+   <SourceLine>while match&lt;&gt;nil</SourceLine>
+   <SourceLine>subExpression=match.SubExpressionString(1)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//find the actual character position within the string, since SubExpressionStartB returns the byte position, </SourceLine>
+   <SourceLine>//and if you have multi-byte strings you get an offsetted highlight.</SourceLine>
+   <SourceLine>charPos=text.leftb(match.SubExpressionStartB(1)).len</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//Highlight everything up to this point with the default color.</SourceLine>
+   <SourceLine>Style.TextColor(startPos, charPos-startPos)=defaultColor</SourceLine>
+   <SourceLine>startPos = charPos</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//find the context for the match</SourceLine>
+   <SourceLine>Context=findContextForMatch(subExpression)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//forward execution to the context for any further processing.</SourceLine>
+   <SourceLine>if Context&lt;&gt;nil then</SourceLine>
+   <SourceLine>Context.Highlight(text, style, subExpression, startPos, scanner)</SourceLine>
+   <SourceLine>startPos=text.leftb(scanner.SearchStartPosition).len</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//and search again</SourceLine>
+   <SourceLine>scanner.SearchPattern=syntaxRegEx</SourceLine>
+   <SourceLine>match=scanner.Search</SourceLine>
+   <SourceLine>wend</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//Highlight the rest of the text with the default color.</SourceLine>
+   <SourceLine>Style.TextColor(startPos, text.Len-startPos)=defaultColor</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>text as string, style as styledText</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>findContextForMatch</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function findContextForMatch(expressionMatch as string) As HighlightContext</SourceLine>
+   <SourceLine>if UBound(contexts)&lt;0 then Return nil</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//find the context for the match</SourceLine>
+   <SourceLine>dim i as Integer</SourceLine>
+   <SourceLine>dim entry as HighlightContext</SourceLine>
+   <SourceLine>dim match as RegExMatch</SourceLine>
+   <SourceLine>dim scanner as new regex</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>for Each entry in contexts</SourceLine>
+   <SourceLine>scanner.SearchPattern=entry.contextRegEx</SourceLine>
+   <SourceLine>match=scanner.Search(expressionMatch)</SourceLine>
+   <SourceLine>if match&lt;&gt;nil then</SourceLine>
+   <SourceLine>Return entry</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine>next</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return nil</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>expressionMatch as string</ItemParams>
+  <ItemResult>HighlightContext</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Constructor</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Constructor()</SourceLine>
+   <SourceLine>//init regex scanner</SourceLine>
+   <SourceLine>scanner = new regex</SourceLine>
+   <SourceLine>scanner.Options.DotMatchAll=true</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams></ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>saveAsXml</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function saveAsXml(file as folderItem) As boolean</SourceLine>
+   <SourceLine>if file=nil then Return False</SourceLine>
+   <SourceLine>Dim xml as XmlDocument</SourceLine>
+   <SourceLine>Dim root, node as XMLNode</SourceLine>
+   <SourceLine>Dim context as HighlightContext</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//save definition as an xml</SourceLine>
+   <SourceLine>try</SourceLine>
+   <SourceLine>xml = New XmlDocument</SourceLine>
+   <SourceLine>//root</SourceLine>
+   <SourceLine>root = xml.AppendChild(xml.CreateElement("highlightDefinition"))</SourceLine>
+   <SourceLine>root.SetAttribute("version",format(version,"#.0"))</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//name</SourceLine>
+   <SourceLine>node = root.AppendChild(xml.CreateElement("name"))</SourceLine>
+   <SourceLine>node.AppendChild(xml.CreateTextNode(name))</SourceLine>
+   <SourceLine>IndentNode(node,1)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>node = root.AppendChild(xml.CreateElement("contexts"))</SourceLine>
+   <SourceLine>dim tmpObj as Variant=defaultColor</SourceLine>
+   <SourceLine>node.SetAttribute("defaultColor","#"+Hex(tmpObj.IntegerValue))</SourceLine>
+   <SourceLine>node.SetAttribute("caseSensitive",bool2YN(caseSensitive))</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//process contexts</SourceLine>
+   <SourceLine>for Each Context in contexts</SourceLine>
+   <SourceLine>Context.appendToXMLNode(node)</SourceLine>
+   <SourceLine>next</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>IndentNode(node,1, true)</SourceLine>
+   <SourceLine>IndentNode(root,0, true)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>dim tos as TextOutputStream=file.CreateTextFile</SourceLine>
+   <SourceLine>tos.Write(xml.ToString)</SourceLine>
+   <SourceLine>tos.Close</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return true</SourceLine>
+   <SourceLine>catch</SourceLine>
+   <SourceLine>Return False</SourceLine>
+   <SourceLine>end try</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>file as folderItem</ItemParams>
+  <ItemResult>boolean</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>IndentNode</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub IndentNode(node As XmlNode, level As Integer, indentCloseTag As Boolean = False)</SourceLine>
+   <SourceLine>Dim i As Integer</SourceLine>
+   <SourceLine>Dim s As String</SourceLine>
+   <SourceLine>s = EndOfLine</SourceLine>
+   <SourceLine>For i = 1 To level</SourceLine>
+   <SourceLine>s = s + Chr(9) // Tab</SourceLine>
+   <SourceLine>Next</SourceLine>
+   <SourceLine>node.Parent.Insert(node.OwnerDocument.CreateTextNode(s), node)</SourceLine>
+   <SourceLine>If indentCloseTag Then</SourceLine>
+   <SourceLine>node.AppendChild(node.OwnerDocument.CreateTextNode(s))</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>node As XmlNode, level As Integer, indentCloseTag As Boolean = False</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>loadFromXml</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function loadFromXml(data as string) As boolean</SourceLine>
+   <SourceLine>dim xml as XmlDocument</SourceLine>
+   <SourceLine>Dim root, node as XMLNode</SourceLine>
+   <SourceLine>Dim context as HighlightContext</SourceLine>
+   <SourceLine>Dim i, j as Integer</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//load a xml syntax definition.</SourceLine>
+   <SourceLine>try</SourceLine>
+   <SourceLine>xml=new XmlDocument</SourceLine>
+   <SourceLine>xml.LoadXml(data)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>root=xml.Child(0)</SourceLine>
+   <SourceLine>//doc check</SourceLine>
+   <SourceLine>if root.Name&lt;&gt;"highlightDefinition" then Return False</SourceLine>
+   <SourceLine>if val(root.GetAttribute("version"))&lt;&gt;version then Return False</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>for i=0 to root.ChildCount-1</SourceLine>
+   <SourceLine>node=root.Child(i)</SourceLine>
+   <SourceLine>select case node.Name</SourceLine>
+   <SourceLine>case "name"</SourceLine>
+   <SourceLine>//syntax name</SourceLine>
+   <SourceLine>Name=node.FirstChild.Value</SourceLine>
+   <SourceLine>case "contexts"</SourceLine>
+   <SourceLine>//contexts</SourceLine>
+   <SourceLine>dim tmpObj as Variant</SourceLine>
+   <SourceLine>tmpObj = "&amp;h" + node.GetAttribute("defaultColor").Mid(1)</SourceLine>
+   <SourceLine>defaultColor=tmpObj.ColorValue</SourceLine>
+   <SourceLine>caseSensitive=YN2Bool(node.GetAttribute("caseSensitive"))</SourceLine>
+   <SourceLine>for j=0 to node.ChildCount-1</SourceLine>
+   <SourceLine>Context=new HighlightContext(caseSensitive)</SourceLine>
+   <SourceLine>Context.loadFromXmlNode(node.Child(j))</SourceLine>
+   <SourceLine>addContext(Context)</SourceLine>
+   <SourceLine>next</SourceLine>
+   <SourceLine>end select</SourceLine>
+   <SourceLine>Next</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return true</SourceLine>
+   <SourceLine>Catch</SourceLine>
+   <SourceLine>Return False</SourceLine>
+   <SourceLine>end try</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>data as string</ItemParams>
+  <ItemResult>boolean</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>loadFromXml</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function loadFromXml(data as folderItem) As boolean</SourceLine>
+   <SourceLine>if data=nil then Return False</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//read a file...</SourceLine>
+   <SourceLine>dim tis as TextInputStream=data.OpenAsTextFile</SourceLine>
+   <SourceLine>if tis=nil then Return False</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>dim xml as String=tis.ReadAll</SourceLine>
+   <SourceLine>tis.Close</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return loadFromXml(xml)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>data as folderItem</ItemParams>
+  <ItemResult>boolean</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>bool2YN</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function bool2YN(value as boolean) As string</SourceLine>
+   <SourceLine>if value then Return "yes"</SourceLine>
+   <SourceLine>Return "no"</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>value as boolean</ItemParams>
+  <ItemResult>string</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>YN2Bool</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function YN2Bool(value as string) As boolean</SourceLine>
+   <SourceLine>if value="yes" then Return true</SourceLine>
+   <SourceLine>Return False</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>value as string</ItemParams>
+  <ItemResult>boolean</ItemResult>
+ </Method>
+ <Note>
+  <ItemName>About</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <NoteLine>About</NoteLine>
+   <NoteLine>Info</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>HighlightDefinition</NoteLine>
+   <NoteLine>By Alex Restrepo</NoteLine>
+   <NoteLine>send comments, suggestions, fixes to alexrestrepo@mac.com</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>A little experiment on SyntaxHighlighting</NoteLine>
+   <NoteLine>Contains the rules of how to Highlight the contents of the EditField.</NoteLine>
+   <NoteLine>A definition is composed of one or more HighlightContexts</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Methods:</NoteLine>
+   <NoteLine>addContext(context as HighlightContext): adds the HighlightContext to the contexts array</NoteLine>
+   <NoteLine>Highlight(text as string, style as styledText): highlights the provided text using the provided syledtext object.</NoteLine>
+   <NoteLine>loadFromXml(data as string): loads a HighlightDefinition stored in a xml string</NoteLine>
+   <NoteLine>loadFromXml(data as folderItem): loads a HighlightDefinition stored in a xml file</NoteLine>
+   <NoteLine>saveAsXml(file as folderitem): saves the HighlightDefinition as an xml file.</NoteLine>
+   <NoteLine>&#32;</NoteLine>
+   <NoteLine>Properties:</NoteLine>
+   <NoteLine>CaseSensitive: gets or sets if the contained syntax is case-sensitive</NoteLine>
+   <NoteLine>DefaultColor: gets or sets the default color for the text</NoteLine>
+   <NoteLine>Name: the name of the definition (ie: Xml or REALbasic)</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Open source under the creative commons license.</NoteLine>
+   <NoteLine>Use in whatever way you like... at your own risk :P</NoteLine>
+   <NoteLine>let me know if you find it useful.</NoteLine>
+   <NoteLine>If you decide to use it in your projects, please give me credit in your about window or documentation, thanks.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine></NoteLine>
+  </ItemSource>
+  <ItemFlags>0</ItemFlags>
+ </Note>
+ <Property>
+  <ItemName>Name</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Name As string</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>Name As string</ItemDeclaration>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <SetAccessor>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Set</SourceLine>
+   <SourceLine>_name=value</SourceLine>
+   <SourceLine>End Set</SourceLine>
+  </SetAccessor>
+  <GetAccessor>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Get</SourceLine>
+   <SourceLine>Return _name</SourceLine>
+   <SourceLine>End Get</SourceLine>
+  </GetAccessor>
+ </Property>
+ <Property>
+  <ItemName>_name</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>_name As string</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>_name As string</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>contexts()</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>contexts() As HighlightContext</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>contexts() As HighlightContext</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>scanner</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>scanner As regex</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>scanner As regex</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>_defaultColor</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>_defaultColor As color</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>_defaultColor As color</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>_caseSensitive</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>_caseSensitive As boolean</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>_caseSensitive As boolean</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>CaseSensitive</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>CaseSensitive As boolean</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>CaseSensitive As boolean</ItemDeclaration>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <SetAccessor>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Set</SourceLine>
+   <SourceLine>_caseSensitive=value</SourceLine>
+   <SourceLine>scanner.Options.CaseSensitive=value</SourceLine>
+   <SourceLine>End Set</SourceLine>
+  </SetAccessor>
+  <GetAccessor>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Get</SourceLine>
+   <SourceLine>Return _caseSensitive</SourceLine>
+   <SourceLine>End Get</SourceLine>
+  </GetAccessor>
+ </Property>
+ <Property>
+  <ItemName>DefaultColor</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>DefaultColor As color</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>DefaultColor As color</ItemDeclaration>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <SetAccessor>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Set</SourceLine>
+   <SourceLine>_defaultColor=value</SourceLine>
+   <SourceLine>End Set</SourceLine>
+  </SetAccessor>
+  <GetAccessor>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Get</SourceLine>
+   <SourceLine>Return _defaultColor</SourceLine>
+   <SourceLine>End Get</SourceLine>
+  </GetAccessor>
+ </Property>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <PropertyValue>-2147483648</PropertyValue>
+   <InheritsFrom>Object</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <InheritsFrom>Object</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <InheritsFrom>Object</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <InheritsFrom>Object</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>string</ItemType>
+   <EditorType>MultiLineEditor</EditorType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>caseSensitive</ObjName>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>boolean</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>defaultColor</ObjName>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <PropertyValue>&amp;h000000</PropertyValue>
+   <ItemType>color</ItemType>
+  </ViewProperty>
+ </ViewBehavior>
+ <Constant>
+  <ItemName>version</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemName>version</ItemName>
+  <ItemType>2</ItemType>
+  <ItemDef>1.0</ItemDef>
+  <ItemFlags>0</ItemFlags>
+ </Constant>
+</block>
+<block type="Module" ID="1063843830">
+ <ObjName>HighlightContext</ObjName>
+ <ObjContainerID>78201623</ObjContainerID>
+ <IsClass>1</IsClass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <Method>
+  <ItemName>addSubContext</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub addSubContext(entry as HighlightContext)</SourceLine>
+   <SourceLine>if entry=nil then Return</SourceLine>
+   <SourceLine>subContexts.Append(entry)</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>entry as HighlightContext</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>contextRegEx</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function contextRegEx() As string</SourceLine>
+   <SourceLine>//return the regex pattern for this context</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//if there's a StartRegEx then the pattern is the StartRegEx, the same goes with the EntryRegEx</SourceLine>
+   <SourceLine>if StartRegEx&lt;&gt;"" then Return StartRegEx</SourceLine>
+   <SourceLine>if entryRegEx&lt;&gt;"" then Return entryRegEx</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//else, if there's a cached version of the regex, return it.</SourceLine>
+   <SourceLine>if _contextRegEx&lt;&gt;"" then Return _contextRegEx</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//finally, build the pattern using the keywords, regexes and subcontexts (these are exclusive)</SourceLine>
+   <SourceLine>//check for keywords</SourceLine>
+   <SourceLine>dim keyword as String</SourceLine>
+   <SourceLine>if UBound(keywords)&gt;-1 then</SourceLine>
+   <SourceLine>_contextRegEx="\b("</SourceLine>
+   <SourceLine>for Each keyword in keywords</SourceLine>
+   <SourceLine>_contextRegEx=_contextRegEx+keyword+"|"</SourceLine>
+   <SourceLine>next</SourceLine>
+   <SourceLine>_contextRegEx=Left(_contextRegEx,_contextRegEx.Len-1)+")\b"</SourceLine>
+   <SourceLine>Return _contextRegEx</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//else, check for regexes</SourceLine>
+   <SourceLine>dim aRegEx as String</SourceLine>
+   <SourceLine>if UBound(regexes)&gt;-1 then</SourceLine>
+   <SourceLine>_contextRegEx="("</SourceLine>
+   <SourceLine>for Each aRegEx in regexes</SourceLine>
+   <SourceLine>_contextRegEx=_contextRegEx+aRegEx+"|"</SourceLine>
+   <SourceLine>next</SourceLine>
+   <SourceLine>_contextRegEx=Left(_contextRegEx,_contextRegEx.Len-1)+")"</SourceLine>
+   <SourceLine>Return _contextRegEx</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>_contextRegEx=subContextRegEx</SourceLine>
+   <SourceLine>if _contextRegEx&lt;&gt;"" then Return _contextRegEx</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams></ItemParams>
+  <ItemResult>string</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>addRegEx</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub addRegEx(newRegEx as string)</SourceLine>
+   <SourceLine>if newRegEx="" then Return</SourceLine>
+   <SourceLine>regexes.Append(newRegEx)</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>newRegEx as string</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>highlight</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub highlight(text as string, style as styledText, subExpression as string, position as integer, scanner as regex)</SourceLine>
+   <SourceLine>//Highlight this context</SourceLine>
+   <SourceLine>dim match as RegExMatch</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//if there's a start and end regexes we need to find the EndRegEx</SourceLine>
+   <SourceLine>if StartRegEx.trim&lt;&gt;"" and EndRegEx&lt;&gt;"" then</SourceLine>
+   <SourceLine>//find end...</SourceLine>
+   <SourceLine>scanner.SearchPattern=EndRegEx</SourceLine>
+   <SourceLine>match=scanner.Search</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//find the subExpression</SourceLine>
+   <SourceLine>if match&lt;&gt;nil then</SourceLine>
+   <SourceLine>subExpression=LeftB(text, match.SubExpressionStartB(0)+match.SubExpressionString(0).len)</SourceLine>
+   <SourceLine>subExpression=Right(subExpression, subExpression.Len-position)</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>//no match? then use the rest of the String...</SourceLine>
+   <SourceLine>subExpression=Right(text, text.Len-position)</SourceLine>
+   <SourceLine>scanner.SearchStartPosition=text.Len</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>elseif EntryRegEx&lt;&gt;"" then</SourceLine>
+   <SourceLine>//else check for EntryRegEx</SourceLine>
+   <SourceLine>self.scanner.SearchPattern=EntryRegEx</SourceLine>
+   <SourceLine>match=self.scanner.Search(subExpression)</SourceLine>
+   <SourceLine>if match&lt;&gt;nil then</SourceLine>
+   <SourceLine>subExpression=match.SubExpressionString(1)</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//Highlight subExpression</SourceLine>
+   <SourceLine>Style.TextColor(position, subExpression.Len)=HighlightColor</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>dim entry as HighlightContext</SourceLine>
+   <SourceLine>dim substring as String</SourceLine>
+   <SourceLine>dim start as Integer</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//scan subcontexts</SourceLine>
+   <SourceLine>substring=subContextRegEx</SourceLine>
+   <SourceLine>if substring&lt;&gt;"" then</SourceLine>
+   <SourceLine>self.scanner.SearchPattern=substring</SourceLine>
+   <SourceLine>match=self.scanner.Search(subExpression)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>while match&lt;&gt;nil</SourceLine>
+   <SourceLine>substring=match.SubExpressionString(1)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>start=subExpression.leftb(match.SubExpressionStartB(1)).len</SourceLine>
+   <SourceLine>entry=findSubContextForMatch(substring, subExpression, start)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//forward execution to subcontext... </SourceLine>
+   <SourceLine>if entry&lt;&gt;nil then</SourceLine>
+   <SourceLine>entry.Highlight(subExpression, style, substring, position+start, self.scanner) </SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine>match=self.scanner.Search</SourceLine>
+   <SourceLine>wend</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>text as string, style as styledText, subExpression as string, position as integer, scanner as regex</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Constructor</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Constructor(caseSensitive as boolean)</SourceLine>
+   <SourceLine>//init regex scanner</SourceLine>
+   <SourceLine>scanner=new RegEx</SourceLine>
+   <SourceLine>scanner.Options.DotMatchAll=true</SourceLine>
+   <SourceLine>scanner.Options.CaseSensitive=caseSensitive</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>caseSensitive as boolean</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>subContextRegEx</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function subContextRegEx() As string</SourceLine>
+   <SourceLine>if _subContextRegEx&lt;&gt;"" then Return _subContextRegEx</SourceLine>
+   <SourceLine>dim current as HighlightContext</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//get the regex for the subContexts</SourceLine>
+   <SourceLine>if UBound(subContexts)&gt;-1 then</SourceLine>
+   <SourceLine>_subContextRegEx="("</SourceLine>
+   <SourceLine>for Each current in subContexts</SourceLine>
+   <SourceLine>_subContextRegEx=_subContextRegEx+current.contextRegEx+"|"</SourceLine>
+   <SourceLine>next</SourceLine>
+   <SourceLine>_subContextRegEx=Left(_subContextRegEx,_subContextRegEx.Len-1)+")"</SourceLine>
+   <SourceLine>Return _subContextRegEx</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams></ItemParams>
+  <ItemResult>string</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>findSubContextForMatch</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function findSubContextForMatch(expressionMatch as string, context as string, pos as integer) As HighlightContext</SourceLine>
+   <SourceLine>if UBound(subContexts)&lt;0 then Return nil</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//find the subContext that matches the subexpression in the given search context.</SourceLine>
+   <SourceLine>dim i as Integer</SourceLine>
+   <SourceLine>dim entry as HighlightContext</SourceLine>
+   <SourceLine>dim match as RegExMatch</SourceLine>
+   <SourceLine>dim scanner as new regex</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>for Each entry in subContexts</SourceLine>
+   <SourceLine>scanner.SearchPattern=entry.contextRegEx</SourceLine>
+   <SourceLine>match=scanner.Search(context,pos)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>if match&lt;&gt;nil and match.SubExpressionString(0)=expressionMatch then</SourceLine>
+   <SourceLine>Return entry</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine>next</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return nil</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>expressionMatch as string, context as string, pos as integer</ItemParams>
+  <ItemResult>HighlightContext</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>appendToXMLNode</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub appendToXMLNode(parent as xmlNode, depth as integer = 2)</SourceLine>
+   <SourceLine>//appends this context to the parent xml node</SourceLine>
+   <SourceLine>//this is done to export the syntax definition as an xml file.</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>dim xdoc as XmlDocument</SourceLine>
+   <SourceLine>dim node, context as XmlNode</SourceLine>
+   <SourceLine>dim tmpObj as Variant</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>xdoc = parent.OwnerDocument</SourceLine>
+   <SourceLine>context=parent.AppendChild(xdoc.CreateElement("highlightContext"))</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//name</SourceLine>
+   <SourceLine>context.SetAttribute("name",Name)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//HighlightColor</SourceLine>
+   <SourceLine>tmpObj=HighlightColor</SourceLine>
+   <SourceLine>context.SetAttribute("highlightColor","#"+Hex(tmpObj.IntegerValue))</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//start regex?</SourceLine>
+   <SourceLine>if StartRegEx&lt;&gt;"" then</SourceLine>
+   <SourceLine>node=context.AppendChild(xdoc.CreateElement("startRegEx"))</SourceLine>
+   <SourceLine>node.AppendChild(xdoc.CreateTextNode(StartRegEx))</SourceLine>
+   <SourceLine>IndentNode(node,depth+1)</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//end regex?</SourceLine>
+   <SourceLine>if EndRegEx&lt;&gt;"" then</SourceLine>
+   <SourceLine>node=context.AppendChild(xdoc.CreateElement("endRegEx"))</SourceLine>
+   <SourceLine>node.AppendChild(xdoc.CreateTextNode(EndRegEx))</SourceLine>
+   <SourceLine>IndentNode(node,depth+1)</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//entry regex?</SourceLine>
+   <SourceLine>if EntryRegEx&lt;&gt;"" then</SourceLine>
+   <SourceLine>node=context.AppendChild(xdoc.CreateElement("entryRegEx"))</SourceLine>
+   <SourceLine>node.AppendChild(xdoc.CreateTextNode(EntryRegEx))</SourceLine>
+   <SourceLine>IndentNode(node,depth+1)</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//keywords</SourceLine>
+   <SourceLine>if UBound(keywords)&gt;-1 then</SourceLine>
+   <SourceLine>node=context.AppendChild(xdoc.CreateElement("keywords"))</SourceLine>
+   <SourceLine>dim tmp as String</SourceLine>
+   <SourceLine>dim kw as XmlNode</SourceLine>
+   <SourceLine>for each tmp in keywords</SourceLine>
+   <SourceLine>kw=node.AppendChild(xdoc.CreateElement("string"))</SourceLine>
+   <SourceLine>kw.AppendChild(xdoc.CreateTextNode(tmp))</SourceLine>
+   <SourceLine>IndentNode(kw,depth+2)</SourceLine>
+   <SourceLine>next</SourceLine>
+   <SourceLine>IndentNode(node,depth+1,true)</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//regexes</SourceLine>
+   <SourceLine>if UBound(regexes)&gt;-1 then</SourceLine>
+   <SourceLine>node=context.AppendChild(xdoc.CreateElement("regExes"))</SourceLine>
+   <SourceLine>dim tmp as String</SourceLine>
+   <SourceLine>dim kw as XmlNode</SourceLine>
+   <SourceLine>for each tmp in keywords</SourceLine>
+   <SourceLine>kw=node.AppendChild(xdoc.CreateElement("string"))</SourceLine>
+   <SourceLine>kw.AppendChild(xdoc.CreateTextNode(tmp))</SourceLine>
+   <SourceLine>IndentNode(kw,depth+2)</SourceLine>
+   <SourceLine>next</SourceLine>
+   <SourceLine>IndentNode(node,depth+1,true)</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//finally, subcontexs, if any</SourceLine>
+   <SourceLine>dim subContext as HighlightContext</SourceLine>
+   <SourceLine>for each subContext in subContexts</SourceLine>
+   <SourceLine>subContext.appendToXMLNode(context,depth+1)</SourceLine>
+   <SourceLine>next</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>IndentNode(Context,depth, true)</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>parent as xmlNode, depth as integer = 2</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>IndentNode</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub IndentNode(node As XmlNode, level As Integer, indentCloseTag As Boolean = False)</SourceLine>
+   <SourceLine>Dim i As Integer</SourceLine>
+   <SourceLine>Dim s As String</SourceLine>
+   <SourceLine>s = EndOfLine</SourceLine>
+   <SourceLine>For i = 1 To level</SourceLine>
+   <SourceLine>s = s + Chr(9) // Tab</SourceLine>
+   <SourceLine>Next</SourceLine>
+   <SourceLine>node.Parent.Insert(node.OwnerDocument.CreateTextNode(s), node)</SourceLine>
+   <SourceLine>If indentCloseTag Then</SourceLine>
+   <SourceLine>node.AppendChild(node.OwnerDocument.CreateTextNode(s))</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>node As XmlNode, level As Integer, indentCloseTag As Boolean = False</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>addKeyword</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub addKeyword(keyword as string)</SourceLine>
+   <SourceLine>if keyword="" then Return</SourceLine>
+   <SourceLine>keywords.Append(keyword)</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>keyword as string</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>loadFromXmlNode</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub loadFromXmlNode(node as xmlNode)</SourceLine>
+   <SourceLine>//load context out of an xml node</SourceLine>
+   <SourceLine>dim tmpObj as Variant</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//Highlight color</SourceLine>
+   <SourceLine>Name=node.GetAttribute("name")</SourceLine>
+   <SourceLine>tmpObj = "&amp;h" + node.GetAttribute("highlightColor").Mid(1)</SourceLine>
+   <SourceLine>HighlightColor = tmpObj.ColorValue</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>dim i, j as Integer</SourceLine>
+   <SourceLine>dim subNode as XmlNode</SourceLine>
+   <SourceLine>dim subContext as HighlightContext</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>for i=0 to node.ChildCount-1</SourceLine>
+   <SourceLine>subNode=node.Child(i)</SourceLine>
+   <SourceLine>select case subNode.Name</SourceLine>
+   <SourceLine>case "startRegEx"</SourceLine>
+   <SourceLine>StartRegEx=subNode.FirstChild.Value</SourceLine>
+   <SourceLine>case "endRegEx"</SourceLine>
+   <SourceLine>EndRegEx=subNode.FirstChild.Value</SourceLine>
+   <SourceLine>case "entryRegEx"</SourceLine>
+   <SourceLine>EntryRegEx=subNode.FirstChild.Value</SourceLine>
+   <SourceLine>case "keywords"</SourceLine>
+   <SourceLine>for j=0 to subNode.ChildCount-1</SourceLine>
+   <SourceLine>addKeyword(subNode.Child(j).FirstChild.Value)</SourceLine>
+   <SourceLine>next</SourceLine>
+   <SourceLine>case "regExes"</SourceLine>
+   <SourceLine>for j=0 to subNode.ChildCount-1</SourceLine>
+   <SourceLine>addRegEx(subNode.Child(j).FirstChild.Value)</SourceLine>
+   <SourceLine>next</SourceLine>
+   <SourceLine>case "highlightContext"</SourceLine>
+   <SourceLine>subContext=new HighlightContext(scanner.Options.CaseSensitive)</SourceLine>
+   <SourceLine>subContext.loadFromXmlNode(subNode)</SourceLine>
+   <SourceLine>addSubContext(subContext)</SourceLine>
+   <SourceLine>end select</SourceLine>
+   <SourceLine>next</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>node as xmlNode</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Note>
+  <ItemName>About</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <NoteLine>About</NoteLine>
+   <NoteLine>Info</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>HighlightContext</NoteLine>
+   <NoteLine>By Alex Restrepo</NoteLine>
+   <NoteLine>send comments, suggestions, fixes to alexrestrepo@mac.com</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>A little experiment on SyntaxHighlighting</NoteLine>
+   <NoteLine>Contains the rules of how to Highlight a Context within a HighlightDefinition</NoteLine>
+   <NoteLine>A context is composed of ONE of the following:</NoteLine>
+   <NoteLine>- a start and end regexes, everything inside the start and end regexes is part of the context, this is a full match regex (subexpression 0)</NoteLine>
+   <NoteLine>- an EntryRegEx, specifies the regular expression to match the whole context (ie: an html tag), the first subexpression of the expression is used (subexpression 1)</NoteLine>
+   <NoteLine>- keywords, one or more keywords that need to be Highlighted, you can have multiple keyword contexts with different highlight colors. (array of strings)</NoteLine>
+   <NoteLine>- regexes, one or more regular expressions that define variations of the same context (ie: in java #include or #package), subexpression 1 is used for each entry.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Methods:</NoteLine>
+   <NoteLine>addKeyword(keyword as String): adds the keyword to the keywords array</NoteLine>
+   <NoteLine>addRegEx(newRegEx as String): adds the newRegEx to the regexes array</NoteLine>
+   <NoteLine>addSubContext(context as HighlightContext): adds the context as a subcontext of this one, for example: properties within xml tags</NoteLine>
+   <NoteLine>appendToXMLNode(parent as xmlNode, depth as integer = 2): appends this context to the parent xml node as an xml node, this is done when exporting the parent definition as an xml.</NoteLine>
+   <NoteLine>Constructor(caseSensitive as Boolean): the constructor sets the case sensitiviness of the context.</NoteLine>
+   <NoteLine>contextRegEx as string: returns the composed regular expression with all the contents of the context, if the context has StartRegEx and EndRegEx, the contextRegEx is the StartRegEx</NoteLine>
+   <NoteLine>Highlight(text as string, style as styledText, subExpression as string, position as integer, scanner as regex): Highlights the subexpression, text is the text of the parent context, position is the position of the first character of the subexpression in the context.</NoteLine>
+   <NoteLine>loadFromXmlNode(node as XmlNode): loads the context from the xmlNode.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Properties:</NoteLine>
+   <NoteLine>StartRegEx: the regular expression that defines the start of the context (ie: in java, /* for multiline comments)</NoteLine>
+   <NoteLine>EndRegEx: the regular expression that marks the end of the context (ie: */)</NoteLine>
+   <NoteLine>EntryRegEx: the regular expression that defines the context, ie: an xml tag: (&lt;[^&gt;]*&gt;)</NoteLine>
+   <NoteLine>HighlightColor: the HighlightColor for the context</NoteLine>
+   <NoteLine>Name: the name of the Context, ie: "Tags"</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Open source under the creative commons license.</NoteLine>
+   <NoteLine>Use in whatever way you like... at your own risk :P</NoteLine>
+   <NoteLine>let me know if you find it useful.</NoteLine>
+   <NoteLine>If you decide to use it in your projects, please give me credit in your about window or documentation, thanks.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine></NoteLine>
+  </ItemSource>
+  <ItemFlags>0</ItemFlags>
+ </Note>
+ <Property>
+  <ItemName>Name</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Name As string</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>Name As string</ItemDeclaration>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <SetAccessor>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Set</SourceLine>
+   <SourceLine>_name=value</SourceLine>
+   <SourceLine>End Set</SourceLine>
+  </SetAccessor>
+  <GetAccessor>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Get</SourceLine>
+   <SourceLine>Return _name</SourceLine>
+   <SourceLine>End Get</SourceLine>
+  </GetAccessor>
+ </Property>
+ <Property>
+  <ItemName>HighlightColor</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>HighlightColor As color</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>HighlightColor As color</ItemDeclaration>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <SetAccessor>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Set</SourceLine>
+   <SourceLine>_color=value</SourceLine>
+   <SourceLine>End Set</SourceLine>
+  </SetAccessor>
+  <GetAccessor>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Get</SourceLine>
+   <SourceLine>Return _color</SourceLine>
+   <SourceLine>End Get</SourceLine>
+  </GetAccessor>
+ </Property>
+ <Property>
+  <ItemName>_color</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>_color As color</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>_color As color = &amp;c000000</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>_name</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>_name As string</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>_name As string</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>subContexts()</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>subContexts() As HighlightContext</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>subContexts() As HighlightContext</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>_startRegex</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>_startRegex As string</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>_startRegex As string</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>_endRegex</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>_endRegex As string</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>_endRegex As string</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>StartRegEx</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>StartRegEx As string</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>StartRegEx As string</ItemDeclaration>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <SetAccessor>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Set</SourceLine>
+   <SourceLine>_startregex=value</SourceLine>
+   <SourceLine>End Set</SourceLine>
+  </SetAccessor>
+  <GetAccessor>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Get</SourceLine>
+   <SourceLine>Return _startregex</SourceLine>
+   <SourceLine>End Get</SourceLine>
+  </GetAccessor>
+ </Property>
+ <Property>
+  <ItemName>EndRegEx</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>EndRegEx As string</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>EndRegEx As string</ItemDeclaration>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <SetAccessor>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Set</SourceLine>
+   <SourceLine>_endregex=value</SourceLine>
+   <SourceLine>End Set</SourceLine>
+  </SetAccessor>
+  <GetAccessor>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Get</SourceLine>
+   <SourceLine>return _endregex</SourceLine>
+   <SourceLine>End Get</SourceLine>
+  </GetAccessor>
+ </Property>
+ <Property>
+  <ItemName>keywords()</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>keywords() As string</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>keywords() As string</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>regexes()</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>regexes() As string</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>regexes() As string</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>EntryRegEx</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>EntryRegEx As string</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>EntryRegEx As string</ItemDeclaration>
+  <ItemFlags>0</ItemFlags>
+  <Shared>0</Shared>
+  <SetAccessor>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Set</SourceLine>
+   <SourceLine>_entryRegEx=value</SourceLine>
+   <SourceLine>End Set</SourceLine>
+  </SetAccessor>
+  <GetAccessor>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Get</SourceLine>
+   <SourceLine>Return _entryRegEx</SourceLine>
+   <SourceLine>End Get</SourceLine>
+  </GetAccessor>
+ </Property>
+ <Property>
+  <ItemName>_entryRegEx</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>_entryRegEx As string</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>_entryRegEx As string</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>scanner</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>scanner As regex</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>scanner As regex</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>_subContextRegEx</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>_subContextRegEx As string</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>_subContextRegEx As string</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <Property>
+  <ItemName>_contextRegEx</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>_contextRegEx As string</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>_contextRegEx As string</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+ </Property>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <PropertyValue>-2147483648</PropertyValue>
+   <InheritsFrom>Object</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <InheritsFrom>Object</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <InheritsFrom>Object</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <InheritsFrom>Object</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>string</ItemType>
+   <EditorType>MultiLineEditor</EditorType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>HighlightColor</ObjName>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <PropertyValue>&amp;h000000</PropertyValue>
+   <ItemType>color</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>StartRegEx</ObjName>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <ItemType>string</ItemType>
+   <EditorType>MultiLineEditor</EditorType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>EndRegEx</ObjName>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <ItemType>string</ItemType>
+   <EditorType>MultiLineEditor</EditorType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>entryRegEx</ObjName>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <ItemType>string</ItemType>
+   <EditorType>MultiLineEditor</EditorType>
+  </ViewProperty>
+ </ViewBehavior>
+</block>
 <block type="UIState" ID="0">
  <WindowState>
   <OpenTab>
@@ -5248,42 +7499,28 @@
    <ProjectListColumnSortDirection>1</ProjectListColumnSortDirection>
   </OpenTab>
   <OpenTab>
-   <ObjContainerID>1442849415</ObjContainerID>
-   <LeftSplitter>138</LeftSplitter>
-   <RightSplitter>172</RightSplitter>
-   <ScrollX>0</ScrollX>
-   <ScrollY>0</ScrollY>
-   <LastPositionH>64</LastPositionH>
-   <LastPositionV>64</LastPositionV>
-  </OpenTab>
-  <OpenTab>
-   <ObjContainerID>1442849415</ObjContainerID>
+   <ObjContainerID>436737850</ObjContainerID>
    <AlternateEditorID>1</AlternateEditorID>
    <LeftSplitter>160</LeftSplitter>
    <EmptyEventState>0</EmptyEventState>
    <CodeItemID>0</CodeItemID>
   </OpenTab>
   <OpenTab>
-   <ObjContainerID>981196654</ObjContainerID>
-   <LeftSplitter>138</LeftSplitter>
-   <RightSplitter>172</RightSplitter>
-   <ScrollX>0</ScrollX>
-   <ScrollY>0</ScrollY>
-   <LastPositionH>64</LastPositionH>
-   <LastPositionV>64</LastPositionV>
-   <Control>0</Control>
-  </OpenTab>
-  <OpenTab>
-   <ObjContainerID>981196654</ObjContainerID>
+   <ObjContainerID>1045599458</ObjContainerID>
    <AlternateEditorID>1</AlternateEditorID>
    <LeftSplitter>160</LeftSplitter>
    <EmptyEventState>0</EmptyEventState>
    <CodeItemID>0</CodeItemID>
   </OpenTab>
   <OpenTab>
+   <ObjContainerID>102461358</ObjContainerID>
+   <AlternateEditorID>1</AlternateEditorID>
+   <LeftSplitter>160</LeftSplitter>
+   <EmptyEventState>0</EmptyEventState>
+   <CodeItemID>0</CodeItemID>
   </OpenTab>
-  <LastLocation>Window_XsltTemplates.Listbox_TemplateList.Open</LastLocation>
-  <EditBounds><Rect left="0" top="42" width="1280" height="754"/></EditBounds>
+  <LastLocation>SyntaxHighlightEditField.Open</LastLocation>
+  <EditBounds><Rect left="-1920" top="-84" width="1920" height="1058"/></EditBounds>
  </WindowState>
 </block>
 </RBProject>
