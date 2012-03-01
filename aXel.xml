@@ -648,67 +648,6 @@
   </ItemSource>
  </HookInstance>
  <Method>
-  <ItemName>OpenFileViaDialog</ItemName>
-  <Compatibility></Compatibility>
-  <Visible>1</Visible>
-  <ItemSource>
-   <TextEncoding>134217984</TextEncoding>
-   <SourceLine>Sub OpenFileViaDialog(outputList As TextArea, outputLabel As Label, validFileTypes As FileType)</SourceLine>
-   <SourceLine>dim xmlRawFile As FolderItem</SourceLine>
-   <SourceLine>dim xmlInputStream as TextInputStream</SourceLine>
-   <SourceLine>dim xmlCode as String</SourceLine>
-   <SourceLine></SourceLine>
-   <SourceLine>xmlRawFile = GetOpenFolderItem(validFileTypes)</SourceLine>
-   <SourceLine></SourceLine>
-   <SourceLine>If xmlRawFile &lt;&gt; Nil Then</SourceLine>
-   <SourceLine>// Open an input stream to the XML file and read its contents</SourceLine>
-   <SourceLine>xmlInputStream = xmlRawFile.OpenAsTextFile</SourceLine>
-   <SourceLine>xmlCode = xmlInputStream.ReadAll</SourceLine>
-   <SourceLine></SourceLine>
-   <SourceLine>// Populate the correct TextArea with the read XML, update the</SourceLine>
-   <SourceLine>// labeling and close the input stream</SourceLine>
-   <SourceLine>outputList.Text = xmlCode</SourceLine>
-   <SourceLine>outputLabel.Text = xmlRawFile.Name</SourceLine>
-   <SourceLine>xmlInputStream.Close</SourceLine>
-   <SourceLine>End If</SourceLine>
-   <SourceLine>End Sub</SourceLine>
-  </ItemSource>
-  <TextEncoding>134217984</TextEncoding>
-  <AliasName></AliasName>
-  <ItemFlags>0</ItemFlags>
-  <Shared>0</Shared>
-  <ItemParams>outputList As TextArea, outputLabel As Label, validFileTypes As FileType</ItemParams>
-  <ItemResult></ItemResult>
- </Method>
- <Method>
-  <ItemName>SaveFileViaDialog</ItemName>
-  <Compatibility></Compatibility>
-  <Visible>1</Visible>
-  <ItemSource>
-   <TextEncoding>134217984</TextEncoding>
-   <SourceLine>Sub SaveFileViaDialog(textToSave As String, defaultFilename As String)</SourceLine>
-   <SourceLine>dim folder as FolderItem</SourceLine>
-   <SourceLine>dim xmlDocument as XmlDocument</SourceLine>
-   <SourceLine></SourceLine>
-   <SourceLine>// Allow the user to choose a save location</SourceLine>
-   <SourceLine>folder = GetSaveFolderItem(FileTypes_XmlFiletypes.TextXml, defaultFilename)</SourceLine>
-   <SourceLine></SourceLine>
-   <SourceLine>// If a valid location is chosen, save the XML document to it</SourceLine>
-   <SourceLine>If folder &lt;&gt; Nil Then</SourceLine>
-   <SourceLine>xmlDocument = New XmlDocument</SourceLine>
-   <SourceLine>xmlDocument.LoadXml(textToSave)</SourceLine>
-   <SourceLine>xmlDocument.SaveXml(folder)</SourceLine>
-   <SourceLine>End If</SourceLine>
-   <SourceLine>End Sub</SourceLine>
-  </ItemSource>
-  <TextEncoding>134217984</TextEncoding>
-  <AliasName></AliasName>
-  <ItemFlags>0</ItemFlags>
-  <Shared>0</Shared>
-  <ItemParams>textToSave As String, defaultFilename As String</ItemParams>
-  <ItemResult></ItemResult>
- </Method>
- <Method>
   <ItemName>TidyXml</ItemName>
   <Compatibility></Compatibility>
   <Visible>1</Visible>
@@ -2957,34 +2896,6 @@
     <SourceLine>End Sub</SourceLine>
    </ItemSource>
   </HookInstance>
-  <HookInstance>
-   <ItemName>EnableMenuItems</ItemName>
-   <Compatibility></Compatibility>
-   <Visible>1</Visible>
-   <ItemSource>
-    <TextEncoding>134217984</TextEncoding>
-    <SourceLine>Sub EnableMenuItems()</SourceLine>
-    <SourceLine>If Container_XmlInput.TextArea_Input.Text &lt;&gt; "" Then</SourceLine>
-    <SourceLine>if Container_XslInput.TextArea_Input.Text &lt;&gt; "" Then</SourceLine>
-    <SourceLine>FileSaveXSLT.Enable</SourceLine>
-    <SourceLine>ToolsTidyXSL.Enable</SourceLine>
-    <SourceLine>FileTransform.Enable</SourceLine>
-    <SourceLine>End If</SourceLine>
-    <SourceLine></SourceLine>
-    <SourceLine>FileSaveXML.Enable</SourceLine>
-    <SourceLine>ToolsTidyXML.Enable</SourceLine>
-    <SourceLine>ElseIf Container_XslInput.TextArea_Input.Text &lt;&gt; "" Then</SourceLine>
-    <SourceLine>FileSaveXSLT.Enable</SourceLine>
-    <SourceLine>ToolsTidyXSL.Enable</SourceLine>
-    <SourceLine>End If</SourceLine>
-    <SourceLine></SourceLine>
-    <SourceLine>If TextArea_Output.Text &lt;&gt; "" Then</SourceLine>
-    <SourceLine>FileSaveOutput.Enable</SourceLine>
-    <SourceLine>ToolsTidyOutput.Enable</SourceLine>
-    <SourceLine>End If</SourceLine>
-    <SourceLine>End Sub</SourceLine>
-   </ItemSource>
-  </HookInstance>
  </ControlBehavior>
  <ControlBehavior>
   <Superclass>Container_TextAreaAndLabel</Superclass>
@@ -3508,6 +3419,8 @@
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Sub Open()</SourceLine>
+   <SourceLine>// When the window opens, populate the Listbox with</SourceLine>
+   <SourceLine>// all XSLT templates saved in the DB</SourceLine>
    <SourceLine>Me.PopulateXsltTemplates()</SourceLine>
    <SourceLine>End Sub</SourceLine>
   </ItemSource>
@@ -3519,9 +3432,10 @@
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Sub PopulateXsltTemplates()</SourceLine>
-   <SourceLine>dim sql As String</SourceLine>
-   <SourceLine>dim rs As RecordSet</SourceLine>
+   <SourceLine>dim sql as string</SourceLine>
+   <SourceLine>dim rs as RecordSet</SourceLine>
    <SourceLine></SourceLine>
+   <SourceLine>// Select all templates from the DB and insert them into the Listbox</SourceLine>
    <SourceLine>sql = "SELECT title, description, transform FROM xslt_template"</SourceLine>
    <SourceLine>rs = App.MainDB.SQLSelect(sql)</SourceLine>
    <SourceLine>App.PopulateListbox(Listbox_TemplateList, rs)</SourceLine>
@@ -3803,6 +3717,7 @@
    <ItemSource>
     <TextEncoding>134217984</TextEncoding>
     <SourceLine>Sub Open()</SourceLine>
+    <SourceLine>// When opening this Listbox, set the header values</SourceLine>
     <SourceLine>Me.Heading(0) = "Template Name"</SourceLine>
     <SourceLine>Me.Heading(1) = "Template Description"</SourceLine>
     <SourceLine>Me.Heading(2) = "XSLT"</SourceLine>
@@ -3817,9 +3732,9 @@
     <TextEncoding>134217984</TextEncoding>
     <SourceLine>Sub Change()</SourceLine>
     <SourceLine>// Enable the "Load" button only when we've selected a row</SourceLine>
-    <SourceLine>If Listbox_TemplateList.ListIndex &lt;&gt; -1 Then</SourceLine>
-    <SourceLine>Button_Load.Enabled = True</SourceLine>
-    <SourceLine>End If</SourceLine>
+    <SourceLine>if Listbox_TemplateList.ListIndex &gt; 0 then</SourceLine>
+    <SourceLine>Button_Load.Enabled = true</SourceLine>
+    <SourceLine>end if</SourceLine>
     <SourceLine></SourceLine>
     <SourceLine>End Sub</SourceLine>
    </ItemSource>
@@ -3834,6 +3749,7 @@
    <ItemSource>
     <TextEncoding>134217984</TextEncoding>
     <SourceLine>Sub Action()</SourceLine>
+    <SourceLine>// Close the modal window</SourceLine>
     <SourceLine>Me.Window.Close</SourceLine>
     <SourceLine>End Sub</SourceLine>
    </ItemSource>
@@ -3848,10 +3764,9 @@
    <ItemSource>
     <TextEncoding>134217984</TextEncoding>
     <SourceLine>Sub Action()</SourceLine>
-    <SourceLine>dim xslToLoad As String = Listbox_TemplateList.Cell(Listbox_TemplateList.ListIndex, 2)</SourceLine>
-    <SourceLine>dim textAreaToPopulate As TextArea = Window_Main.Container_InputXmlXsl.Container_XslInput.TextArea_Input</SourceLine>
-    <SourceLine></SourceLine>
     <SourceLine>// Populate the XSLT TextArea with the selected XSLT</SourceLine>
+    <SourceLine>dim xslToLoad as String = Listbox_TemplateList.Cell(Listbox_TemplateList.ListIndex, 2)</SourceLine>
+    <SourceLine>dim textAreaToPopulate as TextArea = Window_Main.Container_InputXmlXsl.Container_XslInput.TextArea_Input</SourceLine>
     <SourceLine>textAreaToPopulate.Text = App.TidyXml(xslToLoad)</SourceLine>
     <SourceLine></SourceLine>
     <SourceLine>// Close the modal window</SourceLine>
@@ -3869,6 +3784,8 @@
    <ItemSource>
     <TextEncoding>134217984</TextEncoding>
     <SourceLine>Sub Action()</SourceLine>
+    <SourceLine>// Show the modal window that allows</SourceLine>
+    <SourceLine>// the user to import XSLT templates</SourceLine>
     <SourceLine>Window_ImportXsl.Show()</SourceLine>
     <SourceLine>End Sub</SourceLine>
    </ItemSource>
@@ -4045,6 +3962,34 @@
  <ItemFlags>1</ItemFlags>
  <IsInterface>0</IsInterface>
  <Compatibility></Compatibility>
+ <HookInstance>
+  <ItemName>EnableMenuItems</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub EnableMenuItems()</SourceLine>
+   <SourceLine>If Container_InputXmlXsl.Container_XmlInput.TextArea_Input.Text &lt;&gt; "" Then</SourceLine>
+   <SourceLine>if Container_InputXmlXsl.Container_XslInput.TextArea_Input.Text &lt;&gt; "" Then</SourceLine>
+   <SourceLine>FileSaveXSLT.Enable</SourceLine>
+   <SourceLine>ToolsTidyXSL.Enable</SourceLine>
+   <SourceLine>FileTransform.Enable</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>FileSaveXML.Enable</SourceLine>
+   <SourceLine>ToolsTidyXML.Enable</SourceLine>
+   <SourceLine>ElseIf Container_InputXmlXsl.Container_XslInput.TextArea_Input.Text &lt;&gt; "" Then</SourceLine>
+   <SourceLine>FileSaveXSLT.Enable</SourceLine>
+   <SourceLine>ToolsTidyXSL.Enable</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If Container_InputXmlXsl.TextArea_Output.Text &lt;&gt; "" Then</SourceLine>
+   <SourceLine>FileSaveOutput.Enable</SourceLine>
+   <SourceLine>ToolsTidyOutput.Enable</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+ </HookInstance>
  <MenuHandler>
   <ItemName>FileTransform</ItemName>
   <Compatibility></Compatibility>
@@ -4052,13 +3997,9 @@
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Function FileTransform() As Boolean</SourceLine>
-   <SourceLine>// Create a new XML document, load the sourced XML into it,</SourceLine>
-   <SourceLine>// and run the provided XSLT against it</SourceLine>
-   <SourceLine>dim xmlDoc As XmlDocument = New XmlDocument</SourceLine>
-   <SourceLine>xmlDoc.LoadXml(Container_InputXmlXsl.Container_XmlInput.TextArea_Input.Text)</SourceLine>
-   <SourceLine>Container_InputXmlXsl.TextArea_Output.Text = xmlDoc.Transform(Container_InputXmlXsl.Container_XslInput.TextArea_Input.Text)</SourceLine>
-   <SourceLine></SourceLine>
-   <SourceLine>Return True</SourceLine>
+   <SourceLine>// Transform the input XML using the input XSL</SourceLine>
+   <SourceLine>TransformData()</SourceLine>
+   <SourceLine>return true</SourceLine>
    <SourceLine>End Function</SourceLine>
   </ItemSource>
  </MenuHandler>
@@ -4069,10 +4010,13 @@
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Function ToolsTidyXML() As Boolean</SourceLine>
-   <SourceLine>dim textAreaToTidy As TextArea = Container_InputXmlXsl.Container_XmlInput.TextArea_Input</SourceLine>
+   <SourceLine>// Tidy the XML in the XML input window</SourceLine>
+   <SourceLine>dim textAreaToTidy as TextArea = Container_InputXmlXsl.Container_XmlInput.TextArea_Input</SourceLine>
    <SourceLine></SourceLine>
+   <SourceLine>if textAreaToTidy.Text &lt;&gt; "" then</SourceLine>
    <SourceLine>textAreaToTidy.Text = App.TidyXml(textAreaToTidy.Text)</SourceLine>
-   <SourceLine>Return True</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine>return true</SourceLine>
    <SourceLine>End Function</SourceLine>
   </ItemSource>
  </MenuHandler>
@@ -4083,10 +4027,13 @@
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Function ToolsTidyXSL() As Boolean</SourceLine>
-   <SourceLine>dim textAreaToTidy As TextArea = Container_InputXmlXsl.Container_XslInput.TextArea_Input</SourceLine>
+   <SourceLine>// Tidy the XML in the XSL input window</SourceLine>
+   <SourceLine>dim textAreaToTidy as TextArea = Container_InputXmlXsl.Container_XslInput.TextArea_Input</SourceLine>
    <SourceLine></SourceLine>
+   <SourceLine>if textAreaToTidy.Text &lt;&gt; "" then</SourceLine>
    <SourceLine>textAreaToTidy.Text = App.TidyXml(textAreaToTidy.Text)</SourceLine>
-   <SourceLine>Return True</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine>return true</SourceLine>
    <SourceLine>End Function</SourceLine>
   </ItemSource>
  </MenuHandler>
@@ -4097,11 +4044,7 @@
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Function FileOpenXML() As Boolean</SourceLine>
-   <SourceLine>dim input As TextArea = Container_InputXmlXsl.Container_XmlInput.TextArea_Input</SourceLine>
-   <SourceLine>dim labelValue As Label = Container_InputXmlXsl.Container_XmlInput.Label_Value</SourceLine>
-   <SourceLine>dim xmlFiletypes As FileType = FileTypes_XmlFiletypes.TextXml</SourceLine>
-   <SourceLine></SourceLine>
-   <SourceLine>App.OpenFileViaDialog(input, labelValue, xmlFiletypes)</SourceLine>
+   <SourceLine>Me.OpenXmlFile()</SourceLine>
    <SourceLine>Return True</SourceLine>
    <SourceLine>End Function</SourceLine>
   </ItemSource>
@@ -4113,11 +4056,7 @@
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Function FileOpenXSLT() As Boolean</SourceLine>
-   <SourceLine>dim input As TextArea = Container_InputXmlXsl.Container_XslInput.TextArea_Input</SourceLine>
-   <SourceLine>dim labelValue As Label = Container_InputXmlXsl.Container_XslInput.Label_Value</SourceLine>
-   <SourceLine>dim xmlFiletypes As FileType = FileTypes_XmlFiletypes.TextXml</SourceLine>
-   <SourceLine></SourceLine>
-   <SourceLine>App.OpenFileViaDialog(input, labelValue, xmlFiletypes)</SourceLine>
+   <SourceLine>Me.OpenXsltFile()</SourceLine>
    <SourceLine>Return True</SourceLine>
    <SourceLine>End Function</SourceLine>
   </ItemSource>
@@ -4129,10 +4068,13 @@
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Function ToolsTidyOutput() As Boolean</SourceLine>
-   <SourceLine>dim textAreaToTidy As TextArea = Container_InputXmlXsl.TextArea_Output</SourceLine>
+   <SourceLine>// Tidy the XML in the output window</SourceLine>
+   <SourceLine>dim textAreaToTidy as TextArea = Container_InputXmlXsl.TextArea_Output</SourceLine>
    <SourceLine></SourceLine>
+   <SourceLine>if textAreaToTidy.Text &lt;&gt; "" then</SourceLine>
    <SourceLine>textAreaToTidy.Text = App.TidyXml(textAreaToTidy.Text)</SourceLine>
-   <SourceLine>Return True</SourceLine>
+   <SourceLine>end if</SourceLine>
+   <SourceLine>return true</SourceLine>
    <SourceLine>End Function</SourceLine>
   </ItemSource>
  </MenuHandler>
@@ -4143,8 +4085,8 @@
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Function FileSaveXML() As Boolean</SourceLine>
-   <SourceLine>App.SaveFileViaDialog(Container_InputXmlXsl.Container_XmlInput.TextArea_Input.Text, "Source XML.xml")</SourceLine>
-   <SourceLine>Return True</SourceLine>
+   <SourceLine>SaveXmlFile()</SourceLine>
+   <SourceLine>return true</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>End Function</SourceLine>
   </ItemSource>
@@ -4156,7 +4098,8 @@
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Function FileSaveXSLT() As Boolean</SourceLine>
-   <SourceLine>App.SaveFileViaDialog(Container_InputXmlXsl.Container_XslInput.TextArea_Input.Text, "Source XSTL.xsl")</SourceLine>
+   <SourceLine>// Save the text in the specified TextArea to a file</SourceLine>
+   <SourceLine>SaveXsltFile()</SourceLine>
    <SourceLine>Return True</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>End Function</SourceLine>
@@ -4169,8 +4112,13 @@
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Function FileSaveOutput() As Boolean</SourceLine>
-   <SourceLine>App.SaveFileViaDialog(Container_InputXmlXsl.TextArea_Output.Text, "Output.xml")</SourceLine>
-   <SourceLine>Return True</SourceLine>
+   <SourceLine>// Save the text in the specified TextArea to a file</SourceLine>
+   <SourceLine>dim outputTextArea as TextArea = Container_InputXmlXsl.TextArea_Output</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If outputTextArea.Text &lt;&gt; "" then</SourceLine>
+   <SourceLine>Me._SaveTextToXmlFile(Container_InputXmlXsl.TextArea_Output.Text, "Output.xml")</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>return true</SourceLine>
    <SourceLine>End Function</SourceLine>
   </ItemSource>
  </MenuHandler>
@@ -4181,6 +4129,7 @@
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Function FileQuit() As Boolean</SourceLine>
+   <SourceLine>// Quit the program</SourceLine>
    <SourceLine>Quit</SourceLine>
    <SourceLine>Return True</SourceLine>
    <SourceLine></SourceLine>
@@ -4194,12 +4143,189 @@
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Function ToolsLoadXSLT() As Boolean</SourceLine>
+   <SourceLine>// Show the modal window to load XSLT templates</SourceLine>
    <SourceLine>Window_XSLTTemplates.Show()</SourceLine>
-   <SourceLine>Return True</SourceLine>
+   <SourceLine>return true</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>End Function</SourceLine>
   </ItemSource>
  </MenuHandler>
+ <Method>
+  <ItemName>_OpenFileViaDialog</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub _OpenFileViaDialog(textAreaToPopulate As TextArea, labelToUpdate As Label, validFileTypes As FileType)</SourceLine>
+   <SourceLine>dim xmlRawFile As FolderItem</SourceLine>
+   <SourceLine>dim xmlInputStream as TextInputStream</SourceLine>
+   <SourceLine>dim xmlCode as String</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>xmlRawFile = GetOpenFolderItem(validFileTypes)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If xmlRawFile &lt;&gt; Nil Then</SourceLine>
+   <SourceLine>// Open an input stream to the XML file and read its contents</SourceLine>
+   <SourceLine>xmlInputStream = xmlRawFile.OpenAsTextFile</SourceLine>
+   <SourceLine>xmlCode = xmlInputStream.ReadAll</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// Populate the correct TextArea with the read XML, update the</SourceLine>
+   <SourceLine>// labeling and close the input stream</SourceLine>
+   <SourceLine>textAreaToPopulate.Text = xmlCode</SourceLine>
+   <SourceLine>labelToUpdate.Text = xmlRawFile.Name</SourceLine>
+   <SourceLine>xmlInputStream.Close</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>textAreaToPopulate As TextArea, labelToUpdate As Label, validFileTypes As FileType</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>_SaveTextToXmlFile</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub _SaveTextToXmlFile(textToSave As String, defaultFilename As String)</SourceLine>
+   <SourceLine>Dim folder As FolderItem</SourceLine>
+   <SourceLine>Dim xmlDocument As XmlDocument</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If textToSave &lt;&gt; "" Then</SourceLine>
+   <SourceLine>// Allow the user to choose a save location</SourceLine>
+   <SourceLine>folder = GetSaveFolderItem(FileTypes_XmlFiletypes.TextXml, defaultFilename)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// If a valid location is chosen, save the XML document to it</SourceLine>
+   <SourceLine>If folder &lt;&gt; Nil Then</SourceLine>
+   <SourceLine>xmlDocument = New XmlDocument</SourceLine>
+   <SourceLine>xmlDocument.LoadXml(textToSave)</SourceLine>
+   <SourceLine>xmlDocument.SaveXml(folder)</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>MsgBox "No data to save..."</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams>textToSave As String, defaultFilename As String</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>OpenXmlFile</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub OpenXmlFile()</SourceLine>
+   <SourceLine>// Define the input area, the label to affect, and the filetypes</SourceLine>
+   <SourceLine>dim input as TextArea = Container_InputXmlXsl.Container_XmlInput.TextArea_Input</SourceLine>
+   <SourceLine>dim labelValue as Label = Container_InputXmlXsl.Container_XmlInput.Label_Value</SourceLine>
+   <SourceLine>dim xmlFiletypes as FileType = FileTypes_XmlFiletypes.TextXml</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// Prompt the user to open a file and use its values</SourceLine>
+   <SourceLine>Me._OpenFileViaDialog(input, labelValue, xmlFiletypes)</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams></ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>OpenXsltFile</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub OpenXsltFile()</SourceLine>
+   <SourceLine>// Define the input area, the label to affect, and the filetypes</SourceLine>
+   <SourceLine>dim input as TextArea = Container_InputXmlXsl.Container_XslInput.TextArea_Input</SourceLine>
+   <SourceLine>dim labelValue as Label = Container_InputXmlXsl.Container_XslInput.Label_Value</SourceLine>
+   <SourceLine>dim xmlFiletypes as FileType = FileTypes_XmlFiletypes.TextXml</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// Prompt the user to open a file and use its values</SourceLine>
+   <SourceLine>Me._OpenFileViaDialog(input, labelValue, xmlFiletypes)</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams></ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>SaveXmlFile</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub SaveXmlFile()</SourceLine>
+   <SourceLine>// Save the text in the specified TextArea to a file</SourceLine>
+   <SourceLine>Me._SaveTextToXmlFile(Container_InputXmlXsl.Container_XmlInput.TextArea_Input.Text, "Source XML.xml")</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams></ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>SaveXsltFile</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub SaveXsltFile()</SourceLine>
+   <SourceLine>// Save the text in the specified TextArea to a file</SourceLine>
+   <SourceLine>Me._SaveTextToXmlFile(Container_InputXmlXsl.Container_XslInput.TextArea_Input.Text, "Source XSL.xml")</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams></ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>TransformData</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub TransformData()</SourceLine>
+   <SourceLine>// Create a new XML document, load the sourced XML into it,</SourceLine>
+   <SourceLine>// and run the provided XSLT against it</SourceLine>
+   <SourceLine>Dim xmlDoc As XmlDocument = New XmlDocument</SourceLine>
+   <SourceLine>Dim xmlTextArea As TextArea = Container_InputXmlXsl.Container_XmlInput.TextArea_Input</SourceLine>
+   <SourceLine>Dim xslTextArea As TextArea = Container_InputXmlXsl.Container_XslInput.TextArea_Input</SourceLine>
+   <SourceLine>Dim outputTextArea As TextArea = Container_InputXmlXsl.TextArea_Output</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If xmlTextArea.Text &lt;&gt; "" and xslTextArea.Text &lt;&gt; "" Then</SourceLine>
+   <SourceLine>xmlDoc.LoadXml(xmlTextArea.Text)</SourceLine>
+   <SourceLine>outputTextArea.Text = xmlDoc.Transform(xslTextArea.Text)</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>MsgBox "No data to transform..."</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <Shared>0</Shared>
+  <ItemParams></ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
  <PropertyVal Name="ImplicitInstance">True</PropertyVal>
  <PropertyVal Name="MenuBar">258881810</PropertyVal>
  <PropertyVal Name="MacProcID">0</PropertyVal>
@@ -4221,8 +4347,8 @@
  <PropertyVal Name="MaxWidth">32000</PropertyVal>
  <PropertyVal Name="MinHeight">64</PropertyVal>
  <PropertyVal Name="MinWidth">64</PropertyVal>
- <PropertyVal Name="Height">669</PropertyVal>
- <PropertyVal Name="Width">922</PropertyVal>
+ <PropertyVal Name="Height">770</PropertyVal>
+ <PropertyVal Name="Width">1142</PropertyVal>
  <PropertyVal Name="Placement">0</PropertyVal>
  <ViewBehavior>
   <ViewProperty>
@@ -4462,6 +4588,31 @@
  <ControlBehavior>
   <Superclass>Container_XmlXslInput</Superclass>
  </ControlBehavior>
+ <ControlBehavior>
+  <Superclass>MainToolbar</Superclass>
+  <HookInstance>
+   <ItemName>Action</ItemName>
+   <Compatibility></Compatibility>
+   <Visible>1</Visible>
+   <ItemSource>
+    <TextEncoding>134217984</TextEncoding>
+    <SourceLine>Sub Action(item As ToolItem)</SourceLine>
+    <SourceLine>Select Case item.Name</SourceLine>
+    <SourceLine>Case "OpenXml"</SourceLine>
+    <SourceLine>Window_Main.OpenXmlFile()</SourceLine>
+    <SourceLine>Case "OpenXslt"</SourceLine>
+    <SourceLine>Window_Main.OpenXsltFile()</SourceLine>
+    <SourceLine>Case "SaveXml"</SourceLine>
+    <SourceLine>Window_Main.SaveXmlFile()</SourceLine>
+    <SourceLine>Case "SaveXslt"</SourceLine>
+    <SourceLine>Window_Main.SaveXsltFile()</SourceLine>
+    <SourceLine>Case "Transform"</SourceLine>
+    <SourceLine>Window_Main.TransformData()</SourceLine>
+    <SourceLine>End Select</SourceLine>
+    <SourceLine>End Sub</SourceLine>
+   </ItemSource>
+  </HookInstance>
+ </ControlBehavior>
  <Control>
   <ControlClass>Container_XmlXslInput</ControlClass>
   <ItemName>Container_XmlXslInput</ItemName>
@@ -4483,8 +4634,8 @@
   <PropertyVal Name="LockRight">True</PropertyVal>
   <PropertyVal Name="LockTop">True</PropertyVal>
   <PropertyVal Name="LockLeft">True</PropertyVal>
-  <PropertyVal Name="Height">632</PropertyVal>
-  <PropertyVal Name="Width">882</PropertyVal>
+  <PropertyVal Name="Height">730</PropertyVal>
+  <PropertyVal Name="Width">1102</PropertyVal>
   <PropertyVal Name="Top">20</PropertyVal>
   <PropertyVal Name="Left">20</PropertyVal>
   <PropertyVal Name="InitialParent"></PropertyVal>
@@ -4492,6 +4643,24 @@
   <PropertyVal Name="Super">Container_XmlXslInput</PropertyVal>
   <PropertyVal Name="Name">Container_InputXmlXsl</PropertyVal>
   <ControlIndex>0</ControlIndex>
+  <Locked>0</Locked>
+ </Control>
+ <Control>
+  <ControlClass>MainToolbar</ControlClass>
+  <ItemName>MainToolbar</ItemName>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="Height">41</PropertyVal>
+  <PropertyVal Name="Width">1102</PropertyVal>
+  <PropertyVal Name="Top">-76</PropertyVal>
+  <PropertyVal Name="Left">20</PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
+  <PropertyVal Name="Super">MainToolbar</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="Name">Toolbar_MainToolbar</PropertyVal>
+  <ControlIndex>1</ControlIndex>
   <Locked>0</Locked>
  </Control>
 </block>
@@ -4550,11 +4719,11 @@
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Function IsDataEntered() As Boolean</SourceLine>
    <SourceLine>// We loosely require all three fields to have text</SourceLine>
-   <SourceLine>If TextField_Title.Text &lt;&gt; "" and TextField_Description.Text &lt;&gt; "" and TextArea_Transform.Text &lt;&gt; "" Then</SourceLine>
-   <SourceLine>return True</SourceLine>
-   <SourceLine>Else</SourceLine>
-   <SourceLine>return False</SourceLine>
-   <SourceLine>End If</SourceLine>
+   <SourceLine>if TextField_Title.Text &lt;&gt; "" and TextField_Description.Text &lt;&gt; "" and TextArea_Transform.Text &lt;&gt; "" then</SourceLine>
+   <SourceLine>return true</SourceLine>
+   <SourceLine>else</SourceLine>
+   <SourceLine>return false</SourceLine>
+   <SourceLine>end if</SourceLine>
    <SourceLine>End Function</SourceLine>
   </ItemSource>
   <TextEncoding>134217984</TextEncoding>
@@ -4832,6 +5001,7 @@
    <ItemSource>
     <TextEncoding>134217984</TextEncoding>
     <SourceLine>Sub Action()</SourceLine>
+    <SourceLine>// Close the modal window</SourceLine>
     <SourceLine>Me.Window.Close</SourceLine>
     <SourceLine>End Sub</SourceLine>
    </ItemSource>
@@ -4847,22 +5017,30 @@
     <TextEncoding>134217984</TextEncoding>
     <SourceLine>Sub Action()</SourceLine>
     <SourceLine>// Create a new DB record with this transform</SourceLine>
-    <SourceLine>dim record As New DatabaseRecord</SourceLine>
+    <SourceLine>dim record as new DatabaseRecord</SourceLine>
     <SourceLine>record.Column("title") = TextField_Title.Text</SourceLine>
     <SourceLine>record.Column("description") = TextField_Description.Text</SourceLine>
     <SourceLine>record.Column("transform") = TextArea_Transform.Text</SourceLine>
     <SourceLine></SourceLine>
-    <SourceLine>// Insert and display error message if necessary</SourceLine>
+    <SourceLine>// Create the InsertRecord</SourceLine>
     <SourceLine>App.MainDB.InsertRecord("xslt_template", record)</SourceLine>
-    <SourceLine>If App.MainDB.Error Then</SourceLine>
-    <SourceLine>App.DisplayDatabaseError(True)</SourceLine>
+    <SourceLine>if App.MainDB.Error then</SourceLine>
+    <SourceLine></SourceLine>
+    <SourceLine>// If there is some sort of DB error, show it and return</SourceLine>
+    <SourceLine>App.DisplayDatabaseError(true)</SourceLine>
     <SourceLine>return</SourceLine>
-    <SourceLine>Else</SourceLine>
+    <SourceLine></SourceLine>
+    <SourceLine>else</SourceLine>
+    <SourceLine></SourceLine>
+    <SourceLine>// If no error, commit the changes to the database,</SourceLine>
+    <SourceLine>// repopulate the Listbox with all saved XSLT</SourceLine>
+    <SourceLine>// templates, and close the modal window</SourceLine>
     <SourceLine>App.MainDB.Commit()</SourceLine>
     <SourceLine>MsgBox "XSLT template successfully saved"</SourceLine>
     <SourceLine>Window_XsltTemplates.PopulateXsltTemplates()</SourceLine>
     <SourceLine>Me.Window.Close</SourceLine>
-    <SourceLine>End If</SourceLine>
+    <SourceLine></SourceLine>
+    <SourceLine>end if</SourceLine>
     <SourceLine>End Sub</SourceLine>
    </ItemSource>
   </HookInstance>
@@ -4885,6 +5063,8 @@
    <ItemSource>
     <TextEncoding>134217984</TextEncoding>
     <SourceLine>Sub TextChange()</SourceLine>
+    <SourceLine>// Only enable the "Save" button if all</SourceLine>
+    <SourceLine>// three fields have some text</SourceLine>
     <SourceLine>If IsDataEntered() Then</SourceLine>
     <SourceLine>Button_Save.Enabled = True</SourceLine>
     <SourceLine>Else</SourceLine>
@@ -4903,6 +5083,8 @@
    <ItemSource>
     <TextEncoding>134217984</TextEncoding>
     <SourceLine>Sub TextChange()</SourceLine>
+    <SourceLine>// Only enable the "Save" button if all</SourceLine>
+    <SourceLine>// three fields have some text</SourceLine>
     <SourceLine>If IsDataEntered() Then</SourceLine>
     <SourceLine>Button_Save.Enabled = True</SourceLine>
     <SourceLine>Else</SourceLine>
@@ -4913,7 +5095,7 @@
   </HookInstance>
  </ControlBehavior>
  <ControlBehavior>
-  <Superclass>TextArea</Superclass>
+  <Superclass>SyntaxHighlightEditField</Superclass>
   <HookInstance>
    <ItemName>TextChange</ItemName>
    <Compatibility></Compatibility>
@@ -4921,11 +5103,13 @@
    <ItemSource>
     <TextEncoding>134217984</TextEncoding>
     <SourceLine>Sub TextChange()</SourceLine>
-    <SourceLine>If IsDataEntered() Then</SourceLine>
-    <SourceLine>Button_Save.Enabled = True</SourceLine>
-    <SourceLine>Else</SourceLine>
-    <SourceLine>Button_Save.Enabled = False</SourceLine>
-    <SourceLine>End If</SourceLine>
+    <SourceLine>// Only enable the "Save" button if all</SourceLine>
+    <SourceLine>// three fields have some text</SourceLine>
+    <SourceLine>if IsDataEntered() then</SourceLine>
+    <SourceLine>Button_Save.Enabled = true</SourceLine>
+    <SourceLine>else</SourceLine>
+    <SourceLine>Button_Save.Enabled = false</SourceLine>
+    <SourceLine>end if</SourceLine>
     <SourceLine>End Sub</SourceLine>
    </ItemSource>
   </HookInstance>
@@ -5214,11 +5398,10 @@
   <Locked>0</Locked>
  </Control>
  <Control>
-  <ControlClass>TextArea</ControlClass>
-  <ItemName>TextArea</ItemName>
+  <ControlClass>SyntaxHighlightEditField</ControlClass>
+  <ItemName>SyntaxHighlightEditField</ItemName>
   <PropertyVal Name="DataField"></PropertyVal>
   <PropertyVal Name="DataSource"></PropertyVal>
-  <PropertyVal Name="AutomaticallyCheckSpelling">True</PropertyVal>
   <PropertyVal Name="Alignment">0</PropertyVal>
   <PropertyVal Name="AcceptTabs"></PropertyVal>
   <PropertyVal Name="LimitText">0</PropertyVal>
@@ -5230,8 +5413,7 @@
   <PropertyVal Name="Bold"></PropertyVal>
   <PropertyVal Name="TextUnit">0</PropertyVal>
   <PropertyVal Name="TextSize">0</PropertyVal>
-  <PropertyVal Name="TextFont">System</PropertyVal>
-  <PropertyVal Name="HideSelection">True</PropertyVal>
+  <PropertyVal Name="TextFont">Courier</PropertyVal>
   <PropertyVal Name="AutoDeactivate">True</PropertyVal>
   <PropertyVal Name="HelpTag"></PropertyVal>
   <PropertyVal Name="Visible">True</PropertyVal>
@@ -5257,9 +5439,11 @@
   <PropertyVal Name="Top">110</PropertyVal>
   <PropertyVal Name="Left">20</PropertyVal>
   <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="Super">TextArea</PropertyVal>
+  <PropertyVal Name="Super">SyntaxHighlightEditField</PropertyVal>
   <PropertyVal Name="Index">-2147483648</PropertyVal>
   <PropertyVal Name="Name">TextArea_Transform</PropertyVal>
+  <PropertyVal Name="AutomaticallyCheckSpelling">True</PropertyVal>
+  <PropertyVal Name="HideSelection">True</PropertyVal>
   <ControlIndex>7</ControlIndex>
   <Locked>0</Locked>
  </Control>
@@ -5279,6 +5463,8 @@
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Sub Close()</SourceLine>
+   <SourceLine>// Kill HighlighterThread if it's running</SourceLine>
+   <SourceLine>// and unset its owner</SourceLine>
    <SourceLine>if Highlighter=nil then Return</SourceLine>
    <SourceLine>Highlighter.owner=nil</SourceLine>
    <SourceLine>Highlighter.Kill</SourceLine>
@@ -5293,21 +5479,14 @@
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Sub Open()</SourceLine>
+   <SourceLine>// Define a new HighlighterThread and a </SourceLine>
+   <SourceLine>// KeyDownTimer to keep track of its timing</SourceLine>
    <SourceLine>keyListener=new KeyDownTimer(self)</SourceLine>
    <SourceLine>Highlighter=new HighlighterThread(self)</SourceLine>
    <SourceLine></SourceLine>
+   <SourceLine>// When any instance of SyntaxHighlightEditField opens,</SourceLine>
+   <SourceLine>// set its syntax to be the XML HighlightDefinition</SourceLine>
    <SourceLine>Me.Syntax = App.xmlHighlightDefinition</SourceLine>
-   <SourceLine>End Sub</SourceLine>
-  </ItemSource>
- </HookInstance>
- <HookInstance>
-  <ItemName>TextChange</ItemName>
-  <Compatibility></Compatibility>
-  <Visible>1</Visible>
-  <ItemSource>
-   <TextEncoding>134217984</TextEncoding>
-   <SourceLine>Sub TextChange()</SourceLine>
-   <SourceLine>keyListener.Reset</SourceLine>
    <SourceLine>End Sub</SourceLine>
   </ItemSource>
  </HookInstance>
@@ -5318,8 +5497,26 @@
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Function MouseWheel(X As Integer, Y As Integer, deltaX as Integer, deltaY as Integer) As Boolean</SourceLine>
-   <SourceLine>//ScrollPosition=ScrollPosition+deltay</SourceLine>
+   <SourceLine>// When the user scrolls their mouse wheel,</SourceLine>
+   <SourceLine>// adjust the position of the window by deltaY</SourceLine>
+   <SourceLine>// (shouldn't this be taken care of automatically?)</SourceLine>
+   <SourceLine>Me.ScrollPosition = Me.ScrollPosition + deltay</SourceLine>
    <SourceLine>End Function</SourceLine>
+  </ItemSource>
+ </HookInstance>
+ <HookInstance>
+  <ItemName>TextChange</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub TextChange()</SourceLine>
+   <SourceLine>// Reset the KeyDownTimer anytime a</SourceLine>
+   <SourceLine>// key is pressed, then fire the superclass'</SourceLine>
+   <SourceLine>// TextChange() event</SourceLine>
+   <SourceLine>keyListener.Reset</SourceLine>
+   <SourceLine>TextChange()</SourceLine>
+   <SourceLine>End Sub</SourceLine>
   </ItemSource>
  </HookInstance>
  <Method>
@@ -5329,6 +5526,8 @@
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Sub highlight()</SourceLine>
+   <SourceLine>// Highlight the contained text and </SourceLine>
+   <SourceLine>// keep track of how long it took</SourceLine>
    <SourceLine>if Syntax=nil then Return</SourceLine>
    <SourceLine>dim start as Double=Microseconds</SourceLine>
    <SourceLine>Syntax.highlight(me.Text, me.StyledText)</SourceLine>
@@ -5378,6 +5577,14 @@
   <ItemFlags>33</ItemFlags>
   <SystemFlags>0</SystemFlags>
   <ItemParams>milliseconds as integer</ItemParams>
+  <ItemResult></ItemResult>
+ </Hook>
+ <Hook>
+  <ItemName>TextChange</ItemName>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemFlags>33</ItemFlags>
+  <SystemFlags>0</SystemFlags>
+  <ItemParams></ItemParams>
   <ItemResult></ItemResult>
  </Hook>
  <Note>
@@ -7490,6 +7697,208 @@
   </ViewProperty>
  </ViewBehavior>
 </block>
+<block type="Folder" ID="352676896">
+ <ObjName>Toolbars</ObjName>
+ <ObjContainerID>0</ObjContainerID>
+</block>
+<block type="Toolbar" ID="74702603">
+ <ObjName>MainToolbar</ObjName>
+ <ObjContainerID>352676896</ObjContainerID>
+ <IsClass>1</IsClass>
+ <Superclass>Toolbar</Superclass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+   <InheritsFrom>Toolbar</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Toolbar</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <InheritsFrom>Toolbar</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Toolbar</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Toolbar</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Width</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>100</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Toolbar</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Height</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>32</PropertyValue>
+   <ItemType>Integer</ItemType>
+   <InheritsFrom>Toolbar</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Visible</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Toolbar</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Enabled</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Appearance</PropertyGroup>
+   <PropertyValue>True</PropertyValue>
+   <ItemType>Boolean</ItemType>
+   <InheritsFrom>Toolbar</InheritsFrom>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>InitialParent</ObjName>
+   <InheritsFrom>Toolbar</InheritsFrom>
+  </ViewProperty>
+ </ViewBehavior>
+ <ToolItem>
+  <Superclass>ToolButton</Superclass>
+  <ItemName>OpenXml</ItemName>
+  <ItemText>Open XML</ItemText>
+  <ItemHelp></ItemHelp>
+  <ItemStyle>0</ItemStyle>
+  <Enabled>1</Enabled>
+  <ItemFlags>0</ItemFlags>
+  <Icon>1396215579</Icon>
+ </ToolItem>
+ <ToolItem>
+  <Superclass>ToolButton</Superclass>
+  <ItemName>OpenXslt</ItemName>
+  <ItemText>Open XSLT</ItemText>
+  <ItemHelp></ItemHelp>
+  <ItemStyle>0</ItemStyle>
+  <Enabled>1</Enabled>
+  <ItemFlags>0</ItemFlags>
+  <Icon>641442290</Icon>
+ </ToolItem>
+ <ToolItem>
+  <Superclass>ToolButton</Superclass>
+  <ItemName>ToolItem1</ItemName>
+  <ItemText>Untitled</ItemText>
+  <ItemHelp></ItemHelp>
+  <ItemStyle>1</ItemStyle>
+  <Enabled>1</Enabled>
+  <ItemFlags>0</ItemFlags>
+ </ToolItem>
+ <ToolItem>
+  <Superclass>ToolButton</Superclass>
+  <ItemName>SaveXml</ItemName>
+  <ItemText>Save XML</ItemText>
+  <ItemHelp></ItemHelp>
+  <ItemStyle>0</ItemStyle>
+  <Enabled>1</Enabled>
+  <ItemFlags>0</ItemFlags>
+  <Icon>2062819666</Icon>
+ </ToolItem>
+ <ToolItem>
+  <Superclass>ToolButton</Superclass>
+  <ItemName>SaveXslt</ItemName>
+  <ItemText>Save XSLT</ItemText>
+  <ItemHelp></ItemHelp>
+  <ItemStyle>0</ItemStyle>
+  <Enabled>1</Enabled>
+  <ItemFlags>0</ItemFlags>
+  <Icon>834146100</Icon>
+ </ToolItem>
+ <ToolItem>
+  <Superclass>ToolButton</Superclass>
+  <ItemName>ToolItem2</ItemName>
+  <ItemText>Untitled</ItemText>
+  <ItemHelp></ItemHelp>
+  <ItemStyle>1</ItemStyle>
+  <Enabled>1</Enabled>
+  <ItemFlags>0</ItemFlags>
+ </ToolItem>
+ <ToolItem>
+  <Superclass>ToolButton</Superclass>
+  <ItemName>Transform</ItemName>
+  <ItemText>Transform</ItemText>
+  <ItemHelp></ItemHelp>
+  <ItemStyle>0</ItemStyle>
+  <Enabled>1</Enabled>
+  <ItemFlags>0</ItemFlags>
+  <Icon>720271890</Icon>
+ </ToolItem>
+</block>
+<block type="Folder" ID="385742158">
+ <ObjName>Images</ObjName>
+ <ObjContainerID>352676896</ObjContainerID>
+</block>
+<block type="Picture" ID="641442290">
+ <ObjName>Icon_OpenXSL</ObjName>
+ <ObjContainerID>385742158</ObjContainerID>
+ <FullPath>Macintosh HD:Users:abach:Git:aXel:Resources:Icons:Icon_OpenXSL.png</FullPath>
+ <PartialPath>Resources\Icons\Icon_OpenXSL.png</PartialPath>
+ <FileAlias><Hex bytes="448">00F1D17301020100000001AE0000000001AE000200000C4D6163696E746F7368204844000000000000000000000000000000CA40958C482B000000F7C92B1049636F6E5F4F70656E58534C2E706E67000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000F7C957CB73FB740000000000000000FFFFFFFF000009200000000000000000000000000000000549636F6E7300001000080000CA40E9EC0000001100080000CB745DE400000001001800F7C92B00F768F700F0A3B0000B0790000502330000BEEC000200484D6163696E746F73682048443A55736572733A0061626163683A004769743A006158656C3A005265736F75726365733A0049636F6E733A0049636F6E5F4F70656E58534C2E706E67000E0022001000490063006F006E005F004F00700065006E00580053004C002E0070006E0067000F001A000C004D006100630069006E0074006F007300680020004800440012003555736572732F61626163682F4769742F6158656C2F5265736F75726365732F49636F6E732F49636F6E5F4F70656E58534C2E706E6700001300012F0000150002000CFFFF0000000000000000</Hex></FileAlias>
+ <ItemText>Icon_OpenXSL</ItemText>
+ <ItemTransparent>0</ItemTransparent>
+</block>
+<block type="Picture" ID="1396215579">
+ <ObjName>Icon_OpenXML</ObjName>
+ <ObjContainerID>385742158</ObjContainerID>
+ <FullPath>Macintosh HD:Users:abach:Git:aXel:Resources:Icons:Icon_OpenXML.png</FullPath>
+ <PartialPath>Resources\Icons\Icon_OpenXML.png</PartialPath>
+ <FileAlias><Hex bytes="448">00F1D17301020100000001AE0000000001AE000200000C4D6163696E746F7368204844000000000000000000000000000000CA40958C482B000000F7C92B1049636F6E5F4F70656E584D4C2E706E67000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000F7C931CB73FB260000000000000000FFFFFFFF000009200000000000000000000000000000000549636F6E7300001000080000CA40E9EC0000001100080000CB745D9600000001001800F7C92B00F768F700F0A3B0000B0790000502330000BEEC000200484D6163696E746F73682048443A55736572733A0061626163683A004769743A006158656C3A005265736F75726365733A0049636F6E733A0049636F6E5F4F70656E584D4C2E706E67000E0022001000490063006F006E005F004F00700065006E0058004D004C002E0070006E0067000F001A000C004D006100630069006E0074006F007300680020004800440012003555736572732F61626163682F4769742F6158656C2F5265736F75726365732F49636F6E732F49636F6E5F4F70656E584D4C2E706E6700001300012F0000150002000CFFFF0000000000000000</Hex></FileAlias>
+ <ItemText>Icon_OpenXML</ItemText>
+ <ItemTransparent>0</ItemTransparent>
+</block>
+<block type="Picture" ID="834146100">
+ <ObjName>Icon_SaveXSL</ObjName>
+ <ObjContainerID>385742158</ObjContainerID>
+ <FullPath>Macintosh HD:Users:abach:Git:aXel:Resources:Icons:Icon_SaveXSL.png</FullPath>
+ <PartialPath>Resources\Icons\Icon_SaveXSL.png</PartialPath>
+ <FileAlias><Hex bytes="448">00F1D17301020100000001AE0000000001AE000200000C4D6163696E746F7368204844000000000000000000000000000000CA40958C482B000000F7C92B1049636F6E5F5361766558534C2E706E67000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000F7D4F7CB7402000000000000000000FFFFFFFF000009200000000000000000000000000000000549636F6E7300001000080000CA40E9EC0000001100080000CB74647000000001001800F7C92B00F768F700F0A3B0000B0790000502330000BEEC000200484D6163696E746F73682048443A55736572733A0061626163683A004769743A006158656C3A005265736F75726365733A0049636F6E733A0049636F6E5F5361766558534C2E706E67000E0022001000490063006F006E005F005300610076006500580053004C002E0070006E0067000F001A000C004D006100630069006E0074006F007300680020004800440012003555736572732F61626163682F4769742F6158656C2F5265736F75726365732F49636F6E732F49636F6E5F5361766558534C2E706E6700001300012F0000150002000CFFFF0000000000000000</Hex></FileAlias>
+ <ItemText>Icon_SaveXSL</ItemText>
+ <ItemTransparent>0</ItemTransparent>
+</block>
+<block type="Picture" ID="2062819666">
+ <ObjName>Icon_SaveXML</ObjName>
+ <ObjContainerID>385742158</ObjContainerID>
+ <FullPath>Macintosh HD:Users:abach:Git:aXel:Resources:Icons:Icon_SaveXML.png</FullPath>
+ <PartialPath>Resources\Icons\Icon_SaveXML.png</PartialPath>
+ <FileAlias><Hex bytes="448">00F1D17301020100000001AE0000000001AE000200000C4D6163696E746F7368204844000000000000000000000000000000CA40958C482B000000F7C92B1049636F6E5F53617665584D4C2E706E67000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000F7D4F1CB7401ED0000000000000000FFFFFFFF000009200000000000000000000000000000000549636F6E7300001000080000CA40E9EC0000001100080000CB74645D00000001001800F7C92B00F768F700F0A3B0000B0790000502330000BEEC000200484D6163696E746F73682048443A55736572733A0061626163683A004769743A006158656C3A005265736F75726365733A0049636F6E733A0049636F6E5F53617665584D4C2E706E67000E0022001000490063006F006E005F00530061007600650058004D004C002E0070006E0067000F001A000C004D006100630069006E0074006F007300680020004800440012003555736572732F61626163682F4769742F6158656C2F5265736F75726365732F49636F6E732F49636F6E5F53617665584D4C2E706E6700001300012F0000150002000CFFFF0000000000000000</Hex></FileAlias>
+ <ItemText>Icon_SaveXML</ItemText>
+ <ItemTransparent>0</ItemTransparent>
+</block>
+<block type="Picture" ID="720271890">
+ <ObjName>Icon_Transform</ObjName>
+ <ObjContainerID>385742158</ObjContainerID>
+ <FullPath>Macintosh HD:Users:abach:Git:aXel:Resources:Icons:Icon_Transform.png</FullPath>
+ <PartialPath>Resources\Icons\Icon_Transform.png</PartialPath>
+ <FileAlias><Hex bytes="456">00F1D17301020100000001B60000000001B6000200000C4D6163696E746F7368204844000000000000000000000000000000CA40958C482B000000F7C92B1249636F6E5F5472616E73666F726D2E706E6700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000F7D68ACB7402B10000000000000000FFFFFFFF000009200000000000000000000000000000000549636F6E7300001000080000CA40E9EC0000001100080000CB74652100000001001800F7C92B00F768F700F0A3B0000B0790000502330000BEEC0002004A4D6163696E746F73682048443A55736572733A0061626163683A004769743A006158656C3A005265736F75726365733A0049636F6E733A0049636F6E5F5472616E73666F726D2E706E67000E0026001200490063006F006E005F005400720061006E00730066006F0072006D002E0070006E0067000F001A000C004D006100630069006E0074006F007300680020004800440012003755736572732F61626163682F4769742F6158656C2F5265736F75726365732F49636F6E732F49636F6E5F5472616E73666F726D2E706E6700001300012F0000150002000CFFFF0000000000000000</Hex></FileAlias>
+ <ItemText>Icon_Transform</ItemText>
+ <ItemTransparent>0</ItemTransparent>
+</block>
 <block type="UIState" ID="0">
  <WindowState>
   <OpenTab>
@@ -7498,28 +7907,7 @@
    <ProjectListSortColumn>3</ProjectListSortColumn>
    <ProjectListColumnSortDirection>1</ProjectListColumnSortDirection>
   </OpenTab>
-  <OpenTab>
-   <ObjContainerID>436737850</ObjContainerID>
-   <AlternateEditorID>1</AlternateEditorID>
-   <LeftSplitter>160</LeftSplitter>
-   <EmptyEventState>0</EmptyEventState>
-   <CodeItemID>0</CodeItemID>
-  </OpenTab>
-  <OpenTab>
-   <ObjContainerID>1045599458</ObjContainerID>
-   <AlternateEditorID>1</AlternateEditorID>
-   <LeftSplitter>160</LeftSplitter>
-   <EmptyEventState>0</EmptyEventState>
-   <CodeItemID>0</CodeItemID>
-  </OpenTab>
-  <OpenTab>
-   <ObjContainerID>102461358</ObjContainerID>
-   <AlternateEditorID>1</AlternateEditorID>
-   <LeftSplitter>160</LeftSplitter>
-   <EmptyEventState>0</EmptyEventState>
-   <CodeItemID>0</CodeItemID>
-  </OpenTab>
-  <LastLocation>SyntaxHighlightEditField.Open</LastLocation>
+  <LastLocation>(Home)</LastLocation>
   <EditBounds><Rect left="-1920" top="-84" width="1920" height="1058"/></EditBounds>
  </WindowState>
 </block>
