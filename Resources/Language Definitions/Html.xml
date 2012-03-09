@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<highlightDefinition version="1.2">
-	<name>XML/XHTML</name>
+<highlightDefinition version="1.1">
+	<name>HTML</name>
 
-	<blockStartMarker indent="1">^\s*(&lt;[^!?%/](?!.+?(/&gt;|&lt;/.+?&gt;))|&lt;[!%]--(?!.+?--%?&gt;)|&lt;%[!]?(?!.+?%&gt;))</blockStartMarker>
-	<blockEndMarker>^\s*(&lt;/[^&gt;]+&gt;|[/%]&gt;|--&gt;)\s*$</blockEndMarker>
-	
-	<symbols>
-		<symbol type="Tags">
-			<entryRegEx>&lt;\w+\s+[^&gt;]*id *= *"([^"]*)"[^&gt;]*&gt;</entryRegEx>
-		</symbol>								
-	</symbols>
-
-	<placeholders highlightColor="#000000" backgroundColor="#e9effa" bold = "true">\{#(.+?)#\}</placeholders>
+	<blockStartMarker indent="1">(?x)
+		(&lt;(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|li|form|dl)\b.*?&gt;
+		|&lt;!--(?!.*--\s*&gt;)
+		|^&lt;!--\ \#tminclude\ (?&gt;.*?--&gt;)$
+		|&lt;\?(?:php)?.*\b(if|for(each)?|while)\b.+:
+		|\{\{?(if|foreach|capture|literal|foreach|php|section|strip)
+		|\{\s*($|\?&gt;\s*$|//|/\*(.*\*/\s*$|(?!.*?\*/)))
+		)</blockStartMarker>
+	<blockEndMarker>(?x)
+		(&lt;/(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|li|form|dl)&gt;
+		|^(?!.*?&lt;!--).*?--\s*&gt;
+		|^&lt;!--\ end\ tminclude\ --&gt;$
+		|&lt;\?(?:php)?.*\bend(if|for(each)?|while)\b
+		|\{\{?/(if|foreach|capture|literal|foreach|php|section|strip)
+		|^[^{]*\}
+		)</blockEndMarker>
 
 	<contexts defaultColor="#0" caseSensitive="no">		
 		<highlightContext name="Comment" highlightColor="#236E25">
