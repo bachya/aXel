@@ -2776,11 +2776,12 @@
   <PropertyVal Name="Left">0</PropertyVal>
   <PropertyVal Name="InitialParent"></PropertyVal>
   <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="Super">CustomScrollableEditField</PropertyVal>
   <PropertyVal Name="Name">TextArea_Input</PropertyVal>
   <PropertyVal Name="Backdrop"></PropertyVal>
   <PropertyVal Name="BackColor">16777215</PropertyVal>
   <PropertyVal Name="HasBackColor">False</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="Super">CustomScrollableEditField</PropertyVal>
   <ControlIndex>0</ControlIndex>
   <Locked>0</Locked>
  </Control>
@@ -2817,9 +2818,10 @@
   <PropertyVal Name="Top">0</PropertyVal>
   <PropertyVal Name="Left">81</PropertyVal>
   <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="Super">Label</PropertyVal>
   <PropertyVal Name="Index">-2147483648</PropertyVal>
   <PropertyVal Name="Name">Label_Value</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="Super">Label</PropertyVal>
   <ControlIndex>1</ControlIndex>
   <Locked>0</Locked>
  </Control>
@@ -2856,9 +2858,10 @@
   <PropertyVal Name="Top">0</PropertyVal>
   <PropertyVal Name="Left">0</PropertyVal>
   <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="Super">Label</PropertyVal>
   <PropertyVal Name="Index">-2147483648</PropertyVal>
   <PropertyVal Name="Name">Label_Label</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="Super">Label</PropertyVal>
   <ControlIndex>2</ControlIndex>
   <Locked>0</Locked>
  </Control>
@@ -3189,72 +3192,72 @@
  <Control>
   <ControlClass>CustomScrollableEditField</ControlClass>
   <ItemName>CustomScrollableEditField</ItemName>
-  <PropertyVal Name="Index">-2147483648</PropertyVal>
-  <PropertyVal Name="HasBackColor">False</PropertyVal>
-  <PropertyVal Name="BackColor">16777215</PropertyVal>
-  <PropertyVal Name="Backdrop"></PropertyVal>
-  <PropertyVal Name="Name">TextArea_Output</PropertyVal>
-  <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="InitialParent"></PropertyVal>
-  <PropertyVal Name="Left">0</PropertyVal>
-  <PropertyVal Name="Top">401</PropertyVal>
-  <PropertyVal Name="Width">882</PropertyVal>
-  <PropertyVal Name="Height">231</PropertyVal>
-  <PropertyVal Name="LockLeft">True</PropertyVal>
-  <PropertyVal Name="LockTop">False</PropertyVal>
-  <PropertyVal Name="LockRight">True</PropertyVal>
-  <PropertyVal Name="LockBottom">True</PropertyVal>
-  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
-  <PropertyVal Name="TabIndex">0</PropertyVal>
-  <PropertyVal Name="TabStop">True</PropertyVal>
-  <PropertyVal Name="Visible">True</PropertyVal>
-  <PropertyVal Name="Enabled">False</PropertyVal>
-  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
-  <PropertyVal Name="HelpTag"></PropertyVal>
-  <PropertyVal Name="UseFocusRing">False</PropertyVal>
-  <PropertyVal Name="AcceptFocus"></PropertyVal>
-  <PropertyVal Name="AcceptTabs"></PropertyVal>
-  <PropertyVal Name="EraseBackground"></PropertyVal>
-  <PropertyVal Name="AutoCloseBrackets">false</PropertyVal>
-  <PropertyVal Name="AutocompleteAppliesStandardCase">true</PropertyVal>
-  <PropertyVal Name="AutoIndentNewLines">true</PropertyVal>
-  <PropertyVal Name="Border">True</PropertyVal>
-  <PropertyVal Name="BorderColor">8947848</PropertyVal>
-  <PropertyVal Name="CaretColor">0</PropertyVal>
-  <PropertyVal Name="CaretPos">0</PropertyVal>
-  <PropertyVal Name="ClearHighlightedRangesOnTextChange">true</PropertyVal>
-  <PropertyVal Name="DirtyLinesColor">16751001</PropertyVal>
-  <PropertyVal Name="DisplayDirtyLines">false</PropertyVal>
-  <PropertyVal Name="DisplayInvisibleCharacters">false</PropertyVal>
-  <PropertyVal Name="DisplayLineNumbers">true</PropertyVal>
-  <PropertyVal Name="DisplayRightMarginMarker">false</PropertyVal>
-  <PropertyVal Name="EnableAutocomplete">false</PropertyVal>
-  <PropertyVal Name="EnableLineFoldings">false</PropertyVal>
-  <PropertyVal Name="GutterBackgroundColor">15658734</PropertyVal>
-  <PropertyVal Name="GutterSeparationLineColor">8947848</PropertyVal>
-  <PropertyVal Name="GutterWidth">0</PropertyVal>
-  <PropertyVal Name="HighlightMatchingBrackets">true</PropertyVal>
-  <PropertyVal Name="HighlightMatchingBracketsMode">0</PropertyVal>
-  <PropertyVal Name="LeftMarginOffset">4</PropertyVal>
-  <PropertyVal Name="LineNumbersColor">8947848</PropertyVal>
-  <PropertyVal Name="LineNumbersTextFont">System</PropertyVal>
-  <PropertyVal Name="LineNumbersTextSize">9</PropertyVal>
-  <PropertyVal Name="MaxVisibleLines">0</PropertyVal>
-  <PropertyVal Name="RighScrollMargin">0</PropertyVal>
-  <PropertyVal Name="RightMarginAtPixel">0</PropertyVal>
-  <PropertyVal Name="ScrollPosition">0</PropertyVal>
-  <PropertyVal Name="ScrollPositionX">0</PropertyVal>
-  <PropertyVal Name="SelLength">0</PropertyVal>
-  <PropertyVal Name="SelStart">0</PropertyVal>
-  <PropertyVal Name="TabWidth">0</PropertyVal>
-  <PropertyVal Name="Text"></PropertyVal>
-  <PropertyVal Name="TextColor">0</PropertyVal>
-  <PropertyVal Name="TextFont">Courier</PropertyVal>
-  <PropertyVal Name="TextHeight">0</PropertyVal>
-  <PropertyVal Name="TextLength">0</PropertyVal>
-  <PropertyVal Name="TextSelectionColor">0</PropertyVal>
-  <PropertyVal Name="TextSize">0</PropertyVal>
   <PropertyVal Name="ThickInsertionPoint">true</PropertyVal>
+  <PropertyVal Name="TextSize">0</PropertyVal>
+  <PropertyVal Name="TextSelectionColor">0</PropertyVal>
+  <PropertyVal Name="TextLength">0</PropertyVal>
+  <PropertyVal Name="TextHeight">0</PropertyVal>
+  <PropertyVal Name="TextFont">Courier</PropertyVal>
+  <PropertyVal Name="TextColor">0</PropertyVal>
+  <PropertyVal Name="Text"></PropertyVal>
+  <PropertyVal Name="TabWidth">0</PropertyVal>
+  <PropertyVal Name="SelStart">0</PropertyVal>
+  <PropertyVal Name="SelLength">0</PropertyVal>
+  <PropertyVal Name="ScrollPositionX">0</PropertyVal>
+  <PropertyVal Name="ScrollPosition">0</PropertyVal>
+  <PropertyVal Name="RightMarginAtPixel">0</PropertyVal>
+  <PropertyVal Name="RighScrollMargin">0</PropertyVal>
+  <PropertyVal Name="MaxVisibleLines">0</PropertyVal>
+  <PropertyVal Name="LineNumbersTextSize">9</PropertyVal>
+  <PropertyVal Name="LineNumbersTextFont">System</PropertyVal>
+  <PropertyVal Name="LineNumbersColor">8947848</PropertyVal>
+  <PropertyVal Name="LeftMarginOffset">4</PropertyVal>
+  <PropertyVal Name="HighlightMatchingBracketsMode">0</PropertyVal>
+  <PropertyVal Name="HighlightMatchingBrackets">true</PropertyVal>
+  <PropertyVal Name="GutterWidth">0</PropertyVal>
+  <PropertyVal Name="GutterSeparationLineColor">8947848</PropertyVal>
+  <PropertyVal Name="GutterBackgroundColor">15658734</PropertyVal>
+  <PropertyVal Name="EnableLineFoldings">false</PropertyVal>
+  <PropertyVal Name="EnableAutocomplete">false</PropertyVal>
+  <PropertyVal Name="DisplayRightMarginMarker">false</PropertyVal>
+  <PropertyVal Name="DisplayLineNumbers">true</PropertyVal>
+  <PropertyVal Name="DisplayInvisibleCharacters">false</PropertyVal>
+  <PropertyVal Name="DisplayDirtyLines">false</PropertyVal>
+  <PropertyVal Name="DirtyLinesColor">16751001</PropertyVal>
+  <PropertyVal Name="ClearHighlightedRangesOnTextChange">true</PropertyVal>
+  <PropertyVal Name="CaretPos">0</PropertyVal>
+  <PropertyVal Name="CaretColor">0</PropertyVal>
+  <PropertyVal Name="BorderColor">8947848</PropertyVal>
+  <PropertyVal Name="Border">True</PropertyVal>
+  <PropertyVal Name="AutoIndentNewLines">true</PropertyVal>
+  <PropertyVal Name="AutocompleteAppliesStandardCase">true</PropertyVal>
+  <PropertyVal Name="AutoCloseBrackets">false</PropertyVal>
+  <PropertyVal Name="EraseBackground"></PropertyVal>
+  <PropertyVal Name="AcceptTabs"></PropertyVal>
+  <PropertyVal Name="AcceptFocus"></PropertyVal>
+  <PropertyVal Name="UseFocusRing">False</PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="Enabled">False</PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="TabIndex">0</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom">True</PropertyVal>
+  <PropertyVal Name="LockRight">True</PropertyVal>
+  <PropertyVal Name="LockTop">False</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">231</PropertyVal>
+  <PropertyVal Name="Width">882</PropertyVal>
+  <PropertyVal Name="Top">401</PropertyVal>
+  <PropertyVal Name="Left">0</PropertyVal>
+  <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
+  <PropertyVal Name="Name">TextArea_Output</PropertyVal>
+  <PropertyVal Name="Backdrop"></PropertyVal>
+  <PropertyVal Name="BackColor">16777215</PropertyVal>
+  <PropertyVal Name="HasBackColor">False</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
   <PropertyVal Name="Super">CustomScrollableEditField</PropertyVal>
   <ControlIndex>0</ControlIndex>
   <Locked>0</Locked>
@@ -3262,33 +3265,33 @@
  <Control>
   <ControlClass>MarsSplitter</ControlClass>
   <ItemName>MarsSplitter</ItemName>
-  <PropertyVal Name="DoubleBuffer">False</PropertyVal>
-  <PropertyVal Name="TabStop">True</PropertyVal>
-  <PropertyVal Name="Name">MarsSplitter1</PropertyVal>
-  <PropertyVal Name="Index">-2147483648</PropertyVal>
-  <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="Left">0</PropertyVal>
-  <PropertyVal Name="Top">389</PropertyVal>
-  <PropertyVal Name="Width">882</PropertyVal>
-  <PropertyVal Name="Height">12</PropertyVal>
-  <PropertyVal Name="LockLeft">True</PropertyVal>
-  <PropertyVal Name="LockTop">False</PropertyVal>
-  <PropertyVal Name="LockRight">True</PropertyVal>
-  <PropertyVal Name="LockBottom">True</PropertyVal>
-  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
-  <PropertyVal Name="TabIndex">1</PropertyVal>
-  <PropertyVal Name="Visible">True</PropertyVal>
-  <PropertyVal Name="HelpTag"></PropertyVal>
-  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
-  <PropertyVal Name="Enabled">True</PropertyVal>
-  <PropertyVal Name="UseFocusRing">True</PropertyVal>
-  <PropertyVal Name="Backdrop"></PropertyVal>
-  <PropertyVal Name="AcceptFocus"></PropertyVal>
-  <PropertyVal Name="AcceptTabs"></PropertyVal>
-  <PropertyVal Name="EraseBackground">True</PropertyVal>
-  <PropertyVal Name="InitialParent"></PropertyVal>
-  <PropertyVal Name="MinTopLeft">0</PropertyVal>
   <PropertyVal Name="MinBottomRight">0</PropertyVal>
+  <PropertyVal Name="MinTopLeft">0</PropertyVal>
+  <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="EraseBackground">True</PropertyVal>
+  <PropertyVal Name="AcceptTabs"></PropertyVal>
+  <PropertyVal Name="AcceptFocus"></PropertyVal>
+  <PropertyVal Name="Backdrop"></PropertyVal>
+  <PropertyVal Name="UseFocusRing">True</PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="TabIndex">1</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom">True</PropertyVal>
+  <PropertyVal Name="LockRight">True</PropertyVal>
+  <PropertyVal Name="LockTop">False</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">12</PropertyVal>
+  <PropertyVal Name="Width">882</PropertyVal>
+  <PropertyVal Name="Top">389</PropertyVal>
+  <PropertyVal Name="Left">0</PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="Name">MarsSplitter1</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="DoubleBuffer">False</PropertyVal>
   <PropertyVal Name="Super">MarsSplitter</PropertyVal>
   <ControlIndex>1</ControlIndex>
   <Locked>0</Locked>
@@ -3296,33 +3299,33 @@
  <Control>
   <ControlClass>MarsSplitter</ControlClass>
   <ItemName>MarsSplitter</ItemName>
-  <PropertyVal Name="DoubleBuffer">False</PropertyVal>
-  <PropertyVal Name="TabStop">True</PropertyVal>
-  <PropertyVal Name="Name">XmlXslSplitter</PropertyVal>
-  <PropertyVal Name="Index">-2147483648</PropertyVal>
-  <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="Left">435</PropertyVal>
-  <PropertyVal Name="Top">0</PropertyVal>
-  <PropertyVal Name="Width">12</PropertyVal>
-  <PropertyVal Name="Height">389</PropertyVal>
-  <PropertyVal Name="LockLeft">False</PropertyVal>
-  <PropertyVal Name="LockTop">True</PropertyVal>
-  <PropertyVal Name="LockRight">False</PropertyVal>
-  <PropertyVal Name="LockBottom">True</PropertyVal>
-  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
-  <PropertyVal Name="TabIndex">3</PropertyVal>
-  <PropertyVal Name="Visible">True</PropertyVal>
-  <PropertyVal Name="HelpTag"></PropertyVal>
-  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
-  <PropertyVal Name="Enabled">True</PropertyVal>
-  <PropertyVal Name="UseFocusRing">True</PropertyVal>
-  <PropertyVal Name="Backdrop"></PropertyVal>
-  <PropertyVal Name="AcceptFocus"></PropertyVal>
-  <PropertyVal Name="AcceptTabs"></PropertyVal>
-  <PropertyVal Name="EraseBackground">True</PropertyVal>
-  <PropertyVal Name="InitialParent"></PropertyVal>
-  <PropertyVal Name="MinTopLeft">0</PropertyVal>
   <PropertyVal Name="MinBottomRight">0</PropertyVal>
+  <PropertyVal Name="MinTopLeft">0</PropertyVal>
+  <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="EraseBackground">True</PropertyVal>
+  <PropertyVal Name="AcceptTabs"></PropertyVal>
+  <PropertyVal Name="AcceptFocus"></PropertyVal>
+  <PropertyVal Name="Backdrop"></PropertyVal>
+  <PropertyVal Name="UseFocusRing">True</PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="TabIndex">3</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom">True</PropertyVal>
+  <PropertyVal Name="LockRight">False</PropertyVal>
+  <PropertyVal Name="LockTop">True</PropertyVal>
+  <PropertyVal Name="LockLeft">False</PropertyVal>
+  <PropertyVal Name="Height">389</PropertyVal>
+  <PropertyVal Name="Width">12</PropertyVal>
+  <PropertyVal Name="Top">0</PropertyVal>
+  <PropertyVal Name="Left">435</PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="Name">XmlXslSplitter</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="DoubleBuffer">False</PropertyVal>
   <PropertyVal Name="Super">MarsSplitter</PropertyVal>
   <ControlIndex>2</ControlIndex>
   <Locked>0</Locked>
@@ -3330,32 +3333,32 @@
  <Control>
   <ControlClass>Container_TextAreaAndLabel</ControlClass>
   <ItemName>Container_TextAreaAndLabel</ItemName>
-  <PropertyVal Name="Index">-2147483648</PropertyVal>
-  <PropertyVal Name="Name">Container_XmlInput</PropertyVal>
-  <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="InitialParent"></PropertyVal>
-  <PropertyVal Name="Left">0</PropertyVal>
-  <PropertyVal Name="Top">0</PropertyVal>
-  <PropertyVal Name="Width">435</PropertyVal>
-  <PropertyVal Name="Height">389</PropertyVal>
-  <PropertyVal Name="LockLeft">True</PropertyVal>
-  <PropertyVal Name="LockTop">True</PropertyVal>
-  <PropertyVal Name="LockRight">False</PropertyVal>
-  <PropertyVal Name="LockBottom">True</PropertyVal>
-  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
-  <PropertyVal Name="TabIndex">4</PropertyVal>
-  <PropertyVal Name="TabStop">True</PropertyVal>
-  <PropertyVal Name="Visible">True</PropertyVal>
-  <PropertyVal Name="Enabled">True</PropertyVal>
-  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
-  <PropertyVal Name="HelpTag"></PropertyVal>
-  <PropertyVal Name="UseFocusRing"></PropertyVal>
-  <PropertyVal Name="HasBackColor">False</PropertyVal>
-  <PropertyVal Name="BackColor">16777215</PropertyVal>
-  <PropertyVal Name="Backdrop"></PropertyVal>
-  <PropertyVal Name="AcceptFocus"></PropertyVal>
-  <PropertyVal Name="AcceptTabs">True</PropertyVal>
   <PropertyVal Name="EraseBackground">True</PropertyVal>
+  <PropertyVal Name="AcceptTabs">True</PropertyVal>
+  <PropertyVal Name="AcceptFocus"></PropertyVal>
+  <PropertyVal Name="Backdrop"></PropertyVal>
+  <PropertyVal Name="BackColor">16777215</PropertyVal>
+  <PropertyVal Name="HasBackColor">False</PropertyVal>
+  <PropertyVal Name="UseFocusRing"></PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="TabIndex">4</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom">True</PropertyVal>
+  <PropertyVal Name="LockRight">False</PropertyVal>
+  <PropertyVal Name="LockTop">True</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">389</PropertyVal>
+  <PropertyVal Name="Width">435</PropertyVal>
+  <PropertyVal Name="Top">0</PropertyVal>
+  <PropertyVal Name="Left">0</PropertyVal>
+  <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
+  <PropertyVal Name="Name">Container_XmlInput</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
   <PropertyVal Name="Super">Container_TextAreaAndLabel</PropertyVal>
   <ControlIndex>3</ControlIndex>
   <Locked>0</Locked>
@@ -3363,32 +3366,32 @@
  <Control>
   <ControlClass>Container_TextAreaAndLabel</ControlClass>
   <ItemName>Container_TextAreaAndLabel</ItemName>
-  <PropertyVal Name="Index">-2147483648</PropertyVal>
-  <PropertyVal Name="Name">Container_XslInput</PropertyVal>
-  <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="InitialParent"></PropertyVal>
-  <PropertyVal Name="Left">447</PropertyVal>
-  <PropertyVal Name="Top">0</PropertyVal>
-  <PropertyVal Name="Width">435</PropertyVal>
-  <PropertyVal Name="Height">389</PropertyVal>
-  <PropertyVal Name="LockLeft">True</PropertyVal>
-  <PropertyVal Name="LockTop">True</PropertyVal>
-  <PropertyVal Name="LockRight">True</PropertyVal>
-  <PropertyVal Name="LockBottom">True</PropertyVal>
-  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
-  <PropertyVal Name="TabIndex">5</PropertyVal>
-  <PropertyVal Name="TabStop">True</PropertyVal>
-  <PropertyVal Name="Visible">True</PropertyVal>
-  <PropertyVal Name="Enabled">True</PropertyVal>
-  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
-  <PropertyVal Name="HelpTag"></PropertyVal>
-  <PropertyVal Name="UseFocusRing"></PropertyVal>
-  <PropertyVal Name="HasBackColor">False</PropertyVal>
-  <PropertyVal Name="BackColor">16777215</PropertyVal>
-  <PropertyVal Name="Backdrop"></PropertyVal>
-  <PropertyVal Name="AcceptFocus"></PropertyVal>
-  <PropertyVal Name="AcceptTabs">True</PropertyVal>
   <PropertyVal Name="EraseBackground">True</PropertyVal>
+  <PropertyVal Name="AcceptTabs">True</PropertyVal>
+  <PropertyVal Name="AcceptFocus"></PropertyVal>
+  <PropertyVal Name="Backdrop"></PropertyVal>
+  <PropertyVal Name="BackColor">16777215</PropertyVal>
+  <PropertyVal Name="HasBackColor">False</PropertyVal>
+  <PropertyVal Name="UseFocusRing"></PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="TabIndex">5</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom">True</PropertyVal>
+  <PropertyVal Name="LockRight">True</PropertyVal>
+  <PropertyVal Name="LockTop">True</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">389</PropertyVal>
+  <PropertyVal Name="Width">435</PropertyVal>
+  <PropertyVal Name="Top">0</PropertyVal>
+  <PropertyVal Name="Left">447</PropertyVal>
+  <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
+  <PropertyVal Name="Name">Container_XslInput</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
   <PropertyVal Name="Super">Container_TextAreaAndLabel</PropertyVal>
   <ControlIndex>4</ControlIndex>
   <Locked>0</Locked>
@@ -4067,13 +4070,14 @@
     <SourceLine>// Analyze the provided XPath against the XML in the</SourceLine>
     <SourceLine>// XML input TextArea</SourceLine>
     <SourceLine></SourceLine>
+    <SourceLine>Dim inputXml As CustomScrollableEditField = Window_Main.Container_InputXmlXsl.Container_XmlInput.TextArea_Input</SourceLine>
+    <SourceLine></SourceLine>
     <SourceLine>// Run the XPath analysis and store the results</SourceLine>
-    <SourceLine>Dim results As String = XmlData.AnalyzeXpath(Window_Main.Container_InputXmlXsl.Container_XmlInput.TextArea_Input.Text, TextField_XPath.Text)</SourceLine>
+    <SourceLine>Dim results As String = XmlData.AnalyzeXpath(inputXml.Text, TextField_XPath.Text)</SourceLine>
     <SourceLine></SourceLine>
     <SourceLine>// If the results are not Nil, put them into the output window (TIDYed)</SourceLine>
     <SourceLine>If results &lt;&gt; "" Then</SourceLine>
     <SourceLine>Window_Main.Container_InputXmlXsl.TextArea_Output.Text = results</SourceLine>
-    <SourceLine>//Dim first As Integer = InStr(Window_Main.Container_InputXmlXsl.Container_XmlInput.TextArea_Input.Text, results)</SourceLine>
     <SourceLine>//Window_Main.Container_InputXmlXsl.Container_XmlInput.TextArea_Input.HighlightCharacterRange(first, Len(results), &amp;cFFD700)</SourceLine>
     <SourceLine>End If</SourceLine>
     <SourceLine></SourceLine>
@@ -4111,159 +4115,158 @@
  <Control>
   <ControlClass>Label</ControlClass>
   <ItemName>Label</ItemName>
-  <PropertyVal Name="TabStop">True</PropertyVal>
-  <PropertyVal Name="Name">Label_AnalyzerHeader</PropertyVal>
-  <PropertyVal Name="Index">-2147483648</PropertyVal>
-  <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="Left">14</PropertyVal>
-  <PropertyVal Name="Top">9</PropertyVal>
-  <PropertyVal Name="Width">764</PropertyVal>
-  <PropertyVal Name="Height">20</PropertyVal>
-  <PropertyVal Name="LockLeft">True</PropertyVal>
-  <PropertyVal Name="LockTop">True</PropertyVal>
-  <PropertyVal Name="LockRight"></PropertyVal>
-  <PropertyVal Name="LockBottom"></PropertyVal>
-  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
-  <PropertyVal Name="TabIndex">0</PropertyVal>
-  <PropertyVal Name="Text">XPath to analyze (on Source XML):</PropertyVal>
-  <PropertyVal Name="TextAlign">0</PropertyVal>
-  <PropertyVal Name="TextColor">0</PropertyVal>
-  <PropertyVal Name="Multiline"></PropertyVal>
-  <PropertyVal Name="Enabled">True</PropertyVal>
-  <PropertyVal Name="Visible">True</PropertyVal>
-  <PropertyVal Name="Selectable">False</PropertyVal>
-  <PropertyVal Name="Transparent">False</PropertyVal>
-  <PropertyVal Name="HelpTag"></PropertyVal>
-  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
-  <PropertyVal Name="TextFont">System</PropertyVal>
-  <PropertyVal Name="TextSize">0</PropertyVal>
-  <PropertyVal Name="TextUnit">0</PropertyVal>
-  <PropertyVal Name="Bold">True</PropertyVal>
-  <PropertyVal Name="Italic"></PropertyVal>
-  <PropertyVal Name="Underline"></PropertyVal>
-  <PropertyVal Name="DataSource"></PropertyVal>
-  <PropertyVal Name="DataField"></PropertyVal>
   <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="DataField"></PropertyVal>
+  <PropertyVal Name="DataSource"></PropertyVal>
+  <PropertyVal Name="Underline"></PropertyVal>
+  <PropertyVal Name="Italic"></PropertyVal>
+  <PropertyVal Name="Bold">True</PropertyVal>
+  <PropertyVal Name="TextUnit">0</PropertyVal>
+  <PropertyVal Name="TextSize">0</PropertyVal>
+  <PropertyVal Name="TextFont">System</PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="Transparent">False</PropertyVal>
+  <PropertyVal Name="Selectable">False</PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="Multiline"></PropertyVal>
+  <PropertyVal Name="TextColor">0</PropertyVal>
+  <PropertyVal Name="TextAlign">0</PropertyVal>
+  <PropertyVal Name="Text">XPath to analyze (on Source XML):</PropertyVal>
+  <PropertyVal Name="TabIndex">0</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom"></PropertyVal>
+  <PropertyVal Name="LockRight"></PropertyVal>
+  <PropertyVal Name="LockTop">True</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">20</PropertyVal>
+  <PropertyVal Name="Width">764</PropertyVal>
+  <PropertyVal Name="Top">9</PropertyVal>
+  <PropertyVal Name="Left">14</PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
   <PropertyVal Name="Super">Label</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="Name">Label_AnalyzerHeader</PropertyVal>
   <ControlIndex>0</ControlIndex>
   <Locked>0</Locked>
  </Control>
  <Control>
   <ControlClass>TextField</ControlClass>
   <ItemName>TextField</ItemName>
-  <PropertyVal Name="Name">TextField_XPath</PropertyVal>
-  <PropertyVal Name="Index">-2147483648</PropertyVal>
-  <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="Left">14</PropertyVal>
-  <PropertyVal Name="Top">34</PropertyVal>
-  <PropertyVal Name="Width">770</PropertyVal>
-  <PropertyVal Name="Height">22</PropertyVal>
-  <PropertyVal Name="LockLeft">True</PropertyVal>
-  <PropertyVal Name="LockTop">True</PropertyVal>
-  <PropertyVal Name="LockRight"></PropertyVal>
-  <PropertyVal Name="LockBottom"></PropertyVal>
-  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
-  <PropertyVal Name="TabIndex">1</PropertyVal>
-  <PropertyVal Name="TabStop">True</PropertyVal>
-  <PropertyVal Name="Border">True</PropertyVal>
-  <PropertyVal Name="Password"></PropertyVal>
-  <PropertyVal Name="UseFocusRing">True</PropertyVal>
-  <PropertyVal Name="TextColor">0</PropertyVal>
-  <PropertyVal Name="BackColor">16777215</PropertyVal>
-  <PropertyVal Name="Enabled">True</PropertyVal>
-  <PropertyVal Name="Format"></PropertyVal>
-  <PropertyVal Name="Visible">True</PropertyVal>
-  <PropertyVal Name="HelpTag"></PropertyVal>
-  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
-  <PropertyVal Name="TextFont">System</PropertyVal>
-  <PropertyVal Name="TextSize">0</PropertyVal>
-  <PropertyVal Name="TextUnit">0</PropertyVal>
-  <PropertyVal Name="Bold"></PropertyVal>
-  <PropertyVal Name="Italic"></PropertyVal>
-  <PropertyVal Name="Underline"></PropertyVal>
-  <PropertyVal Name="CueText"></PropertyVal>
-  <PropertyVal Name="Text"></PropertyVal>
-  <PropertyVal Name="Mask"></PropertyVal>
-  <PropertyVal Name="ReadOnly"></PropertyVal>
-  <PropertyVal Name="LimitText">0</PropertyVal>
-  <PropertyVal Name="AcceptTabs"></PropertyVal>
-  <PropertyVal Name="Alignment">0</PropertyVal>
-  <PropertyVal Name="AutomaticallyCheckSpelling">False</PropertyVal>
-  <PropertyVal Name="DataSource"></PropertyVal>
   <PropertyVal Name="DataField"></PropertyVal>
+  <PropertyVal Name="DataSource"></PropertyVal>
+  <PropertyVal Name="AutomaticallyCheckSpelling">False</PropertyVal>
+  <PropertyVal Name="Alignment">0</PropertyVal>
+  <PropertyVal Name="AcceptTabs"></PropertyVal>
+  <PropertyVal Name="LimitText">0</PropertyVal>
+  <PropertyVal Name="ReadOnly"></PropertyVal>
+  <PropertyVal Name="Mask"></PropertyVal>
+  <PropertyVal Name="Text"></PropertyVal>
+  <PropertyVal Name="CueText"></PropertyVal>
+  <PropertyVal Name="Underline"></PropertyVal>
+  <PropertyVal Name="Italic"></PropertyVal>
+  <PropertyVal Name="Bold"></PropertyVal>
+  <PropertyVal Name="TextUnit">0</PropertyVal>
+  <PropertyVal Name="TextSize">0</PropertyVal>
+  <PropertyVal Name="TextFont">System</PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="Format"></PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="BackColor">16777215</PropertyVal>
+  <PropertyVal Name="TextColor">0</PropertyVal>
+  <PropertyVal Name="UseFocusRing">True</PropertyVal>
+  <PropertyVal Name="Password"></PropertyVal>
+  <PropertyVal Name="Border">True</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="TabIndex">1</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom"></PropertyVal>
+  <PropertyVal Name="LockRight"></PropertyVal>
+  <PropertyVal Name="LockTop">True</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">22</PropertyVal>
+  <PropertyVal Name="Width">770</PropertyVal>
+  <PropertyVal Name="Top">34</PropertyVal>
+  <PropertyVal Name="Left">14</PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
   <PropertyVal Name="Super">TextField</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="Name">TextField_XPath</PropertyVal>
   <ControlIndex>1</ControlIndex>
   <Locked>0</Locked>
  </Control>
  <Control>
   <ControlClass>PushButton</ControlClass>
   <ItemName>PushButton</ItemName>
-  <PropertyVal Name="Name">Button_Analyze</PropertyVal>
-  <PropertyVal Name="Index">-2147483648</PropertyVal>
-  <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="Left">704</PropertyVal>
-  <PropertyVal Name="Top">68</PropertyVal>
-  <PropertyVal Name="Width">80</PropertyVal>
-  <PropertyVal Name="Height">20</PropertyVal>
-  <PropertyVal Name="LockLeft">True</PropertyVal>
-  <PropertyVal Name="LockTop">True</PropertyVal>
-  <PropertyVal Name="LockRight"></PropertyVal>
-  <PropertyVal Name="LockBottom"></PropertyVal>
-  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
-  <PropertyVal Name="TabIndex">2</PropertyVal>
-  <PropertyVal Name="TabStop">True</PropertyVal>
-  <PropertyVal Name="Caption">Analyze</PropertyVal>
-  <PropertyVal Name="Default">True</PropertyVal>
-  <PropertyVal Name="Cancel"></PropertyVal>
-  <PropertyVal Name="Enabled">False</PropertyVal>
-  <PropertyVal Name="Visible">True</PropertyVal>
-  <PropertyVal Name="HelpTag"></PropertyVal>
-  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
-  <PropertyVal Name="ButtonStyle">0</PropertyVal>
-  <PropertyVal Name="TextFont">System</PropertyVal>
-  <PropertyVal Name="TextSize">0</PropertyVal>
-  <PropertyVal Name="TextUnit">0</PropertyVal>
-  <PropertyVal Name="Bold"></PropertyVal>
-  <PropertyVal Name="Italic"></PropertyVal>
-  <PropertyVal Name="Underline"></PropertyVal>
   <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="Underline"></PropertyVal>
+  <PropertyVal Name="Italic"></PropertyVal>
+  <PropertyVal Name="Bold"></PropertyVal>
+  <PropertyVal Name="TextUnit">0</PropertyVal>
+  <PropertyVal Name="TextSize">0</PropertyVal>
+  <PropertyVal Name="TextFont">System</PropertyVal>
+  <PropertyVal Name="ButtonStyle">0</PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="Enabled">False</PropertyVal>
+  <PropertyVal Name="Cancel"></PropertyVal>
+  <PropertyVal Name="Default">True</PropertyVal>
+  <PropertyVal Name="Caption">Analyze</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="TabIndex">2</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom"></PropertyVal>
+  <PropertyVal Name="LockRight"></PropertyVal>
+  <PropertyVal Name="LockTop">True</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">20</PropertyVal>
+  <PropertyVal Name="Width">80</PropertyVal>
+  <PropertyVal Name="Top">68</PropertyVal>
+  <PropertyVal Name="Left">704</PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
   <PropertyVal Name="Super">PushButton</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="Name">Button_Analyze</PropertyVal>
   <ControlIndex>2</ControlIndex>
   <Locked>0</Locked>
  </Control>
  <Control>
   <ControlClass>PushButton</ControlClass>
   <ItemName>PushButton</ItemName>
-  <PropertyVal Name="Name">Button_Cancel</PropertyVal>
-  <PropertyVal Name="Index">-2147483648</PropertyVal>
-  <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="Left">14</PropertyVal>
-  <PropertyVal Name="Top">68</PropertyVal>
-  <PropertyVal Name="Width">80</PropertyVal>
-  <PropertyVal Name="Height">20</PropertyVal>
-  <PropertyVal Name="LockLeft">True</PropertyVal>
-  <PropertyVal Name="LockTop">True</PropertyVal>
-  <PropertyVal Name="LockRight"></PropertyVal>
-  <PropertyVal Name="LockBottom"></PropertyVal>
-  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
-  <PropertyVal Name="TabIndex">3</PropertyVal>
-  <PropertyVal Name="TabStop">True</PropertyVal>
-  <PropertyVal Name="Caption">Cancel</PropertyVal>
-  <PropertyVal Name="Default"></PropertyVal>
-  <PropertyVal Name="Cancel">True</PropertyVal>
-  <PropertyVal Name="Enabled">True</PropertyVal>
-  <PropertyVal Name="Visible">True</PropertyVal>
-  <PropertyVal Name="HelpTag"></PropertyVal>
-  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
-  <PropertyVal Name="ButtonStyle">0</PropertyVal>
-  <PropertyVal Name="TextFont">System</PropertyVal>
-  <PropertyVal Name="TextSize">0</PropertyVal>
-  <PropertyVal Name="TextUnit">0</PropertyVal>
-  <PropertyVal Name="Bold"></PropertyVal>
-  <PropertyVal Name="Italic"></PropertyVal>
-  <PropertyVal Name="Underline"></PropertyVal>
   <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="Underline"></PropertyVal>
+  <PropertyVal Name="Italic"></PropertyVal>
+  <PropertyVal Name="Bold"></PropertyVal>
+  <PropertyVal Name="TextUnit">0</PropertyVal>
+  <PropertyVal Name="TextSize">0</PropertyVal>
+  <PropertyVal Name="TextFont">System</PropertyVal>
+  <PropertyVal Name="ButtonStyle">0</PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="Cancel">True</PropertyVal>
+  <PropertyVal Name="Default"></PropertyVal>
+  <PropertyVal Name="Caption">Cancel</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="TabIndex">3</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom"></PropertyVal>
+  <PropertyVal Name="LockRight"></PropertyVal>
+  <PropertyVal Name="LockTop">True</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">20</PropertyVal>
+  <PropertyVal Name="Width">80</PropertyVal>
+  <PropertyVal Name="Top">68</PropertyVal>
+  <PropertyVal Name="Left">14</PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
   <PropertyVal Name="Super">PushButton</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="Name">Button_Cancel</PropertyVal>
   <ControlIndex>3</ControlIndex>
   <Locked>0</Locked>
  </Control>
@@ -5859,31 +5862,31 @@
  <Control>
   <ControlClass>Container_XmlXslInput</ControlClass>
   <ItemName>Container_XmlXslInput</ItemName>
-  <PropertyVal Name="Name">Container_InputXmlXsl</PropertyVal>
-  <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="InitialParent"></PropertyVal>
-  <PropertyVal Name="Left">20</PropertyVal>
-  <PropertyVal Name="Top">20</PropertyVal>
-  <PropertyVal Name="Width">1102</PropertyVal>
-  <PropertyVal Name="Height">730</PropertyVal>
-  <PropertyVal Name="LockLeft">True</PropertyVal>
-  <PropertyVal Name="LockTop">True</PropertyVal>
-  <PropertyVal Name="LockRight">True</PropertyVal>
-  <PropertyVal Name="LockBottom">True</PropertyVal>
-  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
-  <PropertyVal Name="TabIndex">7</PropertyVal>
-  <PropertyVal Name="TabStop">True</PropertyVal>
-  <PropertyVal Name="Visible">True</PropertyVal>
-  <PropertyVal Name="Enabled">True</PropertyVal>
-  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
-  <PropertyVal Name="HelpTag"></PropertyVal>
-  <PropertyVal Name="UseFocusRing"></PropertyVal>
-  <PropertyVal Name="HasBackColor">False</PropertyVal>
-  <PropertyVal Name="BackColor">16777215</PropertyVal>
-  <PropertyVal Name="Backdrop"></PropertyVal>
-  <PropertyVal Name="AcceptFocus"></PropertyVal>
-  <PropertyVal Name="AcceptTabs">True</PropertyVal>
   <PropertyVal Name="EraseBackground">True</PropertyVal>
+  <PropertyVal Name="AcceptTabs">True</PropertyVal>
+  <PropertyVal Name="AcceptFocus"></PropertyVal>
+  <PropertyVal Name="Backdrop"></PropertyVal>
+  <PropertyVal Name="BackColor">16777215</PropertyVal>
+  <PropertyVal Name="HasBackColor">False</PropertyVal>
+  <PropertyVal Name="UseFocusRing"></PropertyVal>
+  <PropertyVal Name="HelpTag"></PropertyVal>
+  <PropertyVal Name="AutoDeactivate">True</PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="TabIndex">7</PropertyVal>
+  <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="LockBottom">True</PropertyVal>
+  <PropertyVal Name="LockRight">True</PropertyVal>
+  <PropertyVal Name="LockTop">True</PropertyVal>
+  <PropertyVal Name="LockLeft">True</PropertyVal>
+  <PropertyVal Name="Height">730</PropertyVal>
+  <PropertyVal Name="Width">1102</PropertyVal>
+  <PropertyVal Name="Top">20</PropertyVal>
+  <PropertyVal Name="Left">20</PropertyVal>
+  <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
+  <PropertyVal Name="Name">Container_InputXmlXsl</PropertyVal>
   <PropertyVal Name="Index">-2147483648</PropertyVal>
   <PropertyVal Name="Super">Container_XmlXslInput</PropertyVal>
   <ControlIndex>0</ControlIndex>
@@ -5892,19 +5895,19 @@
  <Control>
   <ControlClass>MainToolbar</ControlClass>
   <ItemName>MainToolbar</ItemName>
-  <PropertyVal Name="TabStop">True</PropertyVal>
-  <PropertyVal Name="TabIndex">1</PropertyVal>
-  <PropertyVal Name="Name">Toolbar_MainToolbar</PropertyVal>
-  <PropertyVal Name="Index">-2147483648</PropertyVal>
-  <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="Left">20</PropertyVal>
-  <PropertyVal Name="Top">-76</PropertyVal>
-  <PropertyVal Name="Width">1102</PropertyVal>
-  <PropertyVal Name="Height">41</PropertyVal>
-  <PropertyVal Name="Visible">True</PropertyVal>
-  <PropertyVal Name="Enabled">True</PropertyVal>
-  <PropertyVal Name="InitialParent"></PropertyVal>
   <PropertyVal Name="TabPanelIndex">0</PropertyVal>
+  <PropertyVal Name="InitialParent"></PropertyVal>
+  <PropertyVal Name="Enabled">True</PropertyVal>
+  <PropertyVal Name="Visible">True</PropertyVal>
+  <PropertyVal Name="Height">41</PropertyVal>
+  <PropertyVal Name="Width">1102</PropertyVal>
+  <PropertyVal Name="Top">-76</PropertyVal>
+  <PropertyVal Name="Left">20</PropertyVal>
+  <PropertyVal Name="Scope">0</PropertyVal>
+  <PropertyVal Name="Index">-2147483648</PropertyVal>
+  <PropertyVal Name="Name">Toolbar_MainToolbar</PropertyVal>
+  <PropertyVal Name="TabIndex">1</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
   <PropertyVal Name="Super">MainToolbar</PropertyVal>
   <ControlIndex>1</ControlIndex>
   <Locked>0</Locked>
@@ -7147,13 +7150,15 @@
    <SourceLine></SourceLine>
    <SourceLine>Try</SourceLine>
    <SourceLine>Dim xmlDocument As XmlDocument = New XmlDocument</SourceLine>
+   <SourceLine>Dim xPathTransform As String = "&lt;?xml version=""1.0""?&gt;&lt;xsl:stylesheet xmlns:xsl=""http://www.w3.org/1999/XSL/Transform"" version=""1.0""&gt;&lt;xsl:output omit-xml-declaration=""no"" indent=""yes""/&gt;&lt;xsl:strip-space elements=""*""/&gt;&lt;!-- Template #1 - Identity Transform --&gt;&lt;xsl:template match=""node()|@*""&gt;&lt;xsl:copy&gt;&lt;xsl:apply-templates select=""node()|@*""/&gt;&lt;/xsl:copy&gt;&lt;/xsl:template&gt;&lt;xsl:template match=""" + xPath + """&gt;&lt;xsl:choose&gt;&lt;xsl:when test=""self::*""&gt;&lt;!--an element--&gt;&lt;xsl:copy&gt;&lt;xsl:attribute name=""highlight""&gt;true&lt;/xsl:attribute&gt;&lt;xsl:apply-templates select=""node()|@*""/&gt;&lt;/xsl:copy&gt;&lt;/xsl:when&gt;&lt;xsl:when test=""self::text()""&gt;&lt;!--show text--&gt;&lt;span highlight=""true""&gt;&lt;xsl:copy/&gt;&lt;/span&gt;&lt;/xsl:when&gt;&lt;xsl:when test=""self::comment()""&gt;&lt;!--reveal comment--&gt;&lt;/xsl:when&gt;&lt;xsl:when test=""self::processing-instruction()""&gt;&lt;!--pi--&gt;&lt;/xsl:when&gt;&lt;xsl:when test=""count(.|/)=1""&gt;&lt;!--root--&gt;&lt;/xsl:when&gt;&lt;!--any attribute--&gt;&lt;xsl:when test=""count(.|../@*)=count(../@*)""&gt;&lt;xsl:attribute name=""{name()}""&gt;&lt;xsl:value-of select=""concat(., '|highlight')""/&gt;&lt;/xsl:attribute&gt;&lt;/xsl:when&gt;&lt;!--specific namespace--&gt;&lt;xsl:when test=""count(.|../namespace::xsl)= count(../namespace::xsl)""/&gt;&lt;!--any namespace--&gt;&lt;xsl:when test=""count(.|../namespace::*)= count(../namespace::*)""/&gt;&lt;/xsl:choose&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;"</SourceLine>
    <SourceLine>Dim xPathResults As XmlNodeList</SourceLine>
-   <SourceLine>Dim results As String</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>xmlDocument.LoadXml(sourceXml.ConvertEncoding(Encodings.UTF8))</SourceLine>
    <SourceLine>xPathResults = xmlDocument.Xql(xPath)</SourceLine>
-   <SourceLine>Return TransformXml(xPathResults.ToString, XSLT_TIDY_NO_DECLARATION, "XPATH_RESULTS")</SourceLine>
-   <SourceLine>//Return xPathResults.ToString</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>//Return TransformXml(xPathResults.ToString, XSLT_TIDY_NO_DECLARATION, "XPATH_RESULTS")</SourceLine>
+   <SourceLine>//Return xPathResults</SourceLine>
+   <SourceLine>Return TransformXml(sourceXml, xPathTransform)</SourceLine>
    <SourceLine>Catch err As XmlException</SourceLine>
    <SourceLine>App.DisplayWarningMsg("There was an error during analysis." + EndOfLine + EndOfLine + err.Message)</SourceLine>
    <SourceLine>End Try</SourceLine>
@@ -7264,50 +7269,45 @@
 <block type="Picture" ID="664851807">
  <ObjName>blockEndMarker</ObjName>
  <ObjContainerID>131773694</ObjContainerID>
- <FullPath>Macintosh HD:Users:abach:Downloads:CustomEditField_1.6.3 (1):imgs:blockEndMarker.bmp</FullPath>
- <PartialPath>..\..\Downloads\CustomEditField_1.6.3 (1)\imgs\blockEndMarker.bmp</PartialPath>
- <FileAlias><Hex bytes="482">00F1D17301020100000001D00000000001D0000200000C4D6163696E746F7368204844000000000000000000000000000000CA40958C482B000000FD7D7A12626C6F636B456E644D61726B65722E626D7000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000FD7D8FC9C9BDB80000000000000000FFFFFFFF0000092000000000000000000000000000000004696D6773001000080000CA40E9EC0000001100080000C9CA121800000001001400FD7D7A00FD7D100005027D000502330000BEEC000200594D6163696E746F73682048443A55736572733A0061626163683A00446F776E6C6F6164733A00437573746F6D456469744669656C645F312E362E33202831293A00696D67733A00626C6F636B456E644D61726B65722E626D7000000E002600120062006C006F0063006B0045006E0064004D00610072006B00650072002E0062006D0070000F001A000C004D006100630069006E0074006F007300680020004800440012004755736572732F61626163682F446F776E6C6F6164732F437573746F6D456469744669656C645F312E362E33202831292F696D67732F626C6F636B456E644D61726B65722E626D7000001300012F0000150002000CFFFF0000000000000000</Hex></FileAlias>
- <FileAlias><Hex bytes="482">00F1D17301020100000001D00000000001D0000200000C4D6163696E746F7368204844000000000000000000000000000000CA40958C482B000000FD7D7A12626C6F636B456E644D61726B65722E626D7000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000FD7D8FC9C9BDB80000000000000000FFFFFFFF0000092000000000000000000000000000000004696D6773001000080000CA40E9EC0000001100080000C9CA121800000001001400FD7D7A00FD7D100005027D000502330000BEEC000200594D6163696E746F73682048443A55736572733A0061626163683A00446F776E6C6F6164733A00437573746F6D456469744669656C645F312E362E33202831293A00696D67733A00626C6F636B456E644D61726B65722E626D7000000E002600120062006C006F0063006B0045006E0064004D00610072006B00650072002E0062006D0070000F001A000C004D006100630069006E0074006F007300680020004800440012004755736572732F61626163682F446F776E6C6F6164732F437573746F6D456469744669656C645F312E362E33202831292F696D67732F626C6F636B456E644D61726B65722E626D7000001300012F0000150002000CFFFF0000000000000000</Hex></FileAlias>
+ <FullPath>Macintosh HD:Users:abach:Git:aXel:Resources:Images:blockEndMarker.bmp</FullPath>
+ <PartialPath>Resources\Images\blockEndMarker.bmp</PartialPath>
+ <FileAlias><Hex bytes="458">00F1D17301020100000001B80000000001B8000200000C4D6163696E746F7368204844000000000000000000000000000000CA40958C482B0000010EBBA812626C6F636B456E644D61726B65722E626D70000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010EBBABC9672B430000000000000000FFFFFFFF0000092000000000000000000000000000000006496D61676573001000080000CA40E9EC0000001100080000C9678DB3000000010018010EBBA800F768F700F0A3B0000B0790000502330000BEEC0002004B4D6163696E746F73682048443A55736572733A0061626163683A004769743A006158656C3A005265736F75726365733A00496D616765733A00626C6F636B456E644D61726B65722E626D7000000E002600120062006C006F0063006B0045006E0064004D00610072006B00650072002E0062006D0070000F001A000C004D006100630069006E0074006F007300680020004800440012003855736572732F61626163682F4769742F6158656C2F5265736F75726365732F496D616765732F626C6F636B456E644D61726B65722E626D70001300012F0000150002000CFFFF0000000000000000</Hex></FileAlias>
  <ItemText>blockEndMarker</ItemText>
  <ItemTransparent>0</ItemTransparent>
 </block>
 <block type="Picture" ID="806921714">
  <ObjName>blockFoldedMarker</ObjName>
  <ObjContainerID>131773694</ObjContainerID>
- <FullPath>Macintosh HD:Users:abach:Downloads:CustomEditField_1.6.3 (1):imgs:blockFoldedMarker.bmp</FullPath>
- <PartialPath>..\..\Downloads\CustomEditField_1.6.3 (1)\imgs\blockFoldedMarker.bmp</PartialPath>
- <FileAlias><Hex bytes="492">00F1D17301020100000001DA0000000001DA000200000C4D6163696E746F7368204844000000000000000000000000000000CA40958C482B000000FD7D7A15626C6F636B466F6C6465644D61726B65722E626D7000000000000000000000000000000000000000000000000000000000000000000000000000000000000000FD7D90C9C9BDB80000000000000000FFFFFFFF0000092000000000000000000000000000000004696D6773001000080000CA40E9EC0000001100080000C9CA121800000001001400FD7D7A00FD7D100005027D000502330000BEEC0002005C4D6163696E746F73682048443A55736572733A0061626163683A00446F776E6C6F6164733A00437573746F6D456469744669656C645F312E362E33202831293A00696D67733A00626C6F636B466F6C6465644D61726B65722E626D70000E002C00150062006C006F0063006B0046006F006C006400650064004D00610072006B00650072002E0062006D0070000F001A000C004D006100630069006E0074006F007300680020004800440012004A55736572732F61626163682F446F776E6C6F6164732F437573746F6D456469744669656C645F312E362E33202831292F696D67732F626C6F636B466F6C6465644D61726B65722E626D70001300012F0000150002000CFFFF0000000000000000</Hex></FileAlias>
- <FileAlias><Hex bytes="492">00F1D17301020100000001DA0000000001DA000200000C4D6163696E746F7368204844000000000000000000000000000000CA40958C482B000000FD7D7A15626C6F636B466F6C6465644D61726B65722E626D7000000000000000000000000000000000000000000000000000000000000000000000000000000000000000FD7D90C9C9BDB80000000000000000FFFFFFFF0000092000000000000000000000000000000004696D6773001000080000CA40E9EC0000001100080000C9CA121800000001001400FD7D7A00FD7D100005027D000502330000BEEC0002005C4D6163696E746F73682048443A55736572733A0061626163683A00446F776E6C6F6164733A00437573746F6D456469744669656C645F312E362E33202831293A00696D67733A00626C6F636B466F6C6465644D61726B65722E626D70000E002C00150062006C006F0063006B0046006F006C006400650064004D00610072006B00650072002E0062006D0070000F001A000C004D006100630069006E0074006F007300680020004800440012004A55736572732F61626163682F446F776E6C6F6164732F437573746F6D456469744669656C645F312E362E33202831292F696D67732F626C6F636B466F6C6465644D61726B65722E626D70001300012F0000150002000CFFFF0000000000000000</Hex></FileAlias>
+ <FullPath>Macintosh HD:Users:abach:Git:aXel:Resources:Images:blockFoldedMarker.bmp</FullPath>
+ <PartialPath>Resources\Images\blockFoldedMarker.bmp</PartialPath>
+ <FileAlias><Hex bytes="470">00F1D17301020100000001C40000000001C4000200000C4D6163696E746F7368204844000000000000000000000000000000CA40958C482B0000010EBBA815626C6F636B466F6C6465644D61726B65722E626D70000000000000000000000000000000000000000000000000000000000000000000000000000000000000010EBBACC9672B430000000000000000FFFFFFFF0000092000000000000000000000000000000006496D61676573001000080000CA40E9EC0000001100080000C9678DB3000000010018010EBBA800F768F700F0A3B0000B0790000502330000BEEC0002004E4D6163696E746F73682048443A55736572733A0061626163683A004769743A006158656C3A005265736F75726365733A00496D616765733A00626C6F636B466F6C6465644D61726B65722E626D70000E002C00150062006C006F0063006B0046006F006C006400650064004D00610072006B00650072002E0062006D0070000F001A000C004D006100630069006E0074006F007300680020004800440012003B55736572732F61626163682F4769742F6158656C2F5265736F75726365732F496D616765732F626C6F636B466F6C6465644D61726B65722E626D7000001300012F0000150002000CFFFF0000000000000000</Hex></FileAlias>
  <ItemText>blockFoldedMarker</ItemText>
  <ItemTransparent>0</ItemTransparent>
 </block>
 <block type="Picture" ID="574033199">
  <ObjName>blockFoldedTrailMarker</ObjName>
  <ObjContainerID>131773694</ObjContainerID>
- <FullPath>Macintosh HD:Users:abach:Downloads:CustomEditField_1.6.3 (1):imgs:blockFoldedTrailMarker.bmp</FullPath>
- <PartialPath>..\..\Downloads\CustomEditField_1.6.3 (1)\imgs\blockFoldedTrailMarker.bmp</PartialPath>
- <FileAlias><Hex bytes="514">00F1D17301020100000001F00000000001F0000200000C4D6163696E746F7368204844000000000000000000000000000000CA40958C482B000000FD7D7A1A626C6F636B466F6C646564547261696C4D61726B65722E626D700000000000000000000000000000000000000000000000000000000000000000000000000000FD7D91C9C9BDB80000000000000000FFFFFFFF0000092000000000000000000000000000000004696D6773001000080000CA40E9EC0000001100080000C9CA121800000001001400FD7D7A00FD7D100005027D000502330000BEEC000200614D6163696E746F73682048443A55736572733A0061626163683A00446F776E6C6F6164733A00437573746F6D456469744669656C645F312E362E33202831293A00696D67733A00626C6F636B466F6C646564547261696C4D61726B65722E626D7000000E0036001A0062006C006F0063006B0046006F006C0064006500640054007200610069006C004D00610072006B00650072002E0062006D0070000F001A000C004D006100630069006E0074006F007300680020004800440012004F55736572732F61626163682F446F776E6C6F6164732F437573746F6D456469744669656C645F312E362E33202831292F696D67732F626C6F636B466F6C646564547261696C4D61726B65722E626D7000001300012F0000150002000CFFFF0000000000000000</Hex></FileAlias>
- <FileAlias><Hex bytes="514">00F1D17301020100000001F00000000001F0000200000C4D6163696E746F7368204844000000000000000000000000000000CA40958C482B000000FD7D7A1A626C6F636B466F6C646564547261696C4D61726B65722E626D700000000000000000000000000000000000000000000000000000000000000000000000000000FD7D91C9C9BDB80000000000000000FFFFFFFF0000092000000000000000000000000000000004696D6773001000080000CA40E9EC0000001100080000C9CA121800000001001400FD7D7A00FD7D100005027D000502330000BEEC000200614D6163696E746F73682048443A55736572733A0061626163683A00446F776E6C6F6164733A00437573746F6D456469744669656C645F312E362E33202831293A00696D67733A00626C6F636B466F6C646564547261696C4D61726B65722E626D7000000E0036001A0062006C006F0063006B0046006F006C0064006500640054007200610069006C004D00610072006B00650072002E0062006D0070000F001A000C004D006100630069006E0074006F007300680020004800440012004F55736572732F61626163682F446F776E6C6F6164732F437573746F6D456469744669656C645F312E362E33202831292F696D67732F626C6F636B466F6C646564547261696C4D61726B65722E626D7000001300012F0000150002000CFFFF0000000000000000</Hex></FileAlias>
+ <FullPath>Macintosh HD:Users:abach:Git:aXel:Resources:Images:blockFoldedTrailMarker.bmp</FullPath>
+ <PartialPath>Resources\Images\blockFoldedTrailMarker.bmp</PartialPath>
+ <FileAlias><Hex bytes="490">00F1D17301020100000001D80000000001D8000200000C4D6163696E746F7368204844000000000000000000000000000000CA40958C482B0000010EBBA81A626C6F636B466F6C646564547261696C4D61726B65722E626D7000000000000000000000000000000000000000000000000000000000000000000000000000010EBBADC9672B430000000000000000FFFFFFFF0000092000000000000000000000000000000006496D61676573001000080000CA40E9EC0000001100080000C9678DB3000000010018010EBBA800F768F700F0A3B0000B0790000502330000BEEC000200534D6163696E746F73682048443A55736572733A0061626163683A004769743A006158656C3A005265736F75726365733A00496D616765733A00626C6F636B466F6C646564547261696C4D61726B65722E626D7000000E0036001A0062006C006F0063006B0046006F006C0064006500640054007200610069006C004D00610072006B00650072002E0062006D0070000F001A000C004D006100630069006E0074006F007300680020004800440012004055736572732F61626163682F4769742F6158656C2F5265736F75726365732F496D616765732F626C6F636B466F6C646564547261696C4D61726B65722E626D70001300012F0000150002000CFFFF0000000000000000</Hex></FileAlias>
  <ItemText>blockFoldedTrailMarker</ItemText>
  <ItemTransparent>0</ItemTransparent>
 </block>
 <block type="Picture" ID="1279450075">
  <ObjName>blockStartMarker</ObjName>
  <ObjContainerID>131773694</ObjContainerID>
- <FullPath>Macintosh HD:Users:abach:Downloads:CustomEditField_1.6.3 (1):imgs:blockStartMarker.bmp</FullPath>
- <PartialPath>..\..\Downloads\CustomEditField_1.6.3 (1)\imgs\blockStartMarker.bmp</PartialPath>
- <FileAlias><Hex bytes="490">00F1D17301020100000001D80000000001D8000200000C4D6163696E746F7368204844000000000000000000000000000000CA40958C482B000000FD7D7A14626C6F636B53746172744D61726B65722E626D700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000FD7D92C9C9BDB80000000000000000FFFFFFFF0000092000000000000000000000000000000004696D6773001000080000CA40E9EC0000001100080000C9CA121800000001001400FD7D7A00FD7D100005027D000502330000BEEC0002005B4D6163696E746F73682048443A55736572733A0061626163683A00446F776E6C6F6164733A00437573746F6D456469744669656C645F312E362E33202831293A00696D67733A00626C6F636B53746172744D61726B65722E626D7000000E002A00140062006C006F0063006B00530074006100720074004D00610072006B00650072002E0062006D0070000F001A000C004D006100630069006E0074006F007300680020004800440012004955736572732F61626163682F446F776E6C6F6164732F437573746F6D456469744669656C645F312E362E33202831292F696D67732F626C6F636B53746172744D61726B65722E626D7000001300012F0000150002000CFFFF0000000000000000</Hex></FileAlias>
- <FileAlias><Hex bytes="490">00F1D17301020100000001D80000000001D8000200000C4D6163696E746F7368204844000000000000000000000000000000CA40958C482B000000FD7D7A14626C6F636B53746172744D61726B65722E626D700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000FD7D92C9C9BDB80000000000000000FFFFFFFF0000092000000000000000000000000000000004696D6773001000080000CA40E9EC0000001100080000C9CA121800000001001400FD7D7A00FD7D100005027D000502330000BEEC0002005B4D6163696E746F73682048443A55736572733A0061626163683A00446F776E6C6F6164733A00437573746F6D456469744669656C645F312E362E33202831293A00696D67733A00626C6F636B53746172744D61726B65722E626D7000000E002A00140062006C006F0063006B00530074006100720074004D00610072006B00650072002E0062006D0070000F001A000C004D006100630069006E0074006F007300680020004800440012004955736572732F61626163682F446F776E6C6F6164732F437573746F6D456469744669656C645F312E362E33202831292F696D67732F626C6F636B53746172744D61726B65722E626D7000001300012F0000150002000CFFFF0000000000000000</Hex></FileAlias>
+ <FullPath>Macintosh HD:Users:abach:Git:aXel:Resources:Images:blockStartMarker.bmp</FullPath>
+ <PartialPath>Resources\Images\blockStartMarker.bmp</PartialPath>
+ <FileAlias><Hex bytes="466">00F1D17301020100000001C00000000001C0000200000C4D6163696E746F7368204844000000000000000000000000000000CA40958C482B0000010EBBA814626C6F636B53746172744D61726B65722E626D7000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010EBBAEC9672B430000000000000000FFFFFFFF0000092000000000000000000000000000000006496D61676573001000080000CA40E9EC0000001100080000C9678DB3000000010018010EBBA800F768F700F0A3B0000B0790000502330000BEEC0002004D4D6163696E746F73682048443A55736572733A0061626163683A004769743A006158656C3A005265736F75726365733A00496D616765733A00626C6F636B53746172744D61726B65722E626D7000000E002A00140062006C006F0063006B00530074006100720074004D00610072006B00650072002E0062006D0070000F001A000C004D006100630069006E0074006F007300680020004800440012003A55736572732F61626163682F4769742F6158656C2F5265736F75726365732F496D616765732F626C6F636B53746172744D61726B65722E626D70001300012F0000150002000CFFFF0000000000000000</Hex></FileAlias>
  <ItemText>blockStartMarker</ItemText>
  <ItemTransparent>0</ItemTransparent>
 </block>
 <block type="Picture" ID="963669920">
  <ObjName>bookmarksimg</ObjName>
  <ObjContainerID>131773694</ObjContainerID>
- <FullPath>Macintosh HD:Users:abach:Downloads:CustomEditField_1.6.3 (1):imgs:bookmarksimg.bmp</FullPath>
- <PartialPath>..\..\Downloads\CustomEditField_1.6.3 (1)\imgs\bookmarksimg.bmp</PartialPath>
- <FileAlias><Hex bytes="474">00F1D17301020100000001C80000000001C8000200000C4D6163696E746F7368204844000000000000000000000000000000CA40958C482B000000FD7D7A10626F6F6B6D61726B73696D672E626D70000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000FD7D93C9C9BDB80000000000000000FFFFFFFF0000092000000000000000000000000000000004696D6773001000080000CA40E9EC0000001100080000C9CA121800000001001400FD7D7A00FD7D100005027D000502330000BEEC000200574D6163696E746F73682048443A55736572733A0061626163683A00446F776E6C6F6164733A00437573746F6D456469744669656C645F312E362E33202831293A00696D67733A00626F6F6B6D61726B73696D672E626D7000000E002200100062006F006F006B006D00610072006B00730069006D0067002E0062006D0070000F001A000C004D006100630069006E0074006F007300680020004800440012004555736572732F61626163682F446F776E6C6F6164732F437573746F6D456469744669656C645F312E362E33202831292F696D67732F626F6F6B6D61726B73696D672E626D7000001300012F0000150002000CFFFF0000000000000000</Hex></FileAlias>
- <FileAlias><Hex bytes="474">00F1D17301020100000001C80000000001C8000200000C4D6163696E746F7368204844000000000000000000000000000000CA40958C482B000000FD7D7A10626F6F6B6D61726B73696D672E626D70000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000FD7D93C9C9BDB80000000000000000FFFFFFFF0000092000000000000000000000000000000004696D6773001000080000CA40E9EC0000001100080000C9CA121800000001001400FD7D7A00FD7D100005027D000502330000BEEC000200574D6163696E746F73682048443A55736572733A0061626163683A00446F776E6C6F6164733A00437573746F6D456469744669656C645F312E362E33202831293A00696D67733A00626F6F6B6D61726B73696D672E626D7000000E002200100062006F006F006B006D00610072006B00730069006D0067002E0062006D0070000F001A000C004D006100630069006E0074006F007300680020004800440012004555736572732F61626163682F446F776E6C6F6164732F437573746F6D456469744669656C645F312E362E33202831292F696D67732F626F6F6B6D61726B73696D672E626D7000001300012F0000150002000CFFFF0000000000000000</Hex></FileAlias>
+ <FullPath>Macintosh HD:Users:abach:Git:aXel:Resources:Images:bookmarksimg.bmp</FullPath>
+ <PartialPath>Resources\Images\bookmarksimg.bmp</PartialPath>
+ <FileAlias><Hex bytes="450">00F1D17301020100000001B00000000001B0000200000C4D6163696E746F7368204844000000000000000000000000000000CA40958C482B0000010EBBA810626F6F6B6D61726B73696D672E626D700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010EBBAFC9672B430000000000000000FFFFFFFF0000092000000000000000000000000000000006496D61676573001000080000CA40E9EC0000001100080000C9678DB3000000010018010EBBA800F768F700F0A3B0000B0790000502330000BEEC000200494D6163696E746F73682048443A55736572733A0061626163683A004769743A006158656C3A005265736F75726365733A00496D616765733A00626F6F6B6D61726B73696D672E626D7000000E002200100062006F006F006B006D00610072006B00730069006D0067002E0062006D0070000F001A000C004D006100630069006E0074006F007300680020004800440012003655736572732F61626163682F4769742F6158656C2F5265736F75726365732F496D616765732F626F6F6B6D61726B73696D672E626D70001300012F0000150002000CFFFF0000000000000000</Hex></FileAlias>
  <ItemText>bookmarksimg</ItemText>
  <ItemTransparent>0</ItemTransparent>
 </block>
@@ -19775,7 +19775,7 @@
    <SourceLine>contentField.EnableAutocomplete = true</SourceLine>
    <SourceLine>contentField.EnableLineFoldings = true</SourceLine>
    <SourceLine>contentField.HighlightMatchingBrackets = true</SourceLine>
-   <SourceLine>contentField.HighlightMatchingBracketsMode = 0</SourceLine>
+   <SourceLine>contentField.HighlightMatchingBracketsMode = 1</SourceLine>
    <SourceLine>contentField.BracketHighlightColor = &amp;cFFFF00</SourceLine>
    <SourceLine>contentField.LineNumbersTextFont = "Courier"</SourceLine>
    <SourceLine>contentField.LineNumbersTextSize = 9</SourceLine>
@@ -22391,7 +22391,6 @@
   <PropertyVal Name="TabPanelIndex">0</PropertyVal>
   <PropertyVal Name="TabIndex">4</PropertyVal>
   <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="Super">CustomEditField</PropertyVal>
   <PropertyVal Name="RightScrollMargin">150</PropertyVal>
   <PropertyVal Name="RightMarginAtPixel">0</PropertyVal>
   <PropertyVal Name="ReadOnly">False</PropertyVal>
@@ -22419,7 +22418,7 @@
   <PropertyVal Name="EnableLineFoldings">True</PropertyVal>
   <PropertyVal Name="Enabled">True</PropertyVal>
   <PropertyVal Name="EnableAutocomplete">True</PropertyVal>
-  <PropertyVal Name="DoubleBuffer">False</PropertyVal>
+  <PropertyVal Name="DoubleBuffer">True</PropertyVal>
   <PropertyVal Name="DisplayRightMarginMarker">false</PropertyVal>
   <PropertyVal Name="DisplayLineNumbers">True</PropertyVal>
   <PropertyVal Name="DisplayInvisibleCharacters">False</PropertyVal>
@@ -22437,6 +22436,7 @@
   <PropertyVal Name="AutoCloseBrackets">false</PropertyVal>
   <PropertyVal Name="AcceptTabs"></PropertyVal>
   <PropertyVal Name="AcceptFocus">False</PropertyVal>
+  <PropertyVal Name="Super">CustomEditField</PropertyVal>
   <ControlIndex>0</ControlIndex>
   <Locked>0</Locked>
  </Control>
@@ -22467,9 +22467,9 @@
   <PropertyVal Name="Top">0</PropertyVal>
   <PropertyVal Name="Left">192</PropertyVal>
   <PropertyVal Name="Scope">2</PropertyVal>
-  <PropertyVal Name="Super">ScrollBar</PropertyVal>
   <PropertyVal Name="Index">-2147483648</PropertyVal>
   <PropertyVal Name="Name">vScrollBar</PropertyVal>
+  <PropertyVal Name="Super">ScrollBar</PropertyVal>
   <ControlIndex>1</ControlIndex>
   <Locked>0</Locked>
  </Control>
@@ -22500,9 +22500,9 @@
   <PropertyVal Name="Top">102</PropertyVal>
   <PropertyVal Name="Left">0</PropertyVal>
   <PropertyVal Name="Scope">2</PropertyVal>
-  <PropertyVal Name="Super">ScrollBar</PropertyVal>
   <PropertyVal Name="Index">-2147483648</PropertyVal>
   <PropertyVal Name="Name">hScrollBar</PropertyVal>
+  <PropertyVal Name="Super">ScrollBar</PropertyVal>
   <ControlIndex>2</ControlIndex>
   <Locked>0</Locked>
  </Control>
@@ -22517,9 +22517,11 @@
   <PropertyVal Name="Top">0</PropertyVal>
   <PropertyVal Name="Left">-44</PropertyVal>
   <PropertyVal Name="Scope">0</PropertyVal>
-  <PropertyVal Name="Super">Timer</PropertyVal>
   <PropertyVal Name="Index">-2147483648</PropertyVal>
   <PropertyVal Name="Name">SelChangeDeferrer</PropertyVal>
+  <PropertyVal Name="TabIndex">3</PropertyVal>
+  <PropertyVal Name="TabStop">True</PropertyVal>
+  <PropertyVal Name="Super">Timer</PropertyVal>
   <ControlIndex>3</ControlIndex>
   <Locked>0</Locked>
  </Control>
@@ -36607,21 +36609,26 @@
    <ProjectListColumnSortDirection>1</ProjectListColumnSortDirection>
   </OpenTab>
   <OpenTab>
-   <ObjContainerID>1855682492</ObjContainerID>
+   <ObjContainerID>1566538455</ObjContainerID>
    <LeftSplitter>138</LeftSplitter>
-   <RightSplitter>415</RightSplitter>
+   <RightSplitter>172</RightSplitter>
    <ScrollX>0</ScrollX>
    <ScrollY>0</ScrollY>
-   <LastPositionH>32</LastPositionH>
-   <LastPositionV>32</LastPositionV>
+   <LastPositionH>64</LastPositionH>
+   <LastPositionV>64</LastPositionV>
    <Control>0</Control>
   </OpenTab>
   <OpenTab>
-   <ObjContainerID>1855682492</ObjContainerID>
+   <ObjContainerID>1566538455</ObjContainerID>
    <AlternateEditorID>1</AlternateEditorID>
    <LeftSplitter>160</LeftSplitter>
    <EmptyEventState>0</EmptyEventState>
-   <CodeItemID>0</CodeItemID>
+  </OpenTab>
+  <OpenTab>
+   <ObjContainerID>256198520</ObjContainerID>
+   <AlternateEditorID>1</AlternateEditorID>
+   <LeftSplitter>160</LeftSplitter>
+   <EmptyEventState>0</EmptyEventState>
   </OpenTab>
   <LastLocation>(Home)</LastLocation>
   <EditBounds><Rect left="0" top="42" width="1280" height="754"/></EditBounds>
