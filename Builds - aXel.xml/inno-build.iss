@@ -40,7 +40,7 @@ Name: "{userappdata}\aXel\Resources"; Flags: deleteafterinstall
 [Files]
 Source: "D:\bachya\Git\axel\Builds - aXel.xml\Windows\aXel\aXel.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "D:\bachya\Git\axel\Builds - aXel.xml\Windows\aXel\aXel Libs\*"; DestDir: "{app}\aXel Libs"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "D:\bachya\Git\axel\Resources\*"; DestDir: "{userappdata}\aXel\Resources"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "D:\bachya\Git\axel\Resources\*"; DestDir: "{userappdata}\aXel\Resources"; Flags: ignoreversion recursesubdirs createallsubdirs onlyifdoesntexist
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
