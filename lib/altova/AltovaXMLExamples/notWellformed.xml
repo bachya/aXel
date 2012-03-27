@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2007 (http://www.altova.com) by MAG Altova GmbH -->
+<!-- intentionally not well formed input xml to demonstrate difference between error and negative return value-->
+<a>
+<noEndElement><!--/noEndElement-->
+</a> 

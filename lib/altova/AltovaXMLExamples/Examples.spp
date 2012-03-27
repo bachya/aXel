@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+	<Folder FolderName="XML Files" ExtStr="xml;cml;math;mtx;rdf;smil;svg;wml">
+		<File FilePath="notWellformed.xml" HomeFolder="Yes"/>
+		<File FilePath="simple.xml" HomeFolder="Yes"/>
+	</Folder>
+	<Folder FolderName="XSL Files" ExtStr="xsl;xslt">
+		<File FilePath="CopyInputXSLT1.xsl" HomeFolder="Yes"/>
+		<File FilePath="CopyInputXSLT2.xsl" HomeFolder="Yes"/>
+	</Folder>
+	<Folder FolderName="Java ext functions">
+		<Folder FolderName="XML Files">
+			<File FilePath="Extensions\Java\Fruit.xml" HomeFolder="Yes"/>
+			<File FilePath="Extensions\Java\string.xml" HomeFolder="Yes"/>
+		</Folder>
+		<Folder FolderName="XSL Files">
+			<File FilePath="Extensions\Java\Fruit01.xsl" HomeFolder="Yes"/>
+			<File FilePath="Extensions\Java\Fruit02.xsl" HomeFolder="Yes"/>
+			<File FilePath="Extensions\Java\Fruit03.xsl" HomeFolder="Yes"/>
+			<File FilePath="Extensions\Java\Fruit04.xsl" HomeFolder="Yes"/>
+			<File FilePath="Extensions\Java\string.xsl" HomeFolder="Yes"/>
+		</Folder>
+	</Folder>
+	<Folder FolderName="C# ext functions">
+		<Folder FolderName="XML Files">
+			<File FilePath="Extensions\C#\readfile.xml" HomeFolder="Yes"/>
+			<File FilePath="Extensions\C#\sinus.xml" HomeFolder="Yes"/>
+			<File FilePath="Extensions\C#\sphere.xml" HomeFolder="Yes"/>
+			<File FilePath="Extensions\C#\string.xml" HomeFolder="Yes"/>
+		</Folder>
+		<Folder FolderName="XSL Files">
+			<File FilePath="Extensions\C#\readfile.xsl" HomeFolder="Yes"/>
+			<File FilePath="Extensions\C#\sinus.xsl" HomeFolder="Yes"/>
+			<File FilePath="Extensions\C#\sphere_CSharp.xsl" HomeFolder="Yes"/>
+			<File FilePath="Extensions\C#\string.xsl" HomeFolder="Yes"/>
+		</Folder>
+	</Folder>
+	<Folder FolderName="VBScript ext functions">
+		<Folder FolderName="XML Files">
+			<File FilePath="Extensions\VBScript\sphere.xml" HomeFolder="Yes"/>
+		</Folder>
+		<Folder FolderName="XSL Files">
+			<File FilePath="Extensions\VBScript\sphere_VBscript.xsl" HomeFolder="Yes"/>
+		</Folder>
+	</Folder>
+	<Folder FolderName="JScript ext functions">
+		<Folder FolderName="XML Files">
+			<File FilePath="Extensions\JScript\sphere.xml" HomeFolder="Yes"/>
+		</Folder>
+		<Folder FolderName="XSL Files">
+			<File FilePath="Extensions\JScript\sphere_JScript.xsl" HomeFolder="Yes"/>
+		</Folder>
+	</Folder>
+	<Folder FolderName="XQuery Files" ExtStr="xq;xql;xquery">
+		<File FilePath="CopyInput.xq" HomeFolder="Yes"/>
+	</Folder>
+	<Folder FolderName="DTD/Schemas" ExtStr="dtd;dcd;xdr;biz;xsd"/>
+	<Folder FolderName="SourceCode">
+		<File FilePath="API\C#\AltovaXMLexample.cs" HomeFolder="Yes"/>
+		<File FilePath="API\Visual Basic\AltovaXMLexample.vb" HomeFolder="Yes"/>
+		<File FilePath="API\Java\UseAltovaXML.java" HomeFolder="Yes"/>
+		<File FilePath="API\JScript\UseAltovaXML.js" HomeFolder="Yes"/>
+		<File FilePath="API\C++\ExampleCPP.cpp" HomeFolder="Yes"/>
+		<File FilePath="API\C++\ExampleCPPhighlevel\ExampleCPPhighlevel.cpp" HomeFolder="Yes"/>
+		<File FilePath="Extensions\Java\Fruit.class" HomeFolder="Yes"/>
+		<File FilePath="Extensions\Java\Fruit.java" HomeFolder="Yes"/>
+		<File FilePath="Extensions\Java\com\altova\extfunc\Packagedfruit.class" HomeFolder="Yes"/>
+		<File FilePath="Extensions\Java\com\altova\extfunc\Packagedfruit.java" HomeFolder="Yes"/>
+	</Folder>
+</Project>
