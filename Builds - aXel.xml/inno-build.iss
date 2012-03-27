@@ -31,7 +31,10 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 ; These directories will be created by the installer inside the DefaultDirName (defined above).
 [Dirs]
 Name: "{app}\aXel Libs"
-Name: "{userappdata}\aXel\Resources"; Flags: deleteafterinstall
+Name: "{userappdata}\aXel\resources"; Flags: deleteafterinstall
+Name: "{userappdata}\aXel\lib"; Flags: deleteafterinstall
+Name: "{userappdata}\aXel\tmp"; Flags: deleteafterinstall
+Name: "{userappdata}\aXel\data";
 
 ; These are the files to include.  By default you want to include the EXE and the Libs folder
 ; but you can include any other files you like as well.
@@ -40,7 +43,10 @@ Name: "{userappdata}\aXel\Resources"; Flags: deleteafterinstall
 [Files]
 Source: "D:\bachya\Git\axel\Builds - aXel.xml\Windows\aXel\aXel.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "D:\bachya\Git\axel\Builds - aXel.xml\Windows\aXel\aXel Libs\*"; DestDir: "{app}\aXel Libs"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "D:\bachya\Git\axel\Resources\*"; DestDir: "{userappdata}\aXel\Resources"; Flags: ignoreversion recursesubdirs createallsubdirs onlyifdoesntexist
+Source: "D:\bachya\Git\axel\resources\*"; DestDir: "{userappdata}\aXel\resources"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "D:\bachya\Git\axel\data\*"; DestDir: "{userappdata}\aXel\lib"; Flags: ignoreversion recursesubdirs createallsubdirs onlyifdoesntexist
+Source: "D:\bachya\Git\axel\tmp\"; DestDir: "{userappdata}\aXel\tmp"; Flags: ignoreversion 
+Source: "D:\bachya\Git\axel\lib\*"; DestDir: "{userappdata}\aXel\lib"; Flags: ignoreversion recursesubdirs createallsubdirs only
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
