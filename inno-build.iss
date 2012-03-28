@@ -14,7 +14,7 @@ AppSupportURL=
 AppUpdatesURL=
 DefaultDirName={pf}\aXel
 DefaultGroupName=aXel
-OutputDir=D:\bachya\Git\axel\Builds - aXel.xml
+OutputDir=D:\bachya\Git\axel
 OutputBaseFilename=Setup
 ; If you have an End User License Agreement (EULA) that you want the user to agree to before letting the install continue,
 ; put the path to it here.
@@ -31,9 +31,9 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 ; These directories will be created by the installer inside the DefaultDirName (defined above).
 [Dirs]
 Name: "{app}\aXel Libs"
-Name: "{userappdata}\aXel\resources"; Flags: deleteafterinstall
-Name: "{userappdata}\aXel\lib"; Flags: deleteafterinstall
-Name: "{userappdata}\aXel\tmp"; Flags: deleteafterinstall
+Name: "{userappdata}\aXel\resources";
+Name: "{userappdata}\aXel\lib"; 
+Name: "{userappdata}\aXel\tmp"; Flags: uninsneveruninstall
 Name: "{userappdata}\aXel\data";
 
 ; These are the files to include.  By default you want to include the EXE and the Libs folder
@@ -41,12 +41,11 @@ Name: "{userappdata}\aXel\data";
 ; Be sure to change the path to point to your built application.
 
 [Files]
-Source: "D:\bachya\Git\axel\Builds - aXel.xml\Windows\aXel\aXel.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\bachya\Git\axel\Builds - aXel.xml\Windows\aXel\aXel Libs\*"; DestDir: "{app}\aXel Libs"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "D:\bachya\Git\axel\Builds - aXel.rbp\Windows\aXel\aXel.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\bachya\Git\axel\Builds - aXel.rbp\Windows\aXel\aXel Libs\*"; DestDir: "{app}\aXel Libs"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "D:\bachya\Git\axel\resources\*"; DestDir: "{userappdata}\aXel\resources"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "D:\bachya\Git\axel\data\*"; DestDir: "{userappdata}\aXel\lib"; Flags: ignoreversion recursesubdirs createallsubdirs onlyifdoesntexist
-Source: "D:\bachya\Git\axel\tmp\"; DestDir: "{userappdata}\aXel\tmp"; Flags: ignoreversion 
-Source: "D:\bachya\Git\axel\lib\*"; DestDir: "{userappdata}\aXel\lib"; Flags: ignoreversion recursesubdirs createallsubdirs only
+Source: "D:\bachya\Git\axel\data\*"; DestDir: "{userappdata}\aXel\data"; Flags: ignoreversion recursesubdirs createallsubdirs onlyifdoesntexist 
+Source: "D:\bachya\Git\axel\lib\*"; DestDir: "{userappdata}\aXel\lib"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
