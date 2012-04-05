@@ -7,14 +7,14 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.) 
 AppId={{D16B9557-4161-4EE6-8AD4-3FB8BD3D6EF4}
 AppName=aXel
-AppVerName=aXel 0.2
+AppVerName=aXel 0.3
 AppPublisher=Bachya Productions
 AppPublisherURL=
 AppSupportURL=
 AppUpdatesURL=
 DefaultDirName={pf}\aXel
 DefaultGroupName=aXel
-OutputDir=D:\bachya\Git\axel
+OutputDir=D:\bachya\Git\axel\Builds - aXel.rbp\Windows
 OutputBaseFilename=Setup
 ; If you have an End User License Agreement (EULA) that you want the user to agree to before letting the install continue,
 ; put the path to it here.
