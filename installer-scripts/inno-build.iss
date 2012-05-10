@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.) 
 AppId={{D16B9557-4161-4EE6-8AD4-3FB8BD3D6EF4}
 AppName=aXel
-AppVerName=aXel 0.3
+AppVerName=aXel 0.4
 AppPublisher=Bachya Productions
 AppPublisherURL=
 AppSupportURL=
