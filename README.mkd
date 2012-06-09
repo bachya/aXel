@@ -1,7 +1,4 @@
 aXel
-                      
-                      
-What is it?
 -----------
 
 aXel is a cross-platform XSLT editor and library written in REALbasic. Once Xselerator
@@ -31,11 +28,10 @@ pull request with the changes.
 Credits
 -------
 
-icons: http://www.iconarchive.com/
-
-Alternating ListBox by Alex Restrepo: http://homepage.mac.com/alexrestrepo/files/AlternatingList.sitx
-Custom Edit Field by Alex Restrepo: http://code.google.com/p/custom-editfield/
-Dynamically Handled Menu Item: http://code.google.com/p/rbstuff/
-RuntimeException Plus 1.0 by Scott Forbes: http://www.ravenna.com/~forbes/yonk/source/
-Splitter Control by Thomas Tempelmann: http://files.tempel.org/RB/TTsMarsSplitterDemo.rbp.zip
-XDB by 10101 Software: http://www.10101software.co.nr
+  * icons: http://www.iconarchive.com/
+  * Alternating ListBox by Alex Restrepo: http://homepage.mac.com/alexrestrepo/files/AlternatingList.sitx
+  * Custom Edit Field by Alex Restrepo: http://code.google.com/p/custom-editfield/
+  * Dynamically Handled Menu Item: http://code.google.com/p/rbstuff/
+  * RuntimeException Plus 1.0 by Scott Forbes: http://www.ravenna.com/~forbes/yonk/source/
+  * Splitter Control by Thomas Tempelmann: http://files.tempel.org/RB/TTsMarsSplitterDemo.rbp.zip
+  * XDB by 10101 Software: http://www.10101software.co.nr
