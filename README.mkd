@@ -17,7 +17,7 @@ Features
 Bugs
 ----
 
-If you find any write a bug report on https://github.com/bachya/aXel/issues
+If you find any bugs, please submit a bug report on https://github.com/bachya/aXel/issues
 
 Contribute
 ----------
