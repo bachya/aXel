@@ -1,0 +1,41 @@
+aXel
+                      
+                      
+What is it?
+-----------
+
+aXel is a cross-platform XSLT editor and library written in REALbasic. Once Xselerator
+became a little sketchy (in terms of where to get it, whether it was shareware or not, etc.),
+I decided to make a replacement.
+
+Features
+--------
+  * Open Source (if you are a REALbasic developer)
+  * Real-time transformation of XML and XSLT
+  * Multiple XSLT interpreters (Expat, Saxon, AltovaXML, libxslt) 
+  * Easy TIDYing of XML and XSLT
+  * XPath analysis
+  * Library management of XSLT snippets
+
+Bugs
+----
+
+If you find any write a bug report on https://github.com/bachya/aXel/issues
+
+Contribute
+----------
+
+Feel free to fork the project from https://github.com/bachya/aXel and send me a
+pull request with the changes.
+
+Credits
+-------
+
+icons: http://www.iconarchive.com/
+
+Alternating ListBox by Alex Restrepo: http://homepage.mac.com/alexrestrepo/files/AlternatingList.sitx
+Custom Edit Field by Alex Restrepo: http://code.google.com/p/custom-editfield/
+Dynamically Handled Menu Item: http://code.google.com/p/rbstuff/
+RuntimeException Plus 1.0 by Scott Forbes: http://www.ravenna.com/~forbes/yonk/source/
+Splitter Control by Thomas Tempelmann: http://files.tempel.org/RB/TTsMarsSplitterDemo.rbp.zip
+XDB by 10101 Software: http://www.10101software.co.nr
