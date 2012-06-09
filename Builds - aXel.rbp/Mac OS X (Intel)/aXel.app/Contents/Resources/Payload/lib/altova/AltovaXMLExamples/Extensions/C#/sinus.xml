@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<sinus ampl="1" freq="1" res="30" />
+<sinus ampl="2" freq="2" res="20" />
+<sinus ampl="2.5" freq="0.5" res="80" />
+<sinus ampl="3" freq="1" res="50" />
+</root>
